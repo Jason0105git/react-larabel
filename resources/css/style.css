@@ -1,0 +1,10 @@
+header {
+	background-color: #e5e6e9;
+	border-bottom: 3px lightgray solid;
+}
+
+.content-wrapper {
+	padding: 0px;
+	margin: 0px;
+	width: 100%;
+}

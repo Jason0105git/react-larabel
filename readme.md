@@ -37,3 +37,14 @@ php artisan make:controller ControllerName
 материалы
 
 https://laravel.ru/docs/v5/authentication
+
+https://www.w3schools.com/bootstrap4/default.asp
+
+------------------------
+todo
+
+для не залогиненного есть пункты регистрация и логин (в логине есть напомнить пароль)
+для залогиненого есть кабинет и выйти
+в кабинете можно менять контактные данные, пароль
+
+в качестве логина используем email
