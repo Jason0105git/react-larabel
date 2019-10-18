@@ -7,11 +7,11 @@ class Register extends Component {
 		super(props)
 		this.state = {
 			user: {
-				firstname: '',
-				lastname: '',
-				email: '',
+				firstname: 'иванов',
+				lastname: 'сергей',
+				email: 'ivam@assdff.dd',
 				password: '',
-				phone: '',
+				phone: '+790123456789',
 			},
 			errors: '',
 			result: '',
@@ -65,16 +65,18 @@ class Register extends Component {
 		this.setState({user: user})
 	}
 
- 
+ validatePassword(){
+ 		return (this.state.password === this.state.retupePassword)
+ }
 
 	handleSubmitForm(e){
-
 		// TODO: validate passwords
-   
 		e.preventDefault()
-	//	console.log(this.state)
+	
+		if(this.state.user.password === this.state.retupePassword){
+			
+	
 
-	//	(this.state.user.password === this.state.retupePassword)? 
 			axios.post('/api/register', this.state.user)
 	          .then(response => {
 	            // redirect to the homepage
@@ -83,35 +85,60 @@ class Register extends Component {
 	            this.setState({result:response.data})
 	          })
 	          .catch(error => {
-	          		console.log(error.response)
-
+	          		//console.log(error.response)
+	    					this.setState({result:'внутренняя ошибка, попробуйте позже'})      		
 	          })
-    //	:this.setState({result:'пароли не совпадают'})      
-    }
+		} else {
+			this.setState({result:'пароли не совпадают'})	
+		}
+  }
 
 	render(){
 
 		return(
 			<form className="col-sm-3  dev-block" onSubmit={this.handleSubmitForm}>
 				<h4>регистрация</h4>
-				<div className="form-group">
-					<input type="text" className="form-control" required placeholder='фамилия' onChange={this.handleLastNameChange} />	
+	
+
+
+				<div className="input-group mb-3 input-group-sm autoriztion-label">
+					<div className="input-group-prepend">
+       			<span className="input-group-text">фамилия</span>
+    			</div>
+					<input type="text" className="form-control" required onChange={this.handleLastNameChange} />	
 				</div>
-				<div className="form-group">
-					<input type="text" className="form-control" required placeholder='имя' onChange={this.handleFirstNameChange} />	
+
+				<div className="input-group mb-3 input-group-sm">
+					<div className="input-group-prepend">
+       			<span className="input-group-text">имя</span>
+    			</div>
+					<input type="text" className="form-control" required onChange={this.handleFirstNameChange} />	
 				</div>
-				<div className="form-group">
+				
+				<div className="input-group mb-3 input-group-sm">
+					<div className="input-group-prepend">
+       			<span className="input-group-text">телефон</span>
+    			</div>
       		<input type="tel" className="form-control" required pattern="['+']{1}[7]{1}[9]{1}[0-9]{10}" id="tel" placeholder={'+790000000000'} onChange={this.handlePhoneChange}/>
       	</div>
-			  <div className="form-group">
-			    <input type="email" className="form-control" placeholder='email' id="email"  onChange={this.handleEmailChange} />
+			  <div className="input-group mb-3 input-group-sm">
+			  	<div className="input-group-prepend">
+       			<span className="input-group-text">email</span>
+    			</div>
+			    <input type="email" className="form-control" id="email"  onChange={this.handleEmailChange} />
 			  </div>
-			  <div className="form-group">
-			    <label htmlFor="pwd">пароль:</label>
+	
+
+			  <div className="input-group mb-3 input-group-sm">
+			  	<div className="input-group-prepend">
+       			<span className="input-group-text">пароль</span>
+    			</div>
 			    <input type="password" className="form-control" id="pwd"  onChange={this.handlePasswordChange} />
 			  </div>
-			  <div className="form-group">
-			    <label htmlFor="pwd">пароль повторно:</label>
+			  <div className="input-group mb-3 input-group-sm">
+			  	<div className="input-group-prepend">
+       			<span className="input-group-text">пароль повторно</span>
+    			</div>
 			    <input type="password" className="form-control" id="pwd"  onChange={this.handleRetupePasswordChange} />
 			  </div>
 			  <span>* все поля обязательны для заполнения</span>

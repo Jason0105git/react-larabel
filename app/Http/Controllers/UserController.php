@@ -15,6 +15,11 @@ class UserController extends Controller
 			/* проверить что email уникален, если нет return response()->json('пользователь с таким email уже есть!');
 			*/
 
+			$request->lastname = 'иванов';
+			$request->firstname = 'иван';
+			$request->phone = '+790123456789';
+			$request->email = 'ivanoff@indfs.com';
+//			$request->password
 
 		  $validatedData = $request->validate([
 		  	'firstname' => 'required',

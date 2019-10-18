@@ -1933,7 +1933,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "header {\r\n\tbackground-color: #e5e6e9;\r\n\tborder-bottom: 3px lightgray solid;\r\n}\r\n\r\nmain {\r\n\tpadding: 30px;\r\n}\r\n\r\n.dev-block {\r\n\tborder: 1px lightgray solid;\r\n\tpadding: 15px;\r\n\tmargin: 15px;\r\n}\r\n\r\n.debug {\r\n\tborder: 1px red solid;\r\n}\r\n\r\n.content-wrapper {\r\n\tpadding: 0px;\r\n\tmargin: 0px;\r\n\twidth: 100%;\r\n}\r\n\r\n.form-header {\r\n\tpadding: 5px; \r\n\tbackground-color: inherit;\r\n\tcolor: lightgray;\r\n}", ""]);
+exports.push([module.i, "header {\r\n\tbackground-color: #e5e6e9;\r\n\tborder-bottom: 3px lightgray solid;\r\n}\r\n\r\nmain {\r\n\tpadding: 30px;\r\n}\r\n\r\n.dev-block {\r\n\tborder: 1px lightgray solid;\r\n\tpadding: 15px;\r\n\tmargin: 15px;\r\n}\r\n\r\n.debug {\r\n\tborder: 1px red solid;\r\n}\r\n\r\n.content-wrapper {\r\n\tpadding: 0px;\r\n\tmargin: 0px;\r\n\twidth: 100%;\r\n}\r\n\r\n.form-header {\r\n\tpadding: 5px; \r\n\tbackground-color: inherit;\r\n\tcolor: lightgray;\r\n}\r\n", ""]);
 
 // exports
 
@@ -56429,11 +56429,11 @@ function (_Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Register).call(this, props));
     _this.state = {
       user: {
-        firstname: '',
-        lastname: '',
-        email: '',
+        firstname: 'иванов',
+        lastname: 'сергей',
+        email: 'ivam@assdff.dd',
         password: '',
-        phone: ''
+        phone: '+790123456789'
       },
       errors: '',
       result: '',
@@ -56503,25 +56503,38 @@ function (_Component) {
       });
     }
   }, {
+    key: "validatePassword",
+    value: function validatePassword() {
+      return this.state.password === this.state.retupePassword;
+    }
+  }, {
     key: "handleSubmitForm",
     value: function handleSubmitForm(e) {
       var _this2 = this;
 
       // TODO: validate passwords
-      e.preventDefault(); //	console.log(this.state)
-      //	(this.state.user.password === this.state.retupePassword)? 
+      e.preventDefault();
 
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/register', this.state.user).then(function (response) {
-        // redirect to the homepage
-        //history.push('/')
-        console.log(response.data);
+      if (this.state.user.password === this.state.retupePassword) {
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/register', this.state.user).then(function (response) {
+          // redirect to the homepage
+          //history.push('/')
+          console.log(response.data);
 
-        _this2.setState({
-          result: response.data
+          _this2.setState({
+            result: response.data
+          });
+        })["catch"](function (error) {
+          //console.log(error.response)
+          _this2.setState({
+            result: 'внутренняя ошибка, попробуйте позже'
+          });
         });
-      })["catch"](function (error) {
-        console.log(error.response);
-      }); //	:this.setState({result:'пароли не совпадают'})      
+      } else {
+        this.setState({
+          result: 'пароли не совпадают'
+        });
+      }
     }
   }, {
     key: "render",
@@ -56530,24 +56543,34 @@ function (_Component) {
         className: "col-sm-3  dev-block",
         onSubmit: this.handleSubmitForm
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u044F"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "form-group"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "input-group mb-3 input-group-sm autoriztion-label"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "input-group-prepend"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "input-group-text"
+      }, "\u0444\u0430\u043C\u0438\u043B\u0438\u044F")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         className: "form-control",
         required: true,
-        placeholder: "\u0444\u0430\u043C\u0438\u043B\u0438\u044F",
         onChange: this.handleLastNameChange
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "form-group"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "input-group mb-3 input-group-sm"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "input-group-prepend"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "input-group-text"
+      }, "\u0438\u043C\u044F")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         className: "form-control",
         required: true,
-        placeholder: "\u0438\u043C\u044F",
         onChange: this.handleFirstNameChange
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "form-group"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "input-group mb-3 input-group-sm"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "input-group-prepend"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "input-group-text"
+      }, "\u0442\u0435\u043B\u0435\u0444\u043E\u043D")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "tel",
         className: "form-control",
         required: true,
@@ -56556,27 +56579,34 @@ function (_Component) {
         placeholder: '+790000000000',
         onChange: this.handlePhoneChange
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "form-group"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "input-group mb-3 input-group-sm"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "input-group-prepend"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "input-group-text"
+      }, "email")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "email",
         className: "form-control",
-        placeholder: "email",
         id: "email",
         onChange: this.handleEmailChange
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "form-group"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        htmlFor: "pwd"
-      }, "\u043F\u0430\u0440\u043E\u043B\u044C:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "input-group mb-3 input-group-sm"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "input-group-prepend"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "input-group-text"
+      }, "\u043F\u0430\u0440\u043E\u043B\u044C")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "password",
         className: "form-control",
         id: "pwd",
         onChange: this.handlePasswordChange
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "form-group"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        htmlFor: "pwd"
-      }, "\u043F\u0430\u0440\u043E\u043B\u044C \u043F\u043E\u0432\u0442\u043E\u0440\u043D\u043E:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "input-group mb-3 input-group-sm"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "input-group-prepend"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "input-group-text"
+      }, "\u043F\u0430\u0440\u043E\u043B\u044C \u043F\u043E\u0432\u0442\u043E\u0440\u043D\u043E")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "password",
         className: "form-control",
         id: "pwd",
