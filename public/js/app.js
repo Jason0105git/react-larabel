@@ -56428,10 +56428,9 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Register).call(this, props));
     _this.state = {
-      user: {
-        email: '',
-        password: ''
-      }
+      firstname: 'user',
+      email: 'user@mail.com',
+      password: '123456'
     };
     _this.handleSubmitForm = _this.handleSubmitForm.bind(_assertThisInitialized(_this));
     _this.handleEmailChange = _this.handleEmailChange.bind(_assertThisInitialized(_this));
@@ -56460,10 +56459,9 @@ function (_Component) {
       var _this2 = this;
 
       // TODO: validate passwords
-      var user = this.state.user;
       e.preventDefault();
       console.log(this.state);
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/register', user).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/register', this.state).then(function (response) {
         // redirect to the homepage
         history.push('/');
       })["catch"](function (error) {
@@ -56480,7 +56478,7 @@ function (_Component) {
         onSubmit: this.handleSubmitForm
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-header"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u044F")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u044F"), " my@email.com"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         htmlFor: "email"

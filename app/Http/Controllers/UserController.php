@@ -11,12 +11,16 @@ class UserController extends Controller
 		// post request
 		public function register(Request $request)
 		{
-		  /*$validatedData = $request->validate([
-		    'name' => 'required',
-		    'description' => 'required',
+		  $validatedData = $request->validate([
+		  	'firstname' => 'required',
+		    'email' => 'required',
+		    'password' => 'required',
 		  ]);
-*/
-		  $user = Project::create([
+
+		  $user = User::create([
+		  	'lastname' => 'lastname',
+		  	'phone' => '+380660646332',
+		  	'firstname' => $validatedData['firstname'],
 		    'email' => $validatedData['email'],
 		    'password' => $validatedData['password'],
 		  ]);

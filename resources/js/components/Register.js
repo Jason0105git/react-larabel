@@ -6,10 +6,10 @@ class Register extends Component {
 	constructor(props){
 		super(props)
 		this.state = {
-			user: {
-				email: '',
-				password: '',
-			}
+				firstname: 'user',
+				email: 'user@mail.com',
+				password: '123456',
+		
 		}
 
 		this.handleSubmitForm = this.handleSubmitForm.bind(this)
@@ -21,22 +21,21 @@ class Register extends Component {
 
 
 	handleEmailChange(e){
-		this.setState({email:e.currentTarget.value})
+		this.setState({email: e.currentTarget.value})
 	}
 
 	handlePasswordChange(e){
-		this.setState({password:e.currentTarget.value})
+		this.setState({password: e.currentTarget.value})
 	}
 
 	handleSubmitForm(e){
 
 		// TODO: validate passwords
-		const user = this.state.user
 
 		e.preventDefault()
 		console.log(this.state)
 
-		axios.post('/api/register', user)
+		axios.post('/api/register', this.state)
           .then(response => {
             // redirect to the homepage
             history.push('/')
@@ -54,7 +53,7 @@ class Register extends Component {
 
 		return(
 			<form className="col-sm-3  dev-block" onSubmit={this.handleSubmitForm}>
-				<div className="form-header"><h4>регистрация</h4></div>
+				<div className="form-header"><h4>регистрация</h4> my@email.com</div>
 			  <div className="form-group">
 			    <label htmlFor="email">Email address:</label>
 			    <input type="email" className="form-control" id="email"  onChange={this.handleEmailChange} />
