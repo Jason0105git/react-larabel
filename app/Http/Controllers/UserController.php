@@ -11,18 +11,26 @@ class UserController extends Controller
 		// post request
 		public function register(Request $request)
 		{
+
+			/* проверить что email уникален, если нет return response()->json('пользователь с таким email уже есть!');
+			*/
+
+
 		  $validatedData = $request->validate([
 		  	'firstname' => 'required',
+		  	'lastname' => 'required',
 		    'email' => 'required',
 		    'password' => 'required',
+		    'phone' => 'required',
 		  ]);
 
 		  $user = User::create([
-		  	'lastname' => 'lastname',
-		  	'phone' => '+380660646332',
+		  	'phone' => $validatedData['phone'],
+		  	//'lastname' => $validatedData['lastname'],
+		  	'lastname' => $request->lastname,
 		  	'firstname' => $validatedData['firstname'],
 		    'email' => $validatedData['email'],
-		    'password' => $validatedData['password'],
+		    'password' => md5($validatedData['password']),
 		  ]);
 
 		  return response()->json('user created!');
