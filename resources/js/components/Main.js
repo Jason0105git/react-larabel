@@ -8,7 +8,7 @@ import {AskodsHeader} from './askods/AskodsHeader'
 import {Home} from './Home'
 import {Dashboard} from './Dashboard'
 import Login from './Login'
-import {Register} from './Register'
+import Register from './Register'
 import {Nav} from './Nav'
 
 
@@ -31,6 +31,7 @@ class Main extends Component {
 				<Nav />
 			</nav>
 			<main>
+	
 				<Switch>
 				<Route exact path='/' component={Home} />
 				<Route path='/dashboard' component={Dashboard} />

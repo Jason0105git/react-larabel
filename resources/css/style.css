@@ -3,8 +3,28 @@ header {
 	border-bottom: 3px lightgray solid;
 }
 
+main {
+	padding: 30px;
+}
+
+.dev-block {
+	border: 1px lightgray solid;
+	padding: 15px;
+	margin: 15px;
+}
+
+.debug {
+	border: 1px red solid;
+}
+
 .content-wrapper {
 	padding: 0px;
 	margin: 0px;
 	width: 100%;
+}
+
+.form-header {
+	padding: 5px; 
+	background-color: inherit;
+	color: lightgray;
 }

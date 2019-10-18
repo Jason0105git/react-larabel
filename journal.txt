@@ -1,0 +1,35 @@
+
+XMLHttpRequest не может загрузить http: //localhost:8000/items. В запрошенном ресурсе нет заголовка «Access-Control-Allow-Origin». Потому что исходный адрес http://localhost:3000. В ответе код статуса HTTP 500.
+
+Эта ошибка вызвана CORS безопасностью. Когда браузер отправляет запрос другому домену, тот по умолчанию отклоняет запрос.
+
+Варианты решения
+
+Мы должны разрешить принимать запрос на стороне сервера Laravel. Поэтому нам нужно одна промежуточная библиотека которая будет слушать каждый запрос к API. Поставив эту библиотеку мы прямо указали Laravel, что мы разрешаем этому запросу получать доступ к нашим ресурсам.
+
+Загрузите пакет CORS для Laravel, чтобы избежать проблемы.
+
+composer require barryvdh/laravel-cors
+
+Добавьте Cors \ ServiceProvider в массив serviceProviders в config / app.php
+
+Barryvdh\Cors\ServiceProvider::class,
+
+
+
+Чтобы разрешить CORS для всех маршрутов, добавьте HandleCors в свойство $middleware класса app 
+
+/ Http / Kernel.php:
+
+protected $middleware = [
+
+    // ...
+
+    \Barryvdh\Cors\HandleCors::class,
+];
+
+
+
+Вы можете опубликовать конфигурацию, используя следующую команду:
+
+php artisan vendor:publish --provider="Barryvdh\Cors\ServiceProvider"
