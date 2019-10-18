@@ -15,13 +15,10 @@ class UserController extends Controller
 			/* проверить что email уникален, если нет return response()->json('пользователь с таким email уже есть!');
 			*/
 
-			$request->lastname = 'иванов';
-			$request->firstname = 'иван';
-			$request->phone = '+790123456789';
-			$request->email = 'ivanoff@indfs.com';
+		
 //			$request->password
 
-		  $validatedData = $request->validate([
+		/*  $validatedData = $request->validate([
 		  	'firstname' => 'required',
 		  	'lastname' => 'required',
 		    'email' => 'required',
@@ -31,12 +28,20 @@ class UserController extends Controller
 
 		  $user = User::create([
 		  	'phone' => $validatedData['phone'],
-		  	//'lastname' => $validatedData['lastname'],
-		  	'lastname' => $request->lastname,
+		  	'lastname' => $validatedData['lastname'],		  
 		  	'firstname' => $validatedData['firstname'],
 		    'email' => $validatedData['email'],
 		    'password' => md5($validatedData['password']),
+		  ]);*/
+
+		  $user = User::create([
+		  	'phone' => $request->phone,
+		  	'lastname' => $request->lastname,		  
+		  	'firstname' => $request->firstname,
+		    'email' => $request->email,
+		    'password' => md5($request->password),
 		  ]);
+
 
 		  return response()->json('user created!');
 		}

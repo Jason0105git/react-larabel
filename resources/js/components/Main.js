@@ -25,7 +25,7 @@ class Main extends Component {
 			<div className="container-fluid content-wrapper">
 			<BrowserRouter>
 			<header>
-				<AskodsHeader />				
+			{/*	<AskodsHeader />				*/}
 			</header>
 			<nav>
 				<Nav />

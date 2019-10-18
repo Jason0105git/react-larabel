@@ -7,15 +7,17 @@ class Register extends Component {
 		super(props)
 		this.state = {
 			user: {
-				firstname: 'иванов',
-				lastname: 'сергей',
-				email: 'ivam@assdff.dd',
+				firstname: '',
+				lastname: '',
+				email: '',
 				password: '',
-				phone: '+790123456789',
+				phone: '',
 			},
 			errors: '',
 			result: '',
 			retupePassword: '',
+		
+		
 		}
 
 		this.handleSubmitForm = this.handleSubmitForm.bind(this)
@@ -26,6 +28,7 @@ class Register extends Component {
 		this.handleFirstNameChange = this.handleFirstNameChange.bind(this)
 		this.handleRetupePasswordChange = this.handleRetupePasswordChange.bind(this)
 		this.handlePhoneChange = this.handlePhoneChange.bind(this)
+		this.validatePassword = this.validatePassword.bind(this)
 	}
 
 
@@ -66,30 +69,56 @@ class Register extends Component {
 	}
 
  validatePassword(){
- 		return (this.state.password === this.state.retupePassword)
+
+ 	  if(this.state.user.password !== this.state.retupePassword){
+ 	  	 return {validate: false, message: 'пароли не совпадают'} 	  	
+ 	  } 
+ 	  if(this.state.user.password.length < 8) {
+ 	  	return {
+ 	  		validate: false,
+ 	  		message: 'длина пароля не должна быть меньше 8 символов'
+ 	  	}	
+ 	  } 
+
+ 	  if(this.state.user.password.search(/[a-z]/i) < 0) {
+			return {
+				validate: false,
+				message: 'пароль дожен содержать хотя бы одну букву'
+			}
+		} 
+
+ 	  if(this.state.user.password.search(/[0-9]/i) < 0) {
+			return {
+				validate: false,
+				message: 'пароль дожен содержать хотя бы одну цифру'
+			}
+		} 
+
+		return {
+			validate: true,
+			message: 'password ok',
+		}
  }
 
 	handleSubmitForm(e){
 		// TODO: validate passwords
 		e.preventDefault()
 	
-		if(this.state.user.password === this.state.retupePassword){
-			
-	
+		const validPassword = this.validatePassword();
+		console.log('validPassword ', validPassword)
 
+		if(validPassword.validate){
+			
 			axios.post('/api/register', this.state.user)
 	          .then(response => {
-	            // redirect to the homepage
-	            //history.push('/')
 	            console.log(response.data)
 	            this.setState({result:response.data})
 	          })
 	          .catch(error => {
-	          		//console.log(error.response)
 	    					this.setState({result:'внутренняя ошибка, попробуйте позже'})      		
 	          })
 		} else {
-			this.setState({result:'пароли не совпадают'})	
+			this.setState({result: validPassword.message})	
 		}
   }
 
