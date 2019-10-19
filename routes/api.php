@@ -28,4 +28,5 @@ Route::get('logout', 'Auth\AuthController@getLogout');
 
 
 Route::post('register', 'UserController@register');
-Route::login('login', 'UserController@login');
+
+Route::post('login', 'UserController@login');
