@@ -17,7 +17,7 @@ class Register extends Component {
 			errors: '',
 			result: '',
 			retupePassword: '',
-		
+			requested: false,
 		
 		}
 
@@ -76,11 +76,11 @@ class Register extends Component {
 		const validPassword = validateNewPassword(this.state.user.password, this.state.retupePassword)
 		
 		if(validPassword.validate){
-			
+			this.setState({requested: true})
 			axios.post('/api/register', this.state.user)
 	          .then(response => {
 	            console.log(response.data)
-	            this.setState({result:response.data})
+	            this.setState({result:response.data, requested: false})
 	          })
 	          .catch(error => {
 	    					this.setState({result:'внутренняя ошибка, попробуйте позже'})      		
@@ -93,55 +93,51 @@ class Register extends Component {
 	render(){
 
 		return(
-			<form className="col-sm-3  dev-block" onSubmit={this.handleSubmitForm}>
+			<form className="col-sm-4  dev-block" onSubmit={this.handleSubmitForm}>
 				<h4>регистрация</h4>
 	
 
 
-				<div className="input-group mb-3 input-group-sm autoriztion-label">
-					<div className="input-group-prepend">
-       			<span className="input-group-text">фамилия</span>
-    			</div>
-					<input type="text" className="form-control" required onChange={this.handleLastNameChange} />	
+				<div className="form-group">
+       		<label htmlFor="lastname">фамилия</label>
+       		<input id="lastname" type="text" className="form-control" required onChange={this.handleLastNameChange} />	
 				</div>
 
-				<div className="input-group mb-3 input-group-sm">
-					<div className="input-group-prepend">
-       			<span className="input-group-text">имя</span>
-    			</div>
-					<input type="text" className="form-control" required onChange={this.handleFirstNameChange} />	
+				<div className="form-group">
+       		<label htmlFor="firstname">имя</label>
+					<input id="firstname" type="text" className="form-control" required onChange={this.handleFirstNameChange} />	
 				</div>
-				
-				<div className="input-group mb-3 input-group-sm">
-					<div className="input-group-prepend">
-       			<span className="input-group-text">телефон</span>
-    			</div>
-      		<input type="tel" className="form-control" required pattern="['+']{1}[7]{1}[9]{1}[0-9]{10}" id="tel" placeholder={'+790000000000'} onChange={this.handlePhoneChange}/>
+
+				<div className="form-group">
+     			<label htmlFor="phone">телефон</label>
+      		<input id="phone" type="tel" className="form-control" required pattern="['+']{1}[7]{1}[9]{1}[0-9]{10}" placeholder={'+790000000000'} onChange={this.handlePhoneChange}/>
       	</div>
-			  <div className="input-group mb-3 input-group-sm">
-			  	<div className="input-group-prepend">
-       			<span className="input-group-text">email</span>
-    			</div>
-			    <input type="email" className="form-control" id="email"  onChange={this.handleEmailChange} />
+
+			  <div className="form-group">
+			  	<label htmlFor="email">email</label>
+    		  <input id="email" type="email" className="form-control"  onChange={this.handleEmailChange} />
 			  </div>
 	
 
-			  <div className="input-group mb-3 input-group-sm">
-			  	<div className="input-group-prepend">
-       			<span className="input-group-text">пароль</span>
-    			</div>
-			    <input type="password" className="form-control" id="pwd"  onChange={this.handlePasswordChange} />
+			  <div className="form-group">
+			  	<label htmlFor="pasword">пароль</label>
+    			<input id="password" type="password" className="form-control"  onChange={this.handlePasswordChange} />
 			  </div>
-			  <div className="input-group mb-3 input-group-sm">
-			  	<div className="input-group-prepend">
-       			<span className="input-group-text">пароль повторно</span>
-    			</div>
-			    <input type="password" className="form-control" id="pwd"  onChange={this.handleRetupePasswordChange} />
+			  <div className="form-group">
+       		<label htmlFor="pasword_retupe">пароль повторно</label>
+			    <input id="pasword_retupe" type="password" className="form-control"  onChange={this.handleRetupePasswordChange} />
 			  </div>
 			  <span>* все поля обязательны для заполнения</span>
 
-			  <button type="submit" className="btn btn-primary">Зарегистрироваться</button>
-			  <div className='messages'>{this.state.result}</div>
+			  <button type="submit" className="btn btn-primary">Зарегистрировать</button>
+
+			  <div className='register-form-messages'>
+			  {(this.state.required)?
+			  	<span>loading...</span>
+			  	:
+			  	<span>{this.state.result}</span>
+			  }
+			  </div>	
 			</form>
 		)
 	}

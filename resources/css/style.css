@@ -28,3 +28,8 @@ main {
 	background-color: inherit;
 	color: lightgray;
 }
+
+.register-form-messages {
+
+	height: 30px;
+}

@@ -44,8 +44,17 @@ https://www.w3schools.com/bootstrap4/default.asp
 
 http://qaru.site/questions/34851/how-to-create-multiple-where-clause-query-using-laravel-eloquent
 
+http://qaru.site/questions/51694/laravel-checking-if-record-exists
 
 ------------------------
+
+TODO Common
+
+шифрование на стороне клиента   https://www.npmjs.com/package/js-md5
+
+повторное шифрование на стороне сервера
+
+
 todo
 
 для не залогиненного есть пункты регистрация и логин (в логине есть напомнить пароль)
@@ -64,4 +73,11 @@ TODO passwordvalidator в отдельный модуль DONE
 FIXME сервер отзівается через раз  FIXED (вопрос отпал после проверки уникальности email)
 
 ---------- 
-TODO login
+TODO login  DONE
+
+TODO 
+
+1 ForgotPassword
+
+2 ResetPassword
+

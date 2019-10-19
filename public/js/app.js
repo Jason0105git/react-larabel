@@ -1933,7 +1933,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "header {\n\tbackground-color: #e5e6e9;\n\tborder-bottom: 3px lightgray solid;\n}\n\nmain {\n\tpadding: 30px;\n}\n\n.dev-block {\n\tborder: 1px lightgray solid;\n\tpadding: 15px;\n\tmargin: 15px;\n}\n\n.debug {\n\tborder: 1px red solid;\n}\n\n.content-wrapper {\n\tpadding: 0px;\n\tmargin: 0px;\n\twidth: 100%;\n}\n\n.form-header {\n\tpadding: 5px; \n\tbackground-color: inherit;\n\tcolor: lightgray;\n}\n", ""]);
+exports.push([module.i, "header {\n\tbackground-color: #e5e6e9;\n\tborder-bottom: 3px lightgray solid;\n}\n\nmain {\n\tpadding: 30px;\n}\n\n.dev-block {\n\tborder: 1px lightgray solid;\n\tpadding: 15px;\n\tmargin: 15px;\n}\n\n.debug {\n\tborder: 1px red solid;\n}\n\n.content-wrapper {\n\tpadding: 0px;\n\tmargin: 0px;\n\twidth: 100%;\n}\n\n.form-header {\n\tpadding: 5px; \n\tbackground-color: inherit;\n\tcolor: lightgray;\n}\n\n.register-form-messages {\n\n\theight: 30px;\n}", ""]);
 
 // exports
 
@@ -56204,29 +56204,96 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Login).call(this, props));
     _this.state = {
-      email: '',
-      password: '',
-      loged: false
+      user: {
+        email: '',
+        password: ''
+      },
+      data: null,
+      logged: false,
+      message: ''
     };
     _this.handleEmailChange = _this.handleEmailChange.bind(_assertThisInitialized(_this));
     _this.handlePasswordChange = _this.handlePasswordChange.bind(_assertThisInitialized(_this));
-    _this.onLoginSubmit = _this.onLoginSubmit.bind(_assertThisInitialized(_this));
+    _this.handleSubmitForm = _this.handleSubmitForm.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(Login, [{
     key: "handlePasswordChange",
-    value: function handlePasswordChange(e) {}
+    value: function handlePasswordChange(e) {
+      var user = this.state.user;
+      user.password = e.currentTarget.value;
+      this.setState({
+        user: user,
+        message: ''
+      });
+    }
   }, {
     key: "handleEmailChange",
-    value: function handleEmailChange(e) {}
+    value: function handleEmailChange(e) {
+      var user = this.state.user;
+      user.email = e.currentTarget.value;
+      this.setState({
+        user: user,
+        message: ''
+      });
+    }
   }, {
-    key: "onLoginSubmit",
-    value: function onLoginSubmit() {}
+    key: "handleSubmitForm",
+    value: function handleSubmitForm(e) {
+      var _this2 = this;
+
+      e.preventDefault();
+      axios.post('/api/login', this.state.user).then(function (response) {
+        if (response.data.result === 'logged') {
+          _this2.setState({
+            data: response.data.user,
+            logged: true,
+            message: 'успешная авторизация'
+          });
+        } else {
+          _this2.setState({
+            data: null,
+            logged: false,
+            message: 'ошибка авторизации'
+          });
+        }
+      })["catch"](function (error) {
+        _this2.setState({
+          message: 'внутренняя ошибка, попробуйте позже'
+        });
+      });
+    }
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Login");
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        className: "col-sm-4  dev-block",
+        onSubmit: this.handleSubmitForm
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "\u0430\u0432\u0442\u043E\u0440\u0438\u0437\u0430\u0446\u0438\u044F"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "email"
+      }, "email:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "email",
+        className: "form-control",
+        id: "email",
+        onChange: this.handleEmailChange
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "password"
+      }, "\u043F\u0430\u0440\u043E\u043B\u044C:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "password",
+        className: "form-control",
+        id: "password",
+        onChange: this.handlePasswordChange
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "submit",
+        className: "btn btn-primary"
+      }, "Submit"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "register-form-messages"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.message)));
     }
   }]);
 
@@ -56439,7 +56506,8 @@ function (_Component) {
       },
       errors: '',
       result: '',
-      retupePassword: ''
+      retupePassword: '',
+      requested: false
     };
     _this.handleSubmitForm = _this.handleSubmitForm.bind(_assertThisInitialized(_this));
     _this.handleEmailChange = _this.handleEmailChange.bind(_assertThisInitialized(_this));
@@ -56513,11 +56581,15 @@ function (_Component) {
       var validPassword = Object(_utils__WEBPACK_IMPORTED_MODULE_2__["validateNewPassword"])(this.state.user.password, this.state.retupePassword);
 
       if (validPassword.validate) {
+        this.setState({
+          requested: true
+        });
         axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/register', this.state.user).then(function (response) {
           console.log(response.data);
 
           _this2.setState({
-            result: response.data
+            result: response.data,
+            requested: false
           });
         })["catch"](function (error) {
           _this2.setState({
@@ -56534,83 +56606,73 @@ function (_Component) {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        className: "col-sm-3  dev-block",
+        className: "col-sm-4  dev-block",
         onSubmit: this.handleSubmitForm
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u044F"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "input-group mb-3 input-group-sm autoriztion-label"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "input-group-prepend"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "input-group-text"
-      }, "\u0444\u0430\u043C\u0438\u043B\u0438\u044F")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "form-group"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "lastname"
+      }, "\u0444\u0430\u043C\u0438\u043B\u0438\u044F"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "lastname",
         type: "text",
         className: "form-control",
         required: true,
         onChange: this.handleLastNameChange
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "input-group mb-3 input-group-sm"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "input-group-prepend"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "input-group-text"
-      }, "\u0438\u043C\u044F")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "form-group"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "firstname"
+      }, "\u0438\u043C\u044F"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "firstname",
         type: "text",
         className: "form-control",
         required: true,
         onChange: this.handleFirstNameChange
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "input-group mb-3 input-group-sm"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "input-group-prepend"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "input-group-text"
-      }, "\u0442\u0435\u043B\u0435\u0444\u043E\u043D")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "form-group"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "phone"
+      }, "\u0442\u0435\u043B\u0435\u0444\u043E\u043D"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "phone",
         type: "tel",
         className: "form-control",
         required: true,
         pattern: "['+']{1}[7]{1}[9]{1}[0-9]{10}",
-        id: "tel",
         placeholder: '+790000000000',
         onChange: this.handlePhoneChange
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "input-group mb-3 input-group-sm"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "input-group-prepend"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "input-group-text"
-      }, "email")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "form-group"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "email"
+      }, "email"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "email",
         type: "email",
         className: "form-control",
-        id: "email",
         onChange: this.handleEmailChange
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "input-group mb-3 input-group-sm"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "input-group-prepend"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "input-group-text"
-      }, "\u043F\u0430\u0440\u043E\u043B\u044C")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "form-group"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "pasword"
+      }, "\u043F\u0430\u0440\u043E\u043B\u044C"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "password",
         type: "password",
         className: "form-control",
-        id: "pwd",
         onChange: this.handlePasswordChange
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "input-group mb-3 input-group-sm"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "input-group-prepend"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "input-group-text"
-      }, "\u043F\u0430\u0440\u043E\u043B\u044C \u043F\u043E\u0432\u0442\u043E\u0440\u043D\u043E")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "form-group"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "pasword_retupe"
+      }, "\u043F\u0430\u0440\u043E\u043B\u044C \u043F\u043E\u0432\u0442\u043E\u0440\u043D\u043E"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "pasword_retupe",
         type: "password",
         className: "form-control",
-        id: "pwd",
         onChange: this.handleRetupePasswordChange
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "* \u0432\u0441\u0435 \u043F\u043E\u043B\u044F \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u044B \u0434\u043B\u044F \u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit",
         className: "btn btn-primary"
-      }, "\u0417\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0438\u0440\u043E\u0432\u0430\u0442\u044C\u0441\u044F"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "messages"
-      }, this.state.result));
+      }, "\u0417\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0438\u0440\u043E\u0432\u0430\u0442\u044C"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "register-form-messages"
+      }, this.state.required ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "loading...") : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.result)));
     }
   }]);
 

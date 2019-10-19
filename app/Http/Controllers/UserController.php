@@ -29,15 +29,15 @@ class UserController extends Controller
 	
 
 		// post request
-		public function login(Request $request)
+	public function login(Request $request)
 		{
 
 			$condition = ['email' => $request->email, 'password' => md5($request->password)];
-		  $user = User::where($condition)->get();
-		  if($user){
-		  	return response()->json($user);
+		  $user = User::where($condition)->get()->first();
+		  if($user !== null){
+		  	return response()->json(['result'=>'logged','user'=> $user]);
 		  } else {
-		  	return response()->json('login error');
+		  	return response()->json(['result' => 'not found']);
 		  }
 		}
 
