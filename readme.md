@@ -40,6 +40,11 @@ https://laravel.ru/docs/v5/authentication
 
 https://www.w3schools.com/bootstrap4/default.asp
 
+тема get запросов к бд
+
+http://qaru.site/questions/34851/how-to-create-multiple-where-clause-query-using-laravel-eloquent
+
+
 ------------------------
 todo
 
@@ -50,14 +55,13 @@ todo
 
 в качестве логина используем email
 
-форма регистрации - ок
+форма регистрации - DONE
 
-todo: 
-- валидация пароля длина, символы и т.п.  DONE
-- проверка на уникальность email на бекенде
+TODO:  - валидация пароля длина, символы и т.п.   - проверка на уникальность email на бекенде DONE
 
-TODO
-	passwordvalidator в отдельный модуль
+TODO passwordvalidator в отдельный модуль DONE
 
-FIXME
-	сервер отзівается через раз
+FIXME сервер отзівается через раз  FIXED (вопрос отпал после проверки уникальности email)
+
+---------- 
+TODO login

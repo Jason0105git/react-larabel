@@ -56394,6 +56394,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils */ "./resources/js/utils/index.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -56413,6 +56414,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 // Register.js
+
 
 
 
@@ -56447,7 +56449,6 @@ function (_Component) {
     _this.handleFirstNameChange = _this.handleFirstNameChange.bind(_assertThisInitialized(_this));
     _this.handleRetupePasswordChange = _this.handleRetupePasswordChange.bind(_assertThisInitialized(_this));
     _this.handlePhoneChange = _this.handlePhoneChange.bind(_assertThisInitialized(_this));
-    _this.validatePassword = _this.validatePassword.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -56504,50 +56505,12 @@ function (_Component) {
       });
     }
   }, {
-    key: "validatePassword",
-    value: function validatePassword() {
-      if (this.state.user.password !== this.state.retupePassword) {
-        return {
-          validate: false,
-          message: 'пароли не совпадают'
-        };
-      }
-
-      if (this.state.user.password.length < 8) {
-        return {
-          validate: false,
-          message: 'длина пароля не должна быть меньше 8 символов'
-        };
-      }
-
-      if (this.state.user.password.search(/[a-z]/i) < 0) {
-        return {
-          validate: false,
-          message: 'пароль дожен содержать хотя бы одну букву'
-        };
-      }
-
-      if (this.state.user.password.search(/[0-9]/i) < 0) {
-        return {
-          validate: false,
-          message: 'пароль дожен содержать хотя бы одну цифру'
-        };
-      }
-
-      return {
-        validate: true,
-        message: 'password ok'
-      };
-    }
-  }, {
     key: "handleSubmitForm",
     value: function handleSubmitForm(e) {
       var _this2 = this;
 
-      // TODO: validate passwords
       e.preventDefault();
-      var validPassword = this.validatePassword();
-      console.log('validPassword ', validPassword);
+      var validPassword = Object(_utils__WEBPACK_IMPORTED_MODULE_2__["validateNewPassword"])(this.state.user.password, this.state.retupePassword);
 
       if (validPassword.validate) {
         axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/register', this.state.user).then(function (response) {
@@ -56747,6 +56710,53 @@ if(false) {}
 /***/ (function(module, exports) {
 
 module.exports = "/images/logo.png?4fc19fca56e6221ab4cb435fb4f64631";
+
+/***/ }),
+
+/***/ "./resources/js/utils/index.js":
+/*!*************************************!*\
+  !*** ./resources/js/utils/index.js ***!
+  \*************************************/
+/*! exports provided: validateNewPassword */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "validateNewPassword", function() { return validateNewPassword; });
+var validateNewPassword = function validateNewPassword(pass1, pass2) {
+  if (pass1 !== pass2) {
+    return {
+      validate: false,
+      message: 'пароли не совпадают'
+    };
+  }
+
+  if (pass1.length < 8) {
+    return {
+      validate: false,
+      message: 'длина пароля не должна быть меньше 8 символов'
+    };
+  }
+
+  if (pass1.search(/[a-z]/i) < 0) {
+    return {
+      validate: false,
+      message: 'пароль дожен содержать хотя бы одну букву'
+    };
+  }
+
+  if (pass1.search(/[0-9]/i) < 0) {
+    return {
+      validate: false,
+      message: 'пароль дожен содержать хотя бы одну цифру'
+    };
+  }
+
+  return {
+    validate: true,
+    message: 'password ok'
+  };
+};
 
 /***/ }),
 

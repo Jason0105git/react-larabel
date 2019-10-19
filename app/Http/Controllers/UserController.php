@@ -12,27 +12,9 @@ class UserController extends Controller
 		public function register(Request $request)
 		{
 
-			/* проверить что email уникален, если нет return response()->json('пользователь с таким email уже есть!');
-			*/
-
-		
-//			$request->password
-
-		/*  $validatedData = $request->validate([
-		  	'firstname' => 'required',
-		  	'lastname' => 'required',
-		    'email' => 'required',
-		    'password' => 'required',
-		    'phone' => 'required',
-		  ]);
-
-		  $user = User::create([
-		  	'phone' => $validatedData['phone'],
-		  	'lastname' => $validatedData['lastname'],		  
-		  	'firstname' => $validatedData['firstname'],
-		    'email' => $validatedData['email'],
-		    'password' => md5($validatedData['password']),
-		  ]);*/
+		  if(User::where('email', $request->email)->count() > 0 ){
+		  	return response()->json('error: email duplicate ');
+		  }
 
 		  $user = User::create([
 		  	'phone' => $request->phone,
@@ -42,8 +24,21 @@ class UserController extends Controller
 		    'password' => md5($request->password),
 		  ]);
 
-
-		  return response()->json('user created!');
+		  return response()->json('user created');
 		}
 	
+
+		// post request
+		public function login(Request $request)
+		{
+
+			$condition = ['email' => $request->email, 'password' => md5($request->password)];
+		  $user = User::where($condition)->get();
+		  if($user){
+		  	return response()->json($user);
+		  } else {
+		  	return response()->json('login error');
+		  }
+		}
+
 }

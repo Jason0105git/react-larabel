@@ -1,6 +1,7 @@
 // Register.js
 import React, { Component } from 'react'
 import axios from 'axios'
+import {validateNewPassword} from '../utils'
 
 class Register extends Component {
 	constructor(props){
@@ -28,7 +29,7 @@ class Register extends Component {
 		this.handleFirstNameChange = this.handleFirstNameChange.bind(this)
 		this.handleRetupePasswordChange = this.handleRetupePasswordChange.bind(this)
 		this.handlePhoneChange = this.handlePhoneChange.bind(this)
-		this.validatePassword = this.validatePassword.bind(this)
+	
 	}
 
 
@@ -68,45 +69,12 @@ class Register extends Component {
 		this.setState({user: user})
 	}
 
- validatePassword(){
-
- 	  if(this.state.user.password !== this.state.retupePassword){
- 	  	 return {validate: false, message: 'пароли не совпадают'} 	  	
- 	  } 
- 	  if(this.state.user.password.length < 8) {
- 	  	return {
- 	  		validate: false,
- 	  		message: 'длина пароля не должна быть меньше 8 символов'
- 	  	}	
- 	  } 
-
- 	  if(this.state.user.password.search(/[a-z]/i) < 0) {
-			return {
-				validate: false,
-				message: 'пароль дожен содержать хотя бы одну букву'
-			}
-		} 
-
- 	  if(this.state.user.password.search(/[0-9]/i) < 0) {
-			return {
-				validate: false,
-				message: 'пароль дожен содержать хотя бы одну цифру'
-			}
-		} 
-
-		return {
-			validate: true,
-			message: 'password ok',
-		}
- }
 
 	handleSubmitForm(e){
-		// TODO: validate passwords
-		e.preventDefault()
-	
-		const validPassword = this.validatePassword();
-		console.log('validPassword ', validPassword)
 
+		e.preventDefault()
+		const validPassword = validateNewPassword(this.state.user.password, this.state.retupePassword)
+		
 		if(validPassword.validate){
 			
 			axios.post('/api/register', this.state.user)
