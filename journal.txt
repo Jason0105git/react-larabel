@@ -33,3 +33,35 @@ protected $middleware = [
 Вы можете опубликовать конфигурацию, используя следующую команду:
 
 php artisan vendor:publish --provider="Barryvdh\Cors\ServiceProvider"
+
+
+для сброса пароля будем использовать email
+
+материалы
+
+делаем фос.
+изучаем почту
+
+http://cccp-blog.com/laravel/laravel-pochta#otpravka-pochty-v-laravel-cherez-smtp
+
+http://cccp-blog.com/laravel/laravel-mail
+
+
+
+сброс пароля
+
+ 
+//POST запрос для отправки email письма пользователю для сброса пароля
+Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+
+//ссылка для сброса пароля (можно размещать в письме)
+Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+
+//страница с формой для сброса пароля
+Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+
+//POST запрос для сброса старого и установки нового пароля
+Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+
+
+

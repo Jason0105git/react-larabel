@@ -46,6 +46,9 @@ http://qaru.site/questions/34851/how-to-create-multiple-where-clause-query-using
 
 http://qaru.site/questions/51694/laravel-checking-if-record-exists
 
+отправка почты
+http://cccp-blog.com/laravel/laravel-mail
+
 ------------------------
 
 TODO Common
@@ -75,9 +78,10 @@ FIXME сервер отзівается через раз  FIXED (вопрос �
 ---------- 
 TODO login  DONE
 
-TODO 
+TODO   
+
+0  use confirmPassword
 
 1 ForgotPassword
 
 2 ResetPassword
-
