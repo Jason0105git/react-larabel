@@ -36,6 +36,9 @@ php artisan make:controller ControllerName
 
 материалы
 
+laravel restful  api  https://softobzor.com.ua/laravel-restful-api/#Routes_and_Controllers
+
+
 https://laravel.ru/docs/v5/authentication
 
 https://www.w3schools.com/bootstrap4/default.asp

@@ -64,4 +64,11 @@ Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm
 Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
 
+для сброса понадобятся get параментры
+материал  http://qaru.site/questions/72760/react-router-how-to-get-parameter-value-from-url
+
+шифруем user_id
+шлем ему  http://siteurl/restore/id
+профит
+
 
