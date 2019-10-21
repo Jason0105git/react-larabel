@@ -96,17 +96,17 @@ class Register extends Component {
 			<form className="col-sm-4  dev-block" onSubmit={this.handleSubmitForm}>
 				<h4>регистрация</h4>
 	
-
+				<div className="form-group">
+       		<label htmlFor="firstname">имя</label>
+					<input id="firstname" type="text" className="form-control" required onChange={this.handleFirstNameChange} />	
+				</div>
 
 				<div className="form-group">
        		<label htmlFor="lastname">фамилия</label>
        		<input id="lastname" type="text" className="form-control" required onChange={this.handleLastNameChange} />	
 				</div>
 
-				<div className="form-group">
-       		<label htmlFor="firstname">имя</label>
-					<input id="firstname" type="text" className="form-control" required onChange={this.handleFirstNameChange} />	
-				</div>
+				
 
 				<div className="form-group">
      			<label htmlFor="phone">телефон</label>

@@ -46,6 +46,10 @@ http://cccp-blog.com/laravel/laravel-pochta#otpravka-pochty-v-laravel-cherez-smt
 
 http://cccp-blog.com/laravel/laravel-mail
 
+https://quasi-art.ru/library/it/laravel-mail
+
+описание из документации
+https://laravel.ru/docs/v5/mail
 
 
 сброс пароля
@@ -72,3 +76,9 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 профит
 
 
+самый простой вариант
+ТУПО отправляем польз новій пароль и "бла-бла-бла зайдите с ним в кабинет и установите ваш любимій, спасибо"  // чревато, что злопыхатель будет сбрасывать хорошим людям пароли
+
+оптимальный - таки слать код на сброс (тогда отработка гет запросов)
+т.е.
+http://siteurl.com/restore/code  (а там - назначать новый пассворд)

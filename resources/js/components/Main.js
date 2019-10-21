@@ -6,7 +6,7 @@ import '../../css/style.css'
 import {AskodsHeader} from './askods/AskodsHeader'
 
 import {Home} from './Home'
-import {Dashboard} from './Dashboard'
+import Dashboard from './Dashboard'
 import Login from './Login'
 import Register from './Register'
 import {Nav} from './Nav'
@@ -25,7 +25,7 @@ class Main extends Component {
 			<div className="container-fluid content-wrapper">
 			<BrowserRouter>
 			<header>
-			{/*	<AskodsHeader />				*/}
+				<AskodsHeader />			
 			</header>
 			<nav>
 				<Nav />

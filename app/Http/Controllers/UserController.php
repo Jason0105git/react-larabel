@@ -41,6 +41,17 @@ class UserController extends Controller
 		  }
 		}
 
+  // restore password
+	public function restore(Request $request){
+
+		if(User::where('email', $request->emailTo)->count() === 0 ){
+			return response()->json(['result'=>$request->emailTo]);
+		}
+		
+		return response()->json(['result'=>'restoreOk']); // FAKE !
+		
+	}	
+
 }
 
 /*

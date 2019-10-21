@@ -20,12 +20,7 @@ export const  AskodsHeader = () => {
 							<p>вартість дзвінків відповідно до тарифів Вашого оператора</p>
 						</div>
 			  	</div>
-			  	<div className="askods-nav">
-			  		<ul>
-			  			<li><a href="/">ГЛАВНАЯ</a></li>
-			  			<li><div className="askods-lang"><a href="/ua">Укр</a> | <a href="/ru">Рус</a></div></li>
-			  		</ul>
-			  	</div>
+		
 	  	</div>
     )
 
