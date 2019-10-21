@@ -82,3 +82,9 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 оптимальный - таки слать код на сброс (тогда отработка гет запросов)
 т.е.
 http://siteurl.com/restore/code  (а там - назначать новый пассворд)
+
+мейл материалы
+http://cccp-blog.com/laravel/laravel-mail
+http://cccp-blog.com/laravel/laravel-pochta
+
+https://laravel.ru/docs/v5/mail

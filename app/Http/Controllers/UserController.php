@@ -1,8 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+
+use App\User;
+
 
 class UserController extends Controller
 {
@@ -47,7 +50,21 @@ class UserController extends Controller
 		if(User::where('email', $request->emailTo)->count() === 0 ){
 			return response()->json(['result'=>$request->emailTo]);
 		}
-		
+
+		$sender = (object)['email'=>'dmvoloshin@gmail.com',
+			'name' => 'dmitry',
+			'subject' => 'test rluser',
+			'message' => 'hello world'];
+
+
+
+    Mail::send('emails.default', ['sender' => $sender], function($message) use ($sender) {
+                $message->from('ditrix2006@gmail.com', 'ditrix');
+                $message->to($sender->email, $sender->name)->subject('Test message');
+            });
+
+
+
 		return response()->json(['result'=>'restoreOk']); // FAKE !
 		
 	}	
