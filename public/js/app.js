@@ -56786,10 +56786,41 @@ function (_Component) {
     };
     _this.handleEmailChange = _this.handleEmailChange.bind(_assertThisInitialized(_this));
     _this.handleSubmitForm = _this.handleSubmitForm.bind(_assertThisInitialized(_this));
+    _this.getParameters = _this.getParameters.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(RestorePassword, [{
+    key: "getParameters",
+    value: function getParameters() {
+      var query = window.location.search.substring(1);
+      console.log(query);
+      var vars = query.split("&");
+      console.log(vars); // TODO анализ ключей
+
+      vars.map(function (index) {
+        return console.log(index.split('='));
+      });
+      /*     var query = window.location.search.substring(1);
+           console.log(query)//"app=article&act=news_content&aid=160990"
+           var vars = query.split("&");
+           console.log(vars) //[ 'app=article', 'act=news_content', 'aid=160990' ]
+           for (var i=0;i<vars.length;i++) {
+             var pair = vars[i].split("=");
+            console.log(pair)//[ 'app', 'article' ][ 'act', 'news_content' ][ 'aid', '160990' ] 
+           if(pair[0] == variable){return pair[1];}
+            }
+      */
+
+      return false;
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      console.log('analize parameters');
+      this.getParameters();
+    }
+  }, {
     key: "handleEmailChange",
     value: function handleEmailChange(e) {
       var mail = this.state.mail;
