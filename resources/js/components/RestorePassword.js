@@ -46,7 +46,7 @@ class RestorePassword extends Component {
 	render(){
 		return(
 			<form className="col-sm-4  dev-block" onSubmit={this.handleSubmitForm}>
-				<h3>отправить инструкцию повосстановлению пароля</h3>
+				<h5>отправить инструкцию повосстановлению пароля</h5>
 				<div className="form-group">
 			  	<label htmlFor="email">email</label>
     		  <input id="email" type="email" className="form-control"  onChange={this.handleEmailChange} />

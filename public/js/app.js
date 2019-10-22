@@ -1933,7 +1933,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "header {\r\n\tbackground-color: #e5e6e9;\r\n\tborder-bottom: 3px lightgray solid;\r\n}\r\n\r\nmain {\r\n\tpadding: 30px;\r\n}\r\n\r\n.dev-block {\r\n\tborder: 1px lightgray solid;\r\n\tpadding: 15px;\r\n\tmargin: 15px;\r\n}\r\n\r\n.debug {\r\n\tborder: 1px red solid;\r\n}\r\n\r\n.content-wrapper {\r\n\tpadding: 0px;\r\n\tmargin: 0px;\r\n\twidth: 100%;\r\n}\r\n\r\n.form-header {\r\n\tpadding: 5px; \r\n\tbackground-color: inherit;\r\n\tcolor: lightgray;\r\n}\r\n\r\n.register-form-messages {\r\n\r\n\theight: 30px;\r\n}", ""]);
+exports.push([module.i, "h1, h2, h3, h4, h5, h6 {color: gray;}\r\n\r\nheader {\r\n\tbackground-color: #e5e6e9;\r\n\tborder-bottom: 3px lightgray solid;\r\n}\r\n\r\nmain {\r\n\tpadding: 30px;\r\n}\r\n\r\n.dev-block {\r\n\tborder: 1px lightgray solid;\r\n\tpadding: 15px;\r\n\tmargin: 15px;\r\n}\r\n\r\n.debug {\r\n\tborder: 1px red solid;\r\n}\r\n\r\n.content-wrapper {\r\n\tpadding: 0px;\r\n\tmargin: 0px;\r\n\twidth: 100%;\r\n}\r\n\r\n.form-header {\r\n\tpadding: 5px; \r\n\tbackground-color: inherit;\r\n\tcolor: lightgray;\r\n}\r\n\r\n.register-form-messages {\r\n\r\n\theight: 30px;\r\n}", ""]);
 
 // exports
 
@@ -56835,7 +56835,7 @@ function (_Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "col-sm-4  dev-block",
         onSubmit: this.handleSubmitForm
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "\u043E\u0442\u043F\u0440\u0430\u0432\u0438\u0442\u044C \u0438\u043D\u0441\u0442\u0440\u0443\u043A\u0446\u0438\u044E \u043F\u043E\u0432\u043E\u0441\u0441\u0442\u0430\u043D\u043E\u0432\u043B\u0435\u043D\u0438\u044E \u043F\u0430\u0440\u043E\u043B\u044F"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "\u043E\u0442\u043F\u0440\u0430\u0432\u0438\u0442\u044C \u0438\u043D\u0441\u0442\u0440\u0443\u043A\u0446\u0438\u044E \u043F\u043E\u0432\u043E\u0441\u0441\u0442\u0430\u043D\u043E\u0432\u043B\u0435\u043D\u0438\u044E \u043F\u0430\u0440\u043E\u043B\u044F"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         htmlFor: "email"

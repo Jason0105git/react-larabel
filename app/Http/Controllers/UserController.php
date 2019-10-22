@@ -47,11 +47,12 @@ class UserController extends Controller
   // restore password
 	public function restore(Request $request){
 
-		if(User::where('email', $request->emailTo)->count() === 0 ){
-			return response()->json(['result'=>$request->emailTo]);
+
+	if(User::where('email', $request->emailTo)->count() === 0 ){
+			return response()->json(['result'=>'email not found']);
 		}
 
-		$sender = (object)['email'=>'dmvoloshin@gmail.com',
+/*		$sender = (object)['email'=>'dmvoloshin@gmail.com',
 			'name' => 'dmitry',
 			'subject' => 'test rluser',
 			'message' => 'hello world'];
@@ -61,9 +62,12 @@ class UserController extends Controller
     Mail::send('emails.default', ['sender' => $sender], function($message) use ($sender) {
                 $message->from('ditrix2006@gmail.com', 'ditrix');
                 $message->to($sender->email, $sender->name)->subject('Test message');
-            });
+            });*/
 
-
+    $headers    = "MIME-Version: 1.0;";   
+  	$headers   .= "Content-type: application/json; charset=UTF-8";
+  	$headers   .= "From:<dmvoloshin@shop.askods.com>";
+    mail('dmvoloshin@gmail.com', 'test subject', 'message', $headers);    
 
 		return response()->json(['result'=>'restoreOk']); // FAKE !
 		
