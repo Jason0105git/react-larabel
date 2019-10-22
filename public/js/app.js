@@ -1933,7 +1933,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "h1, h2, h3, h4, h5, h6 {color: gray;}\r\n\r\nheader {\r\n\tbackground-color: #e5e6e9;\r\n\tborder-bottom: 3px lightgray solid;\r\n}\r\n\r\nmain {\r\n\tpadding: 30px;\r\n}\r\n\r\n.dev-block {\r\n\tborder: 1px lightgray solid;\r\n\tpadding: 15px;\r\n\tmargin: 15px;\r\n}\r\n\r\n.debug {\r\n\tborder: 1px red solid;\r\n}\r\n\r\n.content-wrapper {\r\n\tpadding: 0px;\r\n\tmargin: 0px;\r\n\twidth: 100%;\r\n}\r\n\r\n.form-header {\r\n\tpadding: 5px; \r\n\tbackground-color: inherit;\r\n\tcolor: lightgray;\r\n}\r\n\r\n.register-form-messages {\r\n\r\n\theight: 30px;\r\n}", ""]);
+exports.push([module.i, "h1, h2, h3, h4, h5, h6 {color: gray;}\n\nheader {\n\tbackground-color: #e5e6e9;\n\tborder-bottom: 3px lightgray solid;\n}\n\nmain {\n\tpadding: 30px;\n}\n\n.dev-block {\n\tborder: 1px lightgray solid;\n\tpadding: 15px;\n\tmargin: 15px;\n}\n\n.debug {\n\tborder: 1px red solid;\n}\n\n.content-wrapper {\n\tpadding: 0px;\n\tmargin: 0px;\n\twidth: 100%;\n}\n\n.form-header {\n\tpadding: 5px; \n\tbackground-color: inherit;\n\tcolor: lightgray;\n}\n\n.register-form-messages {\n\n\theight: 30px;\n}", ""]);
 
 // exports
 
@@ -1952,7 +1952,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "/*styles for askods-header component*/\r\n.askods-wrapper {\tdisplay: flex;\tflex-direction: row;\tflex-wrap: wrap; }\r\n.askods-header {\r\n\tpadding: 10px;\r\n\tmargin: 0px;\r\n\tbackground-color: #e5e6e9;\r\n\tdisplay: flex;\r\n\tflex-direction: row;\r\n\tjustify-content: left;\r\n\tborder-bottom: 3px lightgray solid;\r\n\tline-height: 1.0;\r\n\tflex-wrap: wrap;\r\n}\r\n\r\n.askods-item { margin: 0px 50px; padding: 5px; }\r\n.askods-item { align-content: center; }\r\n.askods-header h1 {  margin: 0px;\tfont-weight: 800; color: #1fb6ff;}\r\n.askods-header p {\tmargin: 0px; }\r\n.askods-nav {background-color: #1fb6ff;  padding: 10px  50px; width: 100%}\r\n.askods-nav a {text-decoration: none;  color: white;}\r\n.askods-nav ul { \r\n\tmargin: 0px; padding: 5px;\r\n\tdisplay: flex; \r\n\tjustify-content: space-between;\r\n\tflex-wrap: wrap; \r\n\tlist-style: none;\r\n\tcolor: white;\r\n}\r\n.askods-lang { \r\n\tbackground: #eee; \r\n\tborder: 1px #1fb6ff solid;\t\r\n\tborder-radius: 3px; \r\n\tmargin: 0px; \r\n\tpadding: 0px 15px; \r\n }\r\n\r\n .askods-lang a { color: gray; text-decoration: underline;}", ""]);
+exports.push([module.i, "/*styles for askods-header component*/\n.askods-wrapper {\tdisplay: flex;\tflex-direction: row;\tflex-wrap: wrap; }\n.askods-header {\n\tpadding: 10px;\n\tmargin: 0px;\n\tbackground-color: #e5e6e9;\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: left;\n\tborder-bottom: 3px lightgray solid;\n\tline-height: 1.0;\n\tflex-wrap: wrap;\n}\n\n.askods-item { margin: 0px 50px; padding: 5px; }\n.askods-item { align-content: center; }\n.askods-header h1 {  margin: 0px;\tfont-weight: 800; color: #1fb6ff;}\n.askods-header p {\tmargin: 0px; }\n.askods-nav {background-color: #1fb6ff;  padding: 10px  50px; width: 100%}\n.askods-nav a {text-decoration: none;  color: white;}\n.askods-nav ul { \n\tmargin: 0px; padding: 5px;\n\tdisplay: flex; \n\tjustify-content: space-between;\n\tflex-wrap: wrap; \n\tlist-style: none;\n\tcolor: white;\n}\n.askods-lang { \n\tbackground: #eee; \n\tborder: 1px #1fb6ff solid;\t\n\tborder-radius: 3px; \n\tmargin: 0px; \n\tpadding: 0px 15px; \n }\n\n .askods-lang a { color: gray; text-decoration: underline;}", ""]);
 
 // exports
 
@@ -56198,11 +56198,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Home", function() { return Home; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _RestorePassword__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RestorePassword */ "./resources/js/components/RestorePassword.js");
+/* harmony import */ var _ResetPassword__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ResetPassword */ "./resources/js/components/ResetPassword.js");
 
 
 var Home = function Home() {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Home"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_RestorePassword__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Home"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ResetPassword__WEBPACK_IMPORTED_MODULE_1__["default"], null));
 };
 
 /***/ }),
@@ -56729,10 +56729,10 @@ function (_Component) {
 
 /***/ }),
 
-/***/ "./resources/js/components/RestorePassword.js":
-/*!****************************************************!*\
-  !*** ./resources/js/components/RestorePassword.js ***!
-  \****************************************************/
+/***/ "./resources/js/components/ResetPassword.js":
+/*!**************************************************!*\
+  !*** ./resources/js/components/ResetPassword.js ***!
+  \**************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -56740,8 +56740,7 @@ function (_Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils */ "./resources/js/utils/index.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -56763,102 +56762,76 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-var RestorePassword =
+var ResetPassword =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(RestorePassword, _Component);
+  _inherits(ResetPassword, _Component);
 
-  function RestorePassword(props) {
+  function ResetPassword(props) {
     var _this;
 
-    _classCallCheck(this, RestorePassword);
+    _classCallCheck(this, ResetPassword);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(RestorePassword).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ResetPassword).call(this, props));
     _this.state = {
-      mail: {
-        emailTo: '',
-        emailFrom: 'site@site.com',
-        subject: 'restore password',
-        urlRestore: 'http://rluser/?ref=12345'
+      user: {
+        id: null,
+        email: '',
+        password: ''
       },
-      emailOk: false,
-      message: ''
+      data: null,
+      logged: false,
+      message: '',
+      newPassword: '',
+      confirmPassword: ''
     };
-    _this.handleEmailChange = _this.handleEmailChange.bind(_assertThisInitialized(_this));
+    _this.handleNewPasswordChange = _this.handleNewPasswordChange.bind(_assertThisInitialized(_this));
+    _this.handleСonfirmPasswordChange = _this.handleСonfirmPasswordChange.bind(_assertThisInitialized(_this));
     _this.handleSubmitForm = _this.handleSubmitForm.bind(_assertThisInitialized(_this));
-    _this.getParameters = _this.getParameters.bind(_assertThisInitialized(_this));
     return _this;
   }
 
-  _createClass(RestorePassword, [{
-    key: "getParameters",
-    value: function getParameters() {
-      var query = window.location.search.substring(1);
-      console.log(query);
-      var vars = query.split("&");
-      console.log(vars); // TODO анализ ключей
-
-      vars.map(function (index) {
-        return console.log(index.split('='));
-      });
-      /*     var query = window.location.search.substring(1);
-           console.log(query)//"app=article&act=news_content&aid=160990"
-           var vars = query.split("&");
-           console.log(vars) //[ 'app=article', 'act=news_content', 'aid=160990' ]
-           for (var i=0;i<vars.length;i++) {
-             var pair = vars[i].split("=");
-            console.log(pair)//[ 'app', 'article' ][ 'act', 'news_content' ][ 'aid', '160990' ] 
-           if(pair[0] == variable){return pair[1];}
-            }
-      */
-
-      return false;
-    }
-  }, {
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      console.log('analize parameters');
-      this.getParameters();
-    }
-  }, {
-    key: "handleEmailChange",
-    value: function handleEmailChange(e) {
-      var mail = this.state.mail;
-      mail.emailTo = e.currentTarget.value;
+  _createClass(ResetPassword, [{
+    key: "handle\u0421onfirmPasswordChange",
+    value: function handleOnfirmPasswordChange(e) {
       this.setState({
-        mail: mail,
+        confirmPassword: e.currentTarget.value,
+        message: ''
+      });
+    }
+  }, {
+    key: "handleNewPasswordChange",
+    value: function handleNewPasswordChange(e) {
+      this.setState({
+        newPassword: e.currentTarget.value,
         message: ''
       });
     }
   }, {
     key: "handleSubmitForm",
     value: function handleSubmitForm(e) {
-      var _this2 = this;
-
       e.preventDefault();
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/restore', this.state.mail).then(function (response) {
-        if (response.data.result === 'restoreOk') {
-          _this2.setState({
-            emailOk: true,
-            message: 'инструкции отправлены'
-          });
-        } else {
-          _this2.setState({
-            emailOk: false,
-            message: 'email не зарегистрирован'
-          });
-        }
-      })["catch"](function (error) {
-        _this2.setState({
-          mailOk: false,
-          message: 'системная ошибка'
-        });
+      console.log(this.state);
+      /*		if(this.state.newPassword !== this.state.confirmPassword){
+      			this.setState({message:'пароли не совпадают'})
+      		}
+      */
 
-        console.log(function (error) {
-          return console.log(error);
-        });
+      var validPassword = Object(_utils__WEBPACK_IMPORTED_MODULE_1__["validateNewPassword"])(this.state.newPassword, this.state.confirmPassword);
+      this.setState({
+        message: validPassword.message
       });
-      console.log('sendme');
+      /*			axios.post('/api/login', this.state.user)
+      	          .then(response => {
+      	            if(response.data.result === 'logged'){
+      	            	this.setState({data:response.data.user,logged:true,message:'успешная авторизация'})
+      	            } else {
+      	            	this.setState({data:null,logged:false,message:'ошибка авторизации'})
+      	            }
+      						})
+      	          .catch(error => {
+      	    					this.setState({message:'внутренняя ошибка, попробуйте позже'})      		
+      	          })*/
     }
   }, {
     key: "render",
@@ -56866,26 +56839,37 @@ function (_Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "col-sm-4  dev-block",
         onSubmit: this.handleSubmitForm
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "\u043E\u0442\u043F\u0440\u0430\u0432\u0438\u0442\u044C \u0438\u043D\u0441\u0442\u0440\u0443\u043A\u0446\u0438\u044E \u043F\u043E\u0432\u043E\u0441\u0441\u0442\u0430\u043D\u043E\u0432\u043B\u0435\u043D\u0438\u044E \u043F\u0430\u0440\u043E\u043B\u044F"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "\u0432\u0432\u0435\u0441\u0442\u0438 \u043D\u043E\u0432\u044B\u0439 \u043F\u0430\u0440\u043E\u043B\u044C"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        htmlFor: "email"
-      }, "email"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        id: "email",
-        type: "email",
+        htmlFor: "pasword"
+      }, "\u0432\u0432\u0435\u0434\u0438\u0442\u0435 \u043F\u0430\u0440\u043E\u043B\u044C"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "password",
+        type: "password",
         className: "form-control",
-        onChange: this.handleEmailChange
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.message), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onChange: this.handleNewPasswordChange
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "pasword_retupe"
+      }, "\u043F\u043E\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u0435 \u043F\u0430\u0440\u043E\u043B\u044C"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "pasword_retupe",
+        type: "password",
+        className: "form-control",
+        onChange: this.handleСonfirmPasswordChange
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit",
         className: "btn btn-primary"
-      }, "\u041E\u0442\u043F\u0440\u0430\u0432\u0438\u0442\u044C")));
+      }, "\u0421\u043C\u0435\u043D\u0438\u0442\u044C \u043F\u0430\u0440\u043E\u043B\u044C"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "register-form-messages"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.message)));
     }
   }]);
 
-  return RestorePassword;
+  return ResetPassword;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (RestorePassword);
+/* harmony default export */ __webpack_exports__["default"] = (ResetPassword);
 
 /***/ }),
 
@@ -57036,8 +57020,8 @@ var validateNewPassword = function validateNewPassword(pass1, pass2) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! d:\OSPanel\domains\rluser\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! d:\OSPanel\domains\rluser\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /var/www/rluser/public_html/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /var/www/rluser/public_html/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

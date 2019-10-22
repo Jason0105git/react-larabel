@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import RestorePassword from './RestorePassword'
+import ResetPassword from './ResetPassword'
 
 
 export const Home = () => {
-	return(<div><h1>Home</h1><RestorePassword /></div>)
+	return(<div><h1>Home</h1><ResetPassword /></div>)
 }
