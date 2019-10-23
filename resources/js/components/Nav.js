@@ -14,6 +14,12 @@ export const Nav = (loged=false) => {
 			    <li className="nav-item">
 			      <Link className="nav-link" to='/register'>Register</Link>
 			    </li>
+			   	<li className="nav-item">
+			      <Link className="nav-link" to='/forgot'>Forgot</Link>
+			    </li>
+			    <li className="nav-item">
+			      <Link className="nav-link" to='/reset'>ResetPassword</Link>
+			    </li>
 			    <li className="nav-item">
 			      <Link className="nav-link" to='/dashboard'>Dashboard</Link>
 			    </li>

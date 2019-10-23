@@ -29,3 +29,16 @@ export const validateNewPassword = (pass1, pass2) => {
 			message: 'password ok',
 		}
  }
+
+
+export const  getParameters = () => {
+  	const  query = window.location.search.substring(1);
+  	const vars = query.split("&")
+  	let result = {}
+  	vars.map( item => {
+  		let objitem = item.split("="); 
+  		result[objitem[0]] = objitem[1]
+  	})
+  	console.log(result)
+    return result;
+  }
