@@ -1,3 +1,7 @@
+конфигурация для опенсервер
+apache_2.4-php_7.2-7.3-x64
+php_7.2-64
+
 
 XMLHttpRequest не может загрузить http: //localhost:8000/items. В запрошенном ресурсе нет заголовка «Access-Control-Allow-Origin». Потому что исходный адрес http://localhost:3000. В ответе код статуса HTTP 500.
 
@@ -112,3 +116,28 @@ https://laravel.ru/docs/v5/mail
 		настройка sendmail для lamp
 
 		https://code-info.ru/article/%D1%83%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BA%D0%B0_%D0%B8_%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B0_php_%D0%B2_ubuntu_16_04/40
+
+
+
+тема get запросов
+
+http://qaru.site/questions/34851/how-to-create-multiple-where-clause-query-using-laravel-eloquent
+
+http://qaru.site/questions/51694/laravel-checking-if-record-exists
+
+отправка почты
+http://cccp-blog.com/laravel/laravel-mail
+
+обработка в реакт сложн uri 
+материал  http://qaru.site/questions/72760/react-router-how-to-get-parameter-value-from-url
+
+
+восттановление от twitter (пример)
+
+https://twitter.com/i/redirect?url=https%3A%2F%2Ftwitter.com%2Faccount%2Fconfirm_email_reset%3Freset_type%3De%26user_id%3D342689700%26token%3Dsx7g2vOIE4Yrwj6tzcDh4TpBXqBBosaz7VBxRq4njT8%253D-1571916172247%26confirm_pending_email%3D0%26token_version%3D0%26password_reset_cause%3Duser%26cn%3DcGFzc3dvcmRfcmVzZXRfdjI%253D&t=1+1571916172322&cn=cGFzc3dvcmRfcmVzZXRfdjI%3D&sig=0fee36d6b5ed069d8017a1958914c573be39f012&iid=06d818b386a1491bb8902613ed27e859&uid=342689700&nid=248+1393
+
+шлем ссылку
+opr=reset&type=comfirm_email&uid={user_id}&n={md5(user_id)}&sig={md5(md5(user_id))}
+
+пример
+opr=reset&type=comfirm_email&uid=2&n=c81e728d9d4c2f636f067f89cc14862c&sig=665f644e43731ff9db3d341da5c827e1

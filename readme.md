@@ -19,7 +19,15 @@ npm run dev
 
 php artisan serve
 
+used
 
+React
+
+todo Redux
+
+React-Router-Dom
+
+js-md5  (https://www.npmjs.com/package/js-md5)
 
 -----------------------------
 
@@ -43,14 +51,6 @@ https://laravel.ru/docs/v5/authentication
 
 https://www.w3schools.com/bootstrap4/default.asp
 
-тема get запросов к бд
-
-http://qaru.site/questions/34851/how-to-create-multiple-where-clause-query-using-laravel-eloquent
-
-http://qaru.site/questions/51694/laravel-checking-if-record-exists
-
-отправка почты
-http://cccp-blog.com/laravel/laravel-mail
 
 ------------------------
 

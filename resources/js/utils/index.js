@@ -39,6 +39,5 @@ export const  getParameters = () => {
   		let objitem = item.split("="); 
   		result[objitem[0]] = objitem[1]
   	})
-  	console.log(result)
     return result;
   }
