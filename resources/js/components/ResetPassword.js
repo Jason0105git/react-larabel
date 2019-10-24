@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom'
 import {validateNewPassword} from '../utils'
+import {getParameters} from '../utils'
+
 
 class ResetPassword extends Component {
 
@@ -31,6 +34,11 @@ class ResetPassword extends Component {
 		this.setState({newPassword: e.currentTarget.value,message: ''})
 	}
 
+	componentDidMount(){
+		console.log(getParameters())
+	}
+
+
 	handleSubmitForm(e){
 		e.preventDefault()
 		console.log(this.state)		
@@ -56,7 +64,11 @@ class ResetPassword extends Component {
 	}
 
 	render(){
+		console.log('reset pass', this.props)
 		return(
+			<div>
+	
+			 <Link className="nav-link" to='/' onClick={this.props.foo} >Home</Link>
 		 	<form className="col-sm-4  dev-block" onSubmit={this.handleSubmitForm}>
 		 		<h4>ввести новый пароль</h4>
 		  <div className="form-group">
@@ -71,7 +83,8 @@ class ResetPassword extends Component {
 	  		<div className='register-form-messages'>
 	  			<span>{this.state.message}</span>
 	  		</div>
-			</form> 
+			</form>
+			</div> 
 		)
 	}
 }

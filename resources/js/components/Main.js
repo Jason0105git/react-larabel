@@ -20,10 +20,15 @@ class Main extends Component {
 		this.state = {
 			loged: false,
 			redirect: false,
-			par: {},
+			par: getParameters(),
 		}
 	//	this.renderRedirect = this.renderRedirect.bind(this)
 //		this.clearRedirect = this.clearRedirect.bind(this)
+		this.clearRedirect = this.clearRedirect.bind(this)
+	}
+
+	componentDidMount(){
+		//console.log(getParameters())
 	}
 /*
 
@@ -42,15 +47,20 @@ class Main extends Component {
 	
 	}
 */
-/*
-	renderRedirect(){
+
+/*	renderRedirect(){
 		const redirect = this.state.redirect;
     if (redirect) {
     	//this.setState({redirect:false}) 
-      return <ResetPassword par={this.state.par} res={this.clearRedirect} />
+      return <ResetPassword par={this.state.par} />
    }
-  }
+  }*/
 
+  clearRedirect(){
+  	const par = this.state.par
+  	par.key = ''
+  	this.setState({par : par})
+  }
 
 /*
 	componentWillUnmount(){
@@ -65,6 +75,9 @@ componentDidMount(){
 	}
 */
 	render(){
+		//console.log(getParameters())
+		console.log('main par: ',this.state.par)
+		//const uripar=this.state.par
 		return(
 			<div className="container-fluid content-wrapper">
 			<BrowserRouter>
@@ -75,7 +88,8 @@ componentDidMount(){
 				<Nav />
 			</nav>
 			<main>
-				<Home />
+				
+				{(this.state.par.key==="123")?<ResetPassword foo={this.clearRedirect} uripar={this.state.par} />:
 				<Switch>
 					<Route exact path='/' component={Home} />
 					<Route path='/dashboard' component={Dashboard} />
@@ -83,7 +97,9 @@ componentDidMount(){
 					<Route path='/register' component={Register} />		
 					<Route path='/forgot' component={ForgotPassword} />
 					<Route path='/reset' component={ResetPassword} />
+
 				</Switch>
+			}
 			
 			</main>
 			<footer></footer>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios'
+import {getParameters} from '../utils'
 
 class ForgotPassword extends Component {
 	constructor(props){
@@ -17,32 +18,14 @@ class ForgotPassword extends Component {
 		}
 		this.handleEmailChange = this.handleEmailChange.bind(this)
 		this.handleSubmitForm  = this.handleSubmitForm.bind(this)
-		this.getParameters = this.getParameters.bind(this)
+	
 	}
 
-  getParameters(){
-  	const  query = window.location.search.substring(1);
-  	console.log(query)
-  	const vars = query.split("&")
-  	console.log(vars)
-  	// TODO анализ ключей
-  	vars.map(index=> console.log(index.split('=')))
-  	/*     var query = window.location.search.substring(1);
-        console.log(query)//"app=article&act=news_content&aid=160990"
-        var vars = query.split("&");
-        console.log(vars) //[ 'app=article', 'act=news_content', 'aid=160990' ]
-        for (var i=0;i<vars.length;i++) {
-          var pair = vars[i].split("=");
-         console.log(pair)//[ 'app', 'article' ][ 'act', 'news_content' ][ 'aid', '160990' ] 
-        if(pair[0] == variable){return pair[1];}
-         }
-   */      return(false);
-  }
-
+  
 
 	componentDidMount(){
 		console.log('analize parameters')
-		this.getParameters()
+		console.log(getParameters())
 	}
 	
 
