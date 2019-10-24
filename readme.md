@@ -19,7 +19,15 @@ npm run dev
 
 php artisan serve
 
+used
 
+React
+
+todo Redux
+
+React-Router-Dom
+
+js-md5  (https://www.npmjs.com/package/js-md5)
 
 -----------------------------
 

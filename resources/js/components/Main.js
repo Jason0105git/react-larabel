@@ -13,6 +13,7 @@ import {Nav} from './Nav'
 import {getParameters} from '../utils'
 import ResetPassword from './ResetPassword'
 import ForgotPassword from './ForgotPassword'
+import {URI_PARAMER_OPERATION, URI_PARAMER_RESTOREPW, URI_TYPE_OPERATION} from './constants'
 
 class Main extends Component {
 	constructor(props){
@@ -22,62 +23,20 @@ class Main extends Component {
 			redirect: false,
 			par: getParameters(),
 		}
-	//	this.renderRedirect = this.renderRedirect.bind(this)
-//		this.clearRedirect = this.clearRedirect.bind(this)
 		this.clearRedirect = this.clearRedirect.bind(this)
 	}
-
-	componentDidMount(){
-		//console.log(getParameters())
-	}
-/*
-
-	обработка get запроса получаем key
-
-	componentWillMount(){
-
-		const par =	getParameters()
-		this.setState({par:par})
-		if(par.key == "123"){
-			this.setState({redirect:true})
-		}else {
-			this.setState({redirect:false})
-		}
-		console.log('componentWillMount')
-	
-	}
-*/
-
-/*	renderRedirect(){
-		const redirect = this.state.redirect;
-    if (redirect) {
-    	//this.setState({redirect:false}) 
-      return <ResetPassword par={this.state.par} />
-   }
-  }*/
-
   clearRedirect(){
   	const par = this.state.par
-  	par.key = ''
+  	par.opr = ''
   	this.setState({par : par})
   }
 
-/*
-	componentWillUnmount(){
-		console.log('componentWillUnmount')
-		this.setState({redirect:false,par:null})
-	}
-*/
-/*
-componentDidMount(){
-		console.log('componentDidMount')
-		console.log(this.props)
-	}
-*/
+  checkURI(){
+
+  }
+
 	render(){
-		//console.log(getParameters())
-		console.log('main par: ',this.state.par)
-		//const uripar=this.state.par
+
 		return(
 			<div className="container-fluid content-wrapper">
 			<BrowserRouter>
@@ -85,11 +44,11 @@ componentDidMount(){
 				<AskodsHeader />			
 			</header>
 			<nav>
-				<Nav />
+			{(this.state.par.opr===URI_PARAMER_RESTOREPW && this.state.par.type === URI_TYPE_OPERATION)?<span></span>
+				:<Nav par={this.state.par.opr} />	}
 			</nav>
 			<main>
-				
-				{(this.state.par.key==="123")?<ResetPassword foo={this.clearRedirect} uripar={this.state.par} />:
+				{(this.state.par.opr===URI_PARAMER_RESTOREPW && this.state.par.type === URI_TYPE_OPERATION)?<ResetPassword foo={this.clearRedirect} uripar={this.state.par} />:
 				<Switch>
 					<Route exact path='/' component={Home} />
 					<Route path='/dashboard' component={Dashboard} />
@@ -97,7 +56,6 @@ componentDidMount(){
 					<Route path='/register' component={Register} />		
 					<Route path='/forgot' component={ForgotPassword} />
 					<Route path='/reset' component={ResetPassword} />
-
 				</Switch>
 			}
 			

@@ -56510,6 +56510,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../utils */ "./resources/js/utils/index.js");
 /* harmony import */ var _ResetPassword__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./ResetPassword */ "./resources/js/components/ResetPassword.js");
 /* harmony import */ var _ForgotPassword__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./ForgotPassword */ "./resources/js/components/ForgotPassword.js");
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./constants */ "./resources/js/components/constants/index.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -56542,6 +56543,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var Main =
 /*#__PURE__*/
 function (_Component) {
@@ -56557,75 +56559,31 @@ function (_Component) {
       loged: false,
       redirect: false,
       par: Object(_utils__WEBPACK_IMPORTED_MODULE_10__["getParameters"])()
-    }; //	this.renderRedirect = this.renderRedirect.bind(this)
-    //		this.clearRedirect = this.clearRedirect.bind(this)
-
+    };
     _this.clearRedirect = _this.clearRedirect.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(Main, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {} //console.log(getParameters())
-
-    /*
-    
-    	обработка get запроса получаем key
-    
-    	componentWillMount(){
-    
-    		const par =	getParameters()
-    		this.setState({par:par})
-    		if(par.key == "123"){
-    			this.setState({redirect:true})
-    		}else {
-    			this.setState({redirect:false})
-    		}
-    		console.log('componentWillMount')
-    	
-    	}
-    */
-
-    /*	renderRedirect(){
-    		const redirect = this.state.redirect;
-        if (redirect) {
-        	//this.setState({redirect:false}) 
-          return <ResetPassword par={this.state.par} />
-       }
-      }*/
-
-  }, {
     key: "clearRedirect",
     value: function clearRedirect() {
       var par = this.state.par;
-      par.key = '';
+      par.opr = '';
       this.setState({
         par: par
       });
     }
-    /*
-    	componentWillUnmount(){
-    		console.log('componentWillUnmount')
-    		this.setState({redirect:false,par:null})
-    	}
-    */
-
-    /*
-    componentDidMount(){
-    		console.log('componentDidMount')
-    		console.log(this.props)
-    	}
-    */
-
+  }, {
+    key: "checkURI",
+    value: function checkURI() {}
   }, {
     key: "render",
     value: function render() {
-      //console.log(getParameters())
-      console.log('main par: ', this.state.par); //const uripar=this.state.par
-
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container-fluid content-wrapper"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_askods_AskodsHeader__WEBPACK_IMPORTED_MODULE_4__["AskodsHeader"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Nav__WEBPACK_IMPORTED_MODULE_9__["Nav"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("main", null, this.state.par.key === "123" ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ResetPassword__WEBPACK_IMPORTED_MODULE_11__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_askods_AskodsHeader__WEBPACK_IMPORTED_MODULE_4__["AskodsHeader"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", null, this.state.par.opr === _constants__WEBPACK_IMPORTED_MODULE_13__["URI_PARAMER_RESTOREPW"] && this.state.par.type === _constants__WEBPACK_IMPORTED_MODULE_13__["URI_TYPE_OPERATION"] ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Nav__WEBPACK_IMPORTED_MODULE_9__["Nav"], {
+        par: this.state.par.opr
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("main", null, this.state.par.opr === _constants__WEBPACK_IMPORTED_MODULE_13__["URI_PARAMER_RESTOREPW"] && this.state.par.type === _constants__WEBPACK_IMPORTED_MODULE_13__["URI_TYPE_OPERATION"] ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ResetPassword__WEBPACK_IMPORTED_MODULE_11__["default"], {
         foo: this.clearRedirect,
         uripar: this.state.par
       }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
@@ -56955,155 +56913,9 @@ function (_Component) {
   !*** ./resources/js/components/ResetPassword.js ***!
   \**************************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils */ "./resources/js/utils/index.js");
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-
-
-
-
-
-var ResetPassword =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(ResetPassword, _Component);
-
-  function ResetPassword(props) {
-    var _this;
-
-    _classCallCheck(this, ResetPassword);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(ResetPassword).call(this, props));
-    _this.state = {
-      user: {
-        id: null,
-        email: '',
-        password: ''
-      },
-      data: null,
-      logged: false,
-      message: '',
-      newPassword: '',
-      confirmPassword: ''
-    };
-    _this.handleNewPasswordChange = _this.handleNewPasswordChange.bind(_assertThisInitialized(_this));
-    _this.handleСonfirmPasswordChange = _this.handleСonfirmPasswordChange.bind(_assertThisInitialized(_this));
-    _this.handleSubmitForm = _this.handleSubmitForm.bind(_assertThisInitialized(_this));
-    return _this;
-  }
-
-  _createClass(ResetPassword, [{
-    key: "handle\u0421onfirmPasswordChange",
-    value: function handleOnfirmPasswordChange(e) {
-      this.setState({
-        confirmPassword: e.currentTarget.value,
-        message: ''
-      });
-    }
-  }, {
-    key: "handleNewPasswordChange",
-    value: function handleNewPasswordChange(e) {
-      this.setState({
-        newPassword: e.currentTarget.value,
-        message: ''
-      });
-    }
-  }, {
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      console.log(Object(_utils__WEBPACK_IMPORTED_MODULE_2__["getParameters"])());
-    }
-  }, {
-    key: "handleSubmitForm",
-    value: function handleSubmitForm(e) {
-      e.preventDefault();
-      console.log(this.state);
-      /*		if(this.state.newPassword !== this.state.confirmPassword){
-      			this.setState({message:'пароли не совпадают'})
-      		}
-      */
-
-      var validPassword = Object(_utils__WEBPACK_IMPORTED_MODULE_2__["validateNewPassword"])(this.state.newPassword, this.state.confirmPassword);
-      this.setState({
-        message: validPassword.message
-      });
-      /*			axios.post('/api/login', this.state.user)
-      	          .then(response => {
-      	            if(response.data.result === 'logged'){
-      	            	this.setState({data:response.data.user,logged:true,message:'успешная авторизация'})
-      	            } else {
-      	            	this.setState({data:null,logged:false,message:'ошибка авторизации'})
-      	            }
-      						})
-      	          .catch(error => {
-      	    					this.setState({message:'внутренняя ошибка, попробуйте позже'})      		
-      	          })*/
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      console.log('reset pass', this.props);
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        className: "nav-link",
-        to: "/",
-        onClick: this.props.foo
-      }, "Home"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        className: "col-sm-4  dev-block",
-        onSubmit: this.handleSubmitForm
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "\u0432\u0432\u0435\u0441\u0442\u0438 \u043D\u043E\u0432\u044B\u0439 \u043F\u0430\u0440\u043E\u043B\u044C"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "form-group"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        htmlFor: "pasword"
-      }, "\u0432\u0432\u0435\u0434\u0438\u0442\u0435 \u043F\u0430\u0440\u043E\u043B\u044C"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        id: "password",
-        type: "password",
-        className: "form-control",
-        onChange: this.handleNewPasswordChange
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "form-group"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        htmlFor: "pasword_retupe"
-      }, "\u043F\u043E\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u0435 \u043F\u0430\u0440\u043E\u043B\u044C"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        id: "pasword_retupe",
-        type: "password",
-        className: "form-control",
-        onChange: this.handleСonfirmPasswordChange
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "submit",
-        className: "btn btn-primary"
-      }, "\u0421\u043C\u0435\u043D\u0438\u0442\u044C \u043F\u0430\u0440\u043E\u043B\u044C"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "register-form-messages"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.message))));
-    }
-  }]);
-
-  return ResetPassword;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
-
-/* harmony default export */ __webpack_exports__["default"] = (ResetPassword);
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: d:\\OSPanel\\domains\\rluser\\resources\\js\\components\\ResetPassword.js: Unexpected token, expected \";\" (51:31)\n\n\u001b[0m \u001b[90m 49 | \u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 50 | \u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 51 | \u001b[39m\thandleСonfirmPasswordChange(e){\t\t\u001b[0m\n\u001b[0m \u001b[90m    | \u001b[39m\t                              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 52 | \u001b[39m\t\t\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39msetState({confirmPassword\u001b[33m:\u001b[39me\u001b[33m.\u001b[39mcurrentTarget\u001b[33m.\u001b[39mvalue\u001b[33m,\u001b[39m message\u001b[33m:\u001b[39m \u001b[32m''\u001b[39m})\u001b[0m\n\u001b[0m \u001b[90m 53 | \u001b[39m\t}\u001b[0m\n\u001b[0m \u001b[90m 54 | \u001b[39m\u001b[0m\n    at Object.raise (d:\\OSPanel\\domains\\rluser\\node_modules\\@babel\\parser\\lib\\index.js:6420:17)\n    at Object.unexpected (d:\\OSPanel\\domains\\rluser\\node_modules\\@babel\\parser\\lib\\index.js:7773:16)\n    at Object.semicolon (d:\\OSPanel\\domains\\rluser\\node_modules\\@babel\\parser\\lib\\index.js:7755:40)\n    at Object.parseExpressionStatement (d:\\OSPanel\\domains\\rluser\\node_modules\\@babel\\parser\\lib\\index.js:10544:10)\n    at Object.parseStatementContent (d:\\OSPanel\\domains\\rluser\\node_modules\\@babel\\parser\\lib\\index.js:10143:19)\n    at Object.parseStatement (d:\\OSPanel\\domains\\rluser\\node_modules\\@babel\\parser\\lib\\index.js:10009:17)\n    at Object.parseBlockOrModuleBlockBody (d:\\OSPanel\\domains\\rluser\\node_modules\\@babel\\parser\\lib\\index.js:10585:25)\n    at Object.parseBlockBody (d:\\OSPanel\\domains\\rluser\\node_modules\\@babel\\parser\\lib\\index.js:10572:10)\n    at Object.parseBlock (d:\\OSPanel\\domains\\rluser\\node_modules\\@babel\\parser\\lib\\index.js:10556:10)\n    at Object.parseFunctionBody (d:\\OSPanel\\domains\\rluser\\node_modules\\@babel\\parser\\lib\\index.js:9584:24)\n    at Object.parseFunctionBodyAndFinish (d:\\OSPanel\\domains\\rluser\\node_modules\\@babel\\parser\\lib\\index.js:9554:10)\n    at Object.parseMethod (d:\\OSPanel\\domains\\rluser\\node_modules\\@babel\\parser\\lib\\index.js:9508:10)\n    at Object.pushClassMethod (d:\\OSPanel\\domains\\rluser\\node_modules\\@babel\\parser\\lib\\index.js:10987:30)\n    at Object.parseClassMemberWithIsStatic (d:\\OSPanel\\domains\\rluser\\node_modules\\@babel\\parser\\lib\\index.js:10912:12)\n    at Object.parseClassMember (d:\\OSPanel\\domains\\rluser\\node_modules\\@babel\\parser\\lib\\index.js:10851:10)\n    at withTopicForbiddingContext (d:\\OSPanel\\domains\\rluser\\node_modules\\@babel\\parser\\lib\\index.js:10806:14)\n    at Object.withTopicForbiddingContext (d:\\OSPanel\\domains\\rluser\\node_modules\\@babel\\parser\\lib\\index.js:9884:14)\n    at Object.parseClassBody (d:\\OSPanel\\domains\\rluser\\node_modules\\@babel\\parser\\lib\\index.js:10783:10)\n    at Object.parseClass (d:\\OSPanel\\domains\\rluser\\node_modules\\@babel\\parser\\lib\\index.js:10757:22)\n    at Object.parseStatementContent (d:\\OSPanel\\domains\\rluser\\node_modules\\@babel\\parser\\lib\\index.js:10051:21)\n    at Object.parseStatement (d:\\OSPanel\\domains\\rluser\\node_modules\\@babel\\parser\\lib\\index.js:10009:17)\n    at Object.parseBlockOrModuleBlockBody (d:\\OSPanel\\domains\\rluser\\node_modules\\@babel\\parser\\lib\\index.js:10585:25)\n    at Object.parseBlockBody (d:\\OSPanel\\domains\\rluser\\node_modules\\@babel\\parser\\lib\\index.js:10572:10)\n    at Object.parseTopLevel (d:\\OSPanel\\domains\\rluser\\node_modules\\@babel\\parser\\lib\\index.js:9940:10)\n    at Object.parse (d:\\OSPanel\\domains\\rluser\\node_modules\\@babel\\parser\\lib\\index.js:11447:17)\n    at parse (d:\\OSPanel\\domains\\rluser\\node_modules\\@babel\\parser\\lib\\index.js:11483:38)\n    at parser (d:\\OSPanel\\domains\\rluser\\node_modules\\@babel\\core\\lib\\transformation\\normalize-file.js:168:34)\n    at normalizeFile (d:\\OSPanel\\domains\\rluser\\node_modules\\@babel\\core\\lib\\transformation\\normalize-file.js:102:11)\n    at runSync (d:\\OSPanel\\domains\\rluser\\node_modules\\@babel\\core\\lib\\transformation\\index.js:44:43)\n    at runAsync (d:\\OSPanel\\domains\\rluser\\node_modules\\@babel\\core\\lib\\transformation\\index.js:35:14)\n    at process.nextTick (d:\\OSPanel\\domains\\rluser\\node_modules\\@babel\\core\\lib\\transform.js:34:34)\n    at _combinedTickCallback (internal/process/next_tick.js:131:7)\n    at process._tickCallback (internal/process/next_tick.js:180:9)");
 
 /***/ }),
 
@@ -57186,6 +56998,24 @@ if(false) {}
 /***/ (function(module, exports) {
 
 module.exports = "/images/logo.png?4fc19fca56e6221ab4cb435fb4f64631";
+
+/***/ }),
+
+/***/ "./resources/js/components/constants/index.js":
+/*!****************************************************!*\
+  !*** ./resources/js/components/constants/index.js ***!
+  \****************************************************/
+/*! exports provided: URI_PARAMER_OPERATION, URI_PARAMER_RESTOREPW, URI_TYPE_OPERATION */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "URI_PARAMER_OPERATION", function() { return URI_PARAMER_OPERATION; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "URI_PARAMER_RESTOREPW", function() { return URI_PARAMER_RESTOREPW; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "URI_TYPE_OPERATION", function() { return URI_TYPE_OPERATION; });
+var URI_PARAMER_OPERATION = 'opr';
+var URI_PARAMER_RESTOREPW = 'reset';
+var URI_TYPE_OPERATION = 'confirm_email';
 
 /***/ }),
 

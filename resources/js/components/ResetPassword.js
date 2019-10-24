@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom'
 import {validateNewPassword} from '../utils'
 import {getParameters} from '../utils'
-
+import md5 from 'js-md5'
 
 class ResetPassword extends Component {
 
@@ -19,33 +19,49 @@ class ResetPassword extends Component {
 			message: '',
 			newPassword: '',
 			confirmPassword: '',
-
-		}
+			uriOk: false,
+	}
 		this.handleNewPasswordChange = this.handleNewPasswordChange.bind(this)
 		this.handleСonfirmPasswordChange = this.handleСonfirmPasswordChange.bind(this)
 		this.handleSubmitForm = this.handleSubmitForm.bind(this)
+		this.checkUri = this.checkUri.bind(this) 
 	}
+
+
+	checkUri(data){
+		let result = true;
+		console.log('checkUri.data = ', data.uid)
+		if(data.n !== md5(data.uid) ){
+			return false
+		}
+		if(data.sig !== md5(md5(data.uid))){
+			return false
+		}
+		return true
+	}
+
+	componentDidMount(){
+
+
+		// TODO: вынести отдельной функцией проверки uid  md5(uid) md5(md5(uid))
+		this.setState({uriOk:this.checkUri(this.props.uripar)})
+ 
+
 
 	handleСonfirmPasswordChange(e){		
 		this.setState({confirmPassword:e.currentTarget.value, message: ''})
 	}
 
-	handleNewPasswordChange(e){
+	handleNewPasswordChange(e){ 	
 		this.setState({newPassword: e.currentTarget.value,message: ''})
 	}
 
-	componentDidMount(){
-		console.log(getParameters())
-	}
 
 
 	handleSubmitForm(e){
 		e.preventDefault()
 		console.log(this.state)		
-/*		if(this.state.newPassword !== this.state.confirmPassword){
-			this.setState({message:'пароли не совпадают'})
-		}
-*/
+
 
 		const validPassword = validateNewPassword(this.state.newPassword, this.state.confirmPassword)
 		this.setState({message:validPassword.message})
@@ -65,10 +81,11 @@ class ResetPassword extends Component {
 
 	render(){
 		console.log('reset pass', this.props)
+		console.log('checkUri = ',this.state.uriOk)
 		return(
 			<div>
 	
-			 <Link className="nav-link" to='/' onClick={this.props.foo} >Home</Link>
+			<Link className="nav-link" to='/' onClick={this.props.foo} >Home</Link>
 		 	<form className="col-sm-4  dev-block" onSubmit={this.handleSubmitForm}>
 		 		<h4>ввести новый пароль</h4>
 		  <div className="form-group">
@@ -89,4 +106,4 @@ class ResetPassword extends Component {
 	}
 }
 
-export default ResetPassword
+export default ResetPassword	

@@ -130,3 +130,14 @@ http://cccp-blog.com/laravel/laravel-mail
 
 обработка в реакт сложн uri 
 материал  http://qaru.site/questions/72760/react-router-how-to-get-parameter-value-from-url
+
+
+восттановление от twitter (пример)
+
+https://twitter.com/i/redirect?url=https%3A%2F%2Ftwitter.com%2Faccount%2Fconfirm_email_reset%3Freset_type%3De%26user_id%3D342689700%26token%3Dsx7g2vOIE4Yrwj6tzcDh4TpBXqBBosaz7VBxRq4njT8%253D-1571916172247%26confirm_pending_email%3D0%26token_version%3D0%26password_reset_cause%3Duser%26cn%3DcGFzc3dvcmRfcmVzZXRfdjI%253D&t=1+1571916172322&cn=cGFzc3dvcmRfcmVzZXRfdjI%3D&sig=0fee36d6b5ed069d8017a1958914c573be39f012&iid=06d818b386a1491bb8902613ed27e859&uid=342689700&nid=248+1393
+
+шлем ссылку
+opr=reset&type=comfirm_email&uid={user_id}&n={md5(user_id)}&sig={md5(md5(user_id))}
+
+пример
+opr=reset&type=comfirm_email&uid=2&n=c81e728d9d4c2f636f067f89cc14862c&sig=665f644e43731ff9db3d341da5c827e1
