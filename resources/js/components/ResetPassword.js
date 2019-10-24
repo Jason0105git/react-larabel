@@ -45,7 +45,7 @@ class ResetPassword extends Component {
 
 		// TODO: вынести отдельной функцией проверки uid  md5(uid) md5(md5(uid))
 		this.setState({uriOk:this.checkUri(this.props.uripar)})
- 
+	} 
 
 
 	handleСonfirmPasswordChange(e){		
