@@ -67,9 +67,12 @@ class UserController extends Controller
     $headers    = "MIME-Version: 1.0;";   
   	$headers   .= "Content-type: application/json; charset=UTF-8";
   	$headers   .= "From:<dmvoloshin@shop.askods.com>";
-    mail('dmvoloshin@gmail.com', 'test subject', 'message', $headers);    
+    if(mail('dmvoloshin@gmail.com', 'test subject', 'message', $headers)){
+    	return response()->json(['result'=>'restoreOk']);
+    } else {
+    	return response()->json(['result'=>'error']); 
+    }	
 
-		return response()->json(['result'=>'restoreOk']); // FAKE !
 		
 	}	
 

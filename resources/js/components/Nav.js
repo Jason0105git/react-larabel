@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 
-export const Nav = (loged=false) => {
+
+export const Nav = (loged=false ) => {
 	return(
 		<nav className="navbar navbar-expand-sm bg-dark navbar-dark">
 			 <ul className="navbar-nav">

@@ -14,6 +14,31 @@ import {getParameters} from '../utils'
 import ResetPassword from './ResetPassword'
 import ForgotPassword from './ForgotPassword'
 import {URI_PARAMER_OPERATION, URI_PARAMER_RESTOREPW, URI_TYPE_OPERATION} from './constants'
+import md5 from 'js-md5'
+
+const isRestorePassword = (uri) =>{
+  	if(!uri.opr || !uri.type || !uri.uid || !uri.n){
+  		return false
+  	}
+  	const oprOk = (uri.opr === 'reset')
+  	const typeOk = (uri.type === 'confirm')
+  	const codeOk = (uri.n === md5(uri.uid))
+		return (oprOk && typeOk && codeOk)
+  }
+
+const MainTemplate = () => {
+	return(
+		<Switch>
+			<Route exact path='/' component={Home} />
+			<Route path='/dashboard' component={Dashboard} />
+			<Route path='/login' component={Login} />
+			<Route path='/register' component={Register} />		
+			<Route path='/forgot' component={ForgotPassword} />
+			<Route path='/reset' component={ResetPassword} />
+		</Switch>
+	)
+}
+
 
 class Main extends Component {
 	constructor(props){
@@ -25,39 +50,36 @@ class Main extends Component {
 		}
 		this.clearRedirect = this.clearRedirect.bind(this)
 	}
+
   clearRedirect(){
   	const par = this.state.par
   	par.opr = ''
   	this.setState({par : par})
   }
 
-  checkURI(){
 
-  }
-
+ 
 	render(){
-
+		const restorePassword = isRestorePassword(this.state.par)
 		return(
 			<div className="container-fluid content-wrapper">
 			<BrowserRouter>
 			<header>
-				<AskodsHeader />			
+				{/*<AskodsHeader />			*/}
 			</header>
 			<nav>
-			{(this.state.par.opr===URI_PARAMER_RESTOREPW && this.state.par.type === URI_TYPE_OPERATION)?<span></span>
-				:<Nav par={this.state.par.opr} />	}
+			{
+				(restorePassword)?
+				<span></span>:
+				<Nav par={this.state.par.opr} foo={this.clearRedirect} />
+			}
 			</nav>
 			<main>
-				{(this.state.par.opr===URI_PARAMER_RESTOREPW && this.state.par.type === URI_TYPE_OPERATION)?<ResetPassword foo={this.clearRedirect} uripar={this.state.par} />:
-				<Switch>
-					<Route exact path='/' component={Home} />
-					<Route path='/dashboard' component={Dashboard} />
-					<Route path='/login' component={Login} />
-					<Route path='/register' component={Register} />		
-					<Route path='/forgot' component={ForgotPassword} />
-					<Route path='/reset' component={ResetPassword} />
-				</Switch>
-			}
+				{(restorePassword)?	
+					<ResetPassword foo={this.clearRedirect} uripar={this.state.par} />
+					:MainTemplate()
+				}
+			
 			
 			</main>
 			<footer></footer>

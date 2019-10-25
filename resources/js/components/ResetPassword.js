@@ -9,42 +9,22 @@ class ResetPassword extends Component {
 	constructor(props){
 		super(props)
 		this.state = {
-			user: {
-				id: null,
-				email: '',
-				password: '',
-			},
-			data: null,
-			logged: false,
+			uid: this.props.uripar.uid,
 			message: '',
 			newPassword: '',
 			confirmPassword: '',
-			uriOk: false,
 	}
 		this.handleNewPasswordChange = this.handleNewPasswordChange.bind(this)
 		this.handleСonfirmPasswordChange = this.handleСonfirmPasswordChange.bind(this)
 		this.handleSubmitForm = this.handleSubmitForm.bind(this)
-		this.checkUri = this.checkUri.bind(this) 
+
 	}
 
-
-	checkUri(data){
-		let result = true;
-		console.log('checkUri.data = ', data.uid)
-		if(data.n !== md5(data.uid) ){
-			return false
-		}
-		if(data.sig !== md5(md5(data.uid))){
-			return false
-		}
-		return true
-	}
 
 	componentDidMount(){
 
-
 		// TODO: вынести отдельной функцией проверки uid  md5(uid) md5(md5(uid))
-		this.setState({uriOk:this.checkUri(this.props.uripar)})
+	//	this.setState({uriOk:this.checkUri(this.props.uripar)})
 	} 
 
 
@@ -59,12 +39,13 @@ class ResetPassword extends Component {
 
 
 	handleSubmitForm(e){
-		e.preventDefault()
-		console.log(this.state)		
+
+//		e.preventDefault()
+//		console.log(this.state)		
 
 
-		const validPassword = validateNewPassword(this.state.newPassword, this.state.confirmPassword)
-		this.setState({message:validPassword.message})
+//		const validPassword = validateNewPassword(this.state.newPassword, this.state.confirmPassword)
+//		this.setState({message:validPassword.message})
 
 /*			axios.post('/api/login', this.state.user)
 	          .then(response => {
@@ -80,11 +61,10 @@ class ResetPassword extends Component {
 	}
 
 	render(){
-		console.log('reset pass', this.props)
-		console.log('checkUri = ',this.state.uriOk)
+		console.log('ResetPass: uid',this.state.uid)
 		return(
 			<div>
-	
+				<hr />
 			<Link className="nav-link" to='/' onClick={this.props.foo} >Home</Link>
 		 	<form className="col-sm-4  dev-block" onSubmit={this.handleSubmitForm}>
 		 		<h4>ввести новый пароль</h4>
@@ -101,6 +81,7 @@ class ResetPassword extends Component {
 	  			<span>{this.state.message}</span>
 	  		</div>
 			</form>
+				<hr />
 			</div> 
 		)
 	}

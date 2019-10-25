@@ -50473,7 +50473,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -56980,7 +56980,7 @@ function (_Component) {
       var _this2 = this;
 
       e.preventDefault();
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/restore', this.state.mail).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/forgot', this.state.mail).then(function (response) {
         if (response.data.result === 'restoreOk') {
           _this2.setState({
             emailOk: true,
@@ -57002,7 +57002,6 @@ function (_Component) {
           return console.log(error);
         });
       });
-      console.log('sendme');
     }
   }, {
     key: "render",
@@ -57221,6 +57220,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ResetPassword__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./ResetPassword */ "./resources/js/components/ResetPassword.js");
 /* harmony import */ var _ForgotPassword__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./ForgotPassword */ "./resources/js/components/ForgotPassword.js");
 /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./constants */ "./resources/js/components/constants/index.js");
+/* harmony import */ var js_md5__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! js-md5 */ "./node_modules/js-md5/src/md5.js");
+/* harmony import */ var js_md5__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(js_md5__WEBPACK_IMPORTED_MODULE_14__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -57254,6 +57255,41 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
+var isRestorePassword = function isRestorePassword(uri) {
+  if (!uri.opr || !uri.type || !uri.uid || !uri.n) {
+    return false;
+  }
+
+  var oprOk = uri.opr === 'reset';
+  var typeOk = uri.type === 'confirm';
+  var codeOk = uri.n === js_md5__WEBPACK_IMPORTED_MODULE_14___default()(uri.uid);
+  return oprOk && typeOk && codeOk;
+};
+
+var MainTemplate = function MainTemplate() {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+    exact: true,
+    path: "/",
+    component: _Home__WEBPACK_IMPORTED_MODULE_5__["Home"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+    path: "/dashboard",
+    component: _Dashboard__WEBPACK_IMPORTED_MODULE_6__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+    path: "/login",
+    component: _Login__WEBPACK_IMPORTED_MODULE_7__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+    path: "/register",
+    component: _Register__WEBPACK_IMPORTED_MODULE_8__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+    path: "/forgot",
+    component: _ForgotPassword__WEBPACK_IMPORTED_MODULE_12__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+    path: "/reset",
+    component: _ResetPassword__WEBPACK_IMPORTED_MODULE_11__["default"]
+  }));
+};
+
 var Main =
 /*#__PURE__*/
 function (_Component) {
@@ -57284,38 +57320,18 @@ function (_Component) {
       });
     }
   }, {
-    key: "checkURI",
-    value: function checkURI() {}
-  }, {
     key: "render",
     value: function render() {
+      var restorePassword = isRestorePassword(this.state.par);
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container-fluid content-wrapper"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_askods_AskodsHeader__WEBPACK_IMPORTED_MODULE_4__["AskodsHeader"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", null, this.state.par.opr === _constants__WEBPACK_IMPORTED_MODULE_13__["URI_PARAMER_RESTOREPW"] && this.state.par.type === _constants__WEBPACK_IMPORTED_MODULE_13__["URI_TYPE_OPERATION"] ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Nav__WEBPACK_IMPORTED_MODULE_9__["Nav"], {
-        par: this.state.par.opr
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("main", null, this.state.par.opr === _constants__WEBPACK_IMPORTED_MODULE_13__["URI_PARAMER_RESTOREPW"] && this.state.par.type === _constants__WEBPACK_IMPORTED_MODULE_13__["URI_TYPE_OPERATION"] ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ResetPassword__WEBPACK_IMPORTED_MODULE_11__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", null, restorePassword ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Nav__WEBPACK_IMPORTED_MODULE_9__["Nav"], {
+        par: this.state.par.opr,
+        foo: this.clearRedirect
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("main", null, restorePassword ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ResetPassword__WEBPACK_IMPORTED_MODULE_11__["default"], {
         foo: this.clearRedirect,
         uripar: this.state.par
-      }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
-        exact: true,
-        path: "/",
-        component: _Home__WEBPACK_IMPORTED_MODULE_5__["Home"]
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
-        path: "/dashboard",
-        component: _Dashboard__WEBPACK_IMPORTED_MODULE_6__["default"]
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
-        path: "/login",
-        component: _Login__WEBPACK_IMPORTED_MODULE_7__["default"]
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
-        path: "/register",
-        component: _Register__WEBPACK_IMPORTED_MODULE_8__["default"]
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
-        path: "/forgot",
-        component: _ForgotPassword__WEBPACK_IMPORTED_MODULE_12__["default"]
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
-        path: "/reset",
-        component: _ResetPassword__WEBPACK_IMPORTED_MODULE_11__["default"]
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", null)));
+      }) : MainTemplate()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", null)));
     }
   }]);
 
@@ -57669,48 +57685,21 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ResetPassword).call(this, props));
     _this.state = {
-      user: {
-        id: null,
-        email: '',
-        password: ''
-      },
-      data: null,
-      logged: false,
+      uid: _this.props.uripar.uid,
       message: '',
       newPassword: '',
-      confirmPassword: '',
-      uriOk: false
+      confirmPassword: ''
     };
     _this.handleNewPasswordChange = _this.handleNewPasswordChange.bind(_assertThisInitialized(_this));
     _this.handleСonfirmPasswordChange = _this.handleСonfirmPasswordChange.bind(_assertThisInitialized(_this));
     _this.handleSubmitForm = _this.handleSubmitForm.bind(_assertThisInitialized(_this));
-    _this.checkUri = _this.checkUri.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(ResetPassword, [{
-    key: "checkUri",
-    value: function checkUri(data) {
-      var result = true;
-      console.log('checkUri.data = ', data.uid);
-
-      if (data.n !== js_md5__WEBPACK_IMPORTED_MODULE_3___default()(data.uid)) {
-        return false;
-      }
-
-      if (data.sig !== js_md5__WEBPACK_IMPORTED_MODULE_3___default()(js_md5__WEBPACK_IMPORTED_MODULE_3___default()(data.uid))) {
-        return false;
-      }
-
-      return true;
-    }
-  }, {
     key: "componentDidMount",
-    value: function componentDidMount() {
-      // TODO: вынести отдельной функцией проверки uid  md5(uid) md5(md5(uid))
-      this.setState({
-        uriOk: this.checkUri(this.props.uripar)
-      });
+    value: function componentDidMount() {// TODO: вынести отдельной функцией проверки uid  md5(uid) md5(md5(uid))
+      //	this.setState({uriOk:this.checkUri(this.props.uripar)})
     }
   }, {
     key: "handle\u0421onfirmPasswordChange",
@@ -57730,13 +57719,11 @@ function (_Component) {
     }
   }, {
     key: "handleSubmitForm",
-    value: function handleSubmitForm(e) {
-      e.preventDefault();
-      console.log(this.state);
-      var validPassword = Object(_utils__WEBPACK_IMPORTED_MODULE_2__["validateNewPassword"])(this.state.newPassword, this.state.confirmPassword);
-      this.setState({
-        message: validPassword.message
-      });
+    value: function handleSubmitForm(e) {//		e.preventDefault()
+      //		console.log(this.state)		
+      //		const validPassword = validateNewPassword(this.state.newPassword, this.state.confirmPassword)
+      //		this.setState({message:validPassword.message})
+
       /*			axios.post('/api/login', this.state.user)
       	          .then(response => {
       	            if(response.data.result === 'logged'){
@@ -57752,9 +57739,8 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      console.log('reset pass', this.props);
-      console.log('checkUri = ', this.state.uriOk);
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      console.log('ResetPass: uid', this.state.uid);
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         className: "nav-link",
         to: "/",
         onClick: this.props.foo
@@ -57784,7 +57770,7 @@ function (_Component) {
         className: "btn btn-primary"
       }, "\u0421\u043C\u0435\u043D\u0438\u0442\u044C \u043F\u0430\u0440\u043E\u043B\u044C"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "register-form-messages"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.message))));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.message))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null));
     }
   }]);
 
@@ -57881,16 +57867,16 @@ module.exports = "/images/logo.png?4fc19fca56e6221ab4cb435fb4f64631";
 /*!****************************************************!*\
   !*** ./resources/js/components/constants/index.js ***!
   \****************************************************/
-/*! exports provided: URI_PARAMER_OPERATION, URI_PARAMER_RESTOREPW, URI_TYPE_OPERATION */
+/*! exports provided: URI_PARAMER_OPERATION, URI_PAR_RESTOREPW, URI_TYPE_OPERATION */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "URI_PARAMER_OPERATION", function() { return URI_PARAMER_OPERATION; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "URI_PARAMER_RESTOREPW", function() { return URI_PARAMER_RESTOREPW; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "URI_PAR_RESTOREPW", function() { return URI_PAR_RESTOREPW; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "URI_TYPE_OPERATION", function() { return URI_TYPE_OPERATION; });
 var URI_PARAMER_OPERATION = 'opr';
-var URI_PARAMER_RESTOREPW = 'reset';
+var URI_PAR_RESTOREPW = 'reset';
 var URI_TYPE_OPERATION = 'confirm_email';
 
 /***/ }),

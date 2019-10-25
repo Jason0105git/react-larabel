@@ -37,10 +37,9 @@ class ForgotPassword extends Component {
 
 	handleSubmitForm(e){
 		e.preventDefault()
-		axios.post('/api/restore',this.state.mail)
+		axios.post('/api/forgot',this.state.mail)
 			.then(response => {
 					if(response.data.result === 'restoreOk'){
-						
 						this.setState({emailOk: true, message: 'инструкции отправлены'})
 					}else {
 						this.setState({emailOk: false, message: 'email не зарегистрирован'})
@@ -50,8 +49,6 @@ class ForgotPassword extends Component {
 				this.setState({mailOk: false, message: 'системная ошибка'})
 				console.log(error => console.log(error))
 			})
-	
-		console.log('sendme')
 	}
 
 	render(){

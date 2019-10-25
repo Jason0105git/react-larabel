@@ -139,8 +139,9 @@ https://twitter.com/i/redirect?url=https%3A%2F%2Ftwitter.com%2Faccount%2Fconfirm
 шлем ссылку
 opr=reset&type=confirm_email&uid={user_id}&n={md5(user_id)}&sig={md5(md5(user_id))}
 
-пример
-opr=reset&type=confirm_email&uid=2&n=c81e728d9d4c2f636f067f89cc14862c&sig=665f644e43731ff9db3d341da5c827e1
+пример (id==2)
+http://127.0.0.1:8000/?opr=reset&type=confirm&uid=2&n=c81e728d9d4c2f636f067f89cc14862c&sig=665f644e43731f
 
-блд. запутался в constants utils
+
+TODO: сделать nav классом и попробовать скидывать там в линках get-reset...
 FIXME отправка ссылки почтой
