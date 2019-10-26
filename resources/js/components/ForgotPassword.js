@@ -18,7 +18,7 @@ class ForgotPassword extends Component {
 		}
 		this.handleEmailChange = this.handleEmailChange.bind(this)
 		this.handleSubmitForm  = this.handleSubmitForm.bind(this)
-	
+		this.handleEmailClicked = this.handleEmailClicked.bind(this)
 	}
 
   
@@ -33,6 +33,10 @@ class ForgotPassword extends Component {
 		const mail = this.state.mail
 		mail.emailTo = e.currentTarget.value
 		this.setState({mail:mail,message:''})
+	}
+
+	handleEmailClicked(e){
+		this.setState({message:''})
 	}
 
 	handleSubmitForm(e){
@@ -57,7 +61,11 @@ class ForgotPassword extends Component {
 				<h5>отправить инструкцию повосстановлению пароля</h5>
 				<div className="form-group">
 			  	<label htmlFor="email">email</label>
-    		  <input id="email" type="email" className="form-control"  onChange={this.handleEmailChange} />
+    		  <input id="email" 
+    		  	type="email" 
+    		  	className="form-control" 
+    		  	onClick={this.handleEmailClicked}
+    		  	onChange={this.handleEmailChange} />
     		  <hr />
     		  	<span>{this.state.message}</span>
     		  <hr />

@@ -19,8 +19,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 // Маршруты аутентификации...
 //Route::get('login', 'Auth\AuthController@getLogin');
-Route::post('login', 'Auth\AuthController@postLogin');
-Route::get('logout', 'Auth\AuthController@getLogout');
+//Route::post('login', 'Auth\AuthController@postLogin');
+//Route::get('logout', 'Auth\AuthController@getLogout');
 
 // Маршруты регистрации...
 //Route::get('register', 'Auth\AuthController@getRegister');
@@ -28,8 +28,10 @@ Route::get('logout', 'Auth\AuthController@getLogout');
 
 
 Route::post('register', 'UserController@register');
+
 Route::post('restore', 'UserController@restore');
-Route::post('forgot','UserController@forgot');
+
+Route::post('forgot','UserController@sendResetLinkEmail');
 
 
 

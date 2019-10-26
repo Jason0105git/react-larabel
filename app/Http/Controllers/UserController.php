@@ -45,7 +45,7 @@ class UserController extends Controller
 		}
 
   // restore password
-	public function forgot(Request $request){
+	public function sendResetLinkEmail(Request $request){
 
 
 	if(User::where('email', $request->emailTo)->count() === 0 ){

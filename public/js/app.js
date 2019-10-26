@@ -56955,6 +56955,7 @@ function (_Component) {
     };
     _this.handleEmailChange = _this.handleEmailChange.bind(_assertThisInitialized(_this));
     _this.handleSubmitForm = _this.handleSubmitForm.bind(_assertThisInitialized(_this));
+    _this.handleEmailClicked = _this.handleEmailClicked.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -56971,6 +56972,13 @@ function (_Component) {
       mail.emailTo = e.currentTarget.value;
       this.setState({
         mail: mail,
+        message: ''
+      });
+    }
+  }, {
+    key: "handleEmailClicked",
+    value: function handleEmailClicked(e) {
+      this.setState({
         message: ''
       });
     }
@@ -57017,6 +57025,7 @@ function (_Component) {
         id: "email",
         type: "email",
         className: "form-control",
+        onClick: this.handleEmailClicked,
         onChange: this.handleEmailChange
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.message), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit",
@@ -57062,6 +57071,7 @@ var Home = function Home() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -57079,6 +57089,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -57181,9 +57192,12 @@ function (_Component) {
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit",
         className: "btn btn-primary"
-      }, "Submit"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "\u0412\u043E\u0439\u0442\u0438"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "register-form-messages"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.message)));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.message)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        className: "nav-link",
+        to: "/forgot"
+      }, "\u0437\u0430\u0431\u044B\u043B \u043F\u0430\u0440\u043E\u043B\u044C..."));
     }
   }]);
 
@@ -57327,7 +57341,7 @@ function (_Component) {
         className: "container-fluid content-wrapper"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", null, restorePassword ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Nav__WEBPACK_IMPORTED_MODULE_9__["Nav"], {
         par: this.state.par.opr,
-        foo: this.clearRedirect
+        clearRedirect: this.clearRedirect
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("main", null, restorePassword ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ResetPassword__WEBPACK_IMPORTED_MODULE_11__["default"], {
         foo: this.clearRedirect,
         uripar: this.state.par
@@ -57383,12 +57397,7 @@ var Nav = function Nav() {
     className: "nav-item"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     className: "nav-link",
-    to: "/forgot"
-  }, "Forgot")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    className: "nav-item"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    className: "nav-link",
-    to: "/reset"
+    to: "/?opr=reset&type=confirm&uid=2&n=c81e728d9d4c2f636f067f89cc14862c&sig=665f644e43731f"
   }, "ResetPassword")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "nav-item"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
@@ -57719,11 +57728,13 @@ function (_Component) {
     }
   }, {
     key: "handleSubmitForm",
-    value: function handleSubmitForm(e) {//		e.preventDefault()
-      //		console.log(this.state)		
-      //		const validPassword = validateNewPassword(this.state.newPassword, this.state.confirmPassword)
-      //		this.setState({message:validPassword.message})
-
+    value: function handleSubmitForm(e) {
+      e.preventDefault();
+      console.log(this.state);
+      var validPassword = Object(_utils__WEBPACK_IMPORTED_MODULE_2__["validateNewPassword"])(this.state.newPassword, this.state.confirmPassword);
+      this.setState({
+        message: validPassword.message
+      });
       /*			axios.post('/api/login', this.state.user)
       	          .then(response => {
       	            if(response.data.result === 'logged'){
@@ -57867,7 +57878,7 @@ module.exports = "/images/logo.png?4fc19fca56e6221ab4cb435fb4f64631";
 /*!****************************************************!*\
   !*** ./resources/js/components/constants/index.js ***!
   \****************************************************/
-/*! exports provided: URI_PARAMER_OPERATION, URI_PAR_RESTOREPW, URI_TYPE_OPERATION */
+/*! exports provided: URI_PARAMER_OPERATION, URI_PAR_RESTOREPW, URI_TYPE_OPERATION, LINK_RESET */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -57875,9 +57886,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "URI_PARAMER_OPERATION", function() { return URI_PARAMER_OPERATION; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "URI_PAR_RESTOREPW", function() { return URI_PAR_RESTOREPW; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "URI_TYPE_OPERATION", function() { return URI_TYPE_OPERATION; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LINK_RESET", function() { return LINK_RESET; });
 var URI_PARAMER_OPERATION = 'opr';
 var URI_PAR_RESTOREPW = 'reset';
-var URI_TYPE_OPERATION = 'confirm_email';
+var URI_TYPE_OPERATION = 'confirm_email'; // FORT DEV ONLY (user_ud = 2 !!!)
+
+var LINK_RESET = '/?opr=reset&type=confirm&uid=2&n=c81e728d9d4c2f636f067f89cc14862c&sig=665f644e43731f';
 
 /***/ }),
 

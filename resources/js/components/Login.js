@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import {Link} from 'react-router-dom'
 
 class Login extends Component {
 
@@ -60,10 +60,11 @@ class Login extends Component {
 	    		<label htmlFor="password">пароль:</label>
 	    		<input type="password" className="form-control" id="password" onChange={this.handlePasswordChange}/>
 	  		</div>
-	  		<button type="submit" className="btn btn-primary">Submit</button>
+	  		<button type="submit" className="btn btn-primary">Войти</button>
 	  		<div className='register-form-messages'>
 	  			<span>{this.state.message}</span>
 	  		</div>
+	  		<Link className="nav-link" to='/forgot'>забыл пароль...</Link>
 			</form> 
 		)
 	}
