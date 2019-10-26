@@ -34,3 +34,7 @@ Route::post('forgot','UserController@sendRestoreLink');
 Route::post('reset', 'UserController@resetPassword');
 
 Route::post('login', 'UserController@authLogin');
+
+
+// !!! в работе
+Route::get('user', 'UserController@getUser');  

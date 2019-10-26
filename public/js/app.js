@@ -57734,25 +57734,47 @@ function (_Component) {
     value: function handleSubmitForm(e) {
       var _this2 = this;
 
-      e.preventDefault(); // FIXIT ругается не видит букв в пароле заипал!!!
-
+      e.preventDefault();
       var validPassword = Object(_utils__WEBPACK_IMPORTED_MODULE_2__["validateNewPassword"])(this.state.newPassword, this.state.confirmPassword);
-      this.setState({
-        message: validPassword.message
-      }); //console.log(this.state)		
+      var request = {};
 
-      var request = {
-        uid: this.state.uid,
-        pass: this.state.newPassword
-      }; //console.log(request)
+      if (validPassword.validate) {
+        request.data = {
+          uid: this.state.uid,
+          password: this.state.newPassword
+        };
+        axios.post('/api/reset', request.data).then(function (response) {
+          console.log(response.data.result);
 
-      axios.post('/api/reset', request).then(function (response) {
-        console.log(response.data);
-      })["catch"](function (error) {
-        _this2.setState({
-          message: 'внутренняя ошибка, попробуйте позже'
+          _this2.setState({
+            message: response.data.result
+          });
+        })["catch"](function (error) {
+          _this2.setState({
+            message: 'внутренняя ошибка, попробуйте позже'
+          });
         });
-      });
+      } else {
+        this.setState({
+          message: validPassword.message
+        });
+      }
+      /*
+      		if(validPassword.validate){
+      			request.data = {uid: this.state.uid, password: this.state.newPassword }
+      		
+      		axios.post('/api/reset', request.data)
+      	    .then(response => {
+      	      console.log(response.data)
+      	      })
+      	    .catch(error => {
+      	    	this.setState({message:'внутренняя ошибка, попробуйте позже'})      		
+      	      })
+      	  }else{
+      	  	this.setState({message:validPassword.message})	
+      	  }
+      */
+
     }
   }, {
     key: "render",

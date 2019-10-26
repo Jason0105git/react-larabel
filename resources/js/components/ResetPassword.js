@@ -46,22 +46,41 @@ class ResetPassword extends Component {
 
 		e.preventDefault()
 
-		// FIXIT ругается не видит букв в пароле заипал!!!
+		
 		const validPassword = validateNewPassword(this.state.newPassword, this.state.confirmPassword)
-		this.setState({message:validPassword.message})
-		
+		const request = {}	
 
-		//console.log(this.state)		
-		const request = {uid: this.state.uid, pass: this.state.newPassword }
-		//console.log(request)
+
+		if(validPassword.validate){
+			request.data = {uid: this.state.uid, password: this.state.newPassword }
+			
+			axios.post('/api/reset', request.data)
+		    .then(response => {
+		      console.log(response.data.result)
+		      this.setState({message:response.data.result})
+		      })
+		    .catch(error => {
+		    	this.setState({message:'внутренняя ошибка, попробуйте позже'})      		
+		      })
+	   	} else {
+	  		this.setState({message:validPassword.message})	
+	  	} 
+
+/*
+		if(validPassword.validate){
+			request.data = {uid: this.state.uid, password: this.state.newPassword }
 		
-		axios.post('/api/reset', request)
+		axios.post('/api/reset', request.data)
 	    .then(response => {
 	      console.log(response.data)
 	      })
 	    .catch(error => {
 	    	this.setState({message:'внутренняя ошибка, попробуйте позже'})      		
 	      })
+	  }else{
+	  	this.setState({message:validPassword.message})	
+	  }
+*/
 	}
 
 	render(){

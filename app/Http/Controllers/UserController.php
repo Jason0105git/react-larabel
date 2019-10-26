@@ -9,7 +9,6 @@ use App\User;
 
 class UserController extends Controller
 {
-    //
 
 		// post request
 		public function registerUser(Request $request)
@@ -30,7 +29,6 @@ class UserController extends Controller
 		  return response()->json('user created');
 		}
 	
-
 		// post request
 	public function authLogin(Request $request)
 		{
@@ -75,16 +73,34 @@ class UserController extends Controller
 	}	
 
 	public function resetPassword(Request $request){
-//		$uid = $request->uid;
-//		$user = User::find($uid)
-	/*	if(!$user){
-			response()->json(['result'=>'user not found']);	
-		}*/
-	//	return response()->json(['result'=>$user->id]);
-		return response()->json(['result'=> 'ok']);
+		$uid = $request->uid;
+		$user = User::where('id',$request->uid)->first();
+
+		if($user){
+			$user->password = md5($request->password);
+			$user->update();
+			return response()->json(['result'=> 'ok']);
+		} else {
+			return response()->json(['result'=> 'user ot found']);	
+		}
+	}
+
+
+	// в работе!!!
+	public function getUser(Request $request){
+			$condition = ['id' => $request->id];
+		  $user = User::where($condition)->get()->first();
+		  if($user !== null){
+		  	return response()->json(['result'=>'logged','user'=> $user]);
+		  } else {
+		  	return response()->json(['result' => 'not found']);
+		  }
 	}
 
 }
+
+	
+
 
 /*
 на тему forgot password
