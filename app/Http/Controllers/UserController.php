@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
+//use Illuminate\Support\Facades\Mail;  TODO для кульной отправки почты
+use Illuminate\Support\Facades\URL;
 
 use App\User;
 
@@ -44,6 +45,8 @@ class UserController extends Controller
 
   // restore password
 	public function sendRestoreLink(Request $request){
+
+		$url = Url::to('/');  // будем дальше формировать ссылку по нашим правилам
 
 
 	if(User::where('email', $request->emailTo)->count() === 0 ){
@@ -96,6 +99,12 @@ class UserController extends Controller
 		  	return response()->json(['result' => 'not found']);
 		  }
 	}
+
+	public function getLink(Request $request){
+		$url = Url::to('/');
+		return response()->json(['result'=>$url]);
+	}
+
 
 }
 

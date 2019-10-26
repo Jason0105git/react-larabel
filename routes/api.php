@@ -38,3 +38,8 @@ Route::post('login', 'UserController@authLogin');
 
 // !!! в работе
 Route::get('user', 'UserController@getUser');  
+
+
+
+Route::get('debug', 'UserController@getLink');  
+//Route::post('debug', 'DebugController@postData');  

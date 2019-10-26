@@ -1,9 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react'
+import Debug from './Debug'
 
 
 
 export const Home = () => {
-	return(<div>
+	return(
+		<div>
 		home
+		<hr />
+		<Debug />
+		<hr />
 		</div>)
 }

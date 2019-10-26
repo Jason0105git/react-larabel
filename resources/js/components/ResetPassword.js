@@ -45,8 +45,7 @@ class ResetPassword extends Component {
 	handleSubmitForm(e){
 
 		e.preventDefault()
-
-		
+	
 		const validPassword = validateNewPassword(this.state.newPassword, this.state.confirmPassword)
 		const request = {}	
 
@@ -56,7 +55,6 @@ class ResetPassword extends Component {
 			
 			axios.post('/api/reset', request.data)
 		    .then(response => {
-		      console.log(response.data.result)
 		      this.setState({message:response.data.result})
 		      })
 		    .catch(error => {
@@ -65,26 +63,9 @@ class ResetPassword extends Component {
 	   	} else {
 	  		this.setState({message:validPassword.message})	
 	  	} 
-
-/*
-		if(validPassword.validate){
-			request.data = {uid: this.state.uid, password: this.state.newPassword }
-		
-		axios.post('/api/reset', request.data)
-	    .then(response => {
-	      console.log(response.data)
-	      })
-	    .catch(error => {
-	    	this.setState({message:'внутренняя ошибка, попробуйте позже'})      		
-	      })
-	  }else{
-	  	this.setState({message:validPassword.message})	
-	  }
-*/
 	}
 
 	render(){
-		//console.log('ResetPass: uid',this.state)
 		return(
 			<div>
 				<hr />
