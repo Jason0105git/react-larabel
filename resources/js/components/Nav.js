@@ -15,11 +15,12 @@ export const Nav = (loged=false ) => {
 			    <li className="nav-item">
 			      <Link className="nav-link" to='/register'>Register</Link>
 			    </li>
+			   	<li className="nav-item">
+			      <Link className="nav-link" to='/forgot'>Forgot</Link>
+			    </li>
 			    <li className="nav-item">
-			      {/*<Link className="nav-link" to='/reset'>ResetPassword</Link>*/}
 			      <Link className="nav-link" 
-			      	to='/?opr=reset&type=confirm&uid=2&n=c81e728d9d4c2f636f067f89cc14862c&sig=665f644e43731f'
-			      	 >ResetPassword</Link>
+			      	to='/?opr=reset&type=confirm&uid=2&n=c81e728d9d4c2f636f067f89cc14862c&sig=665f644e43731f'>ResetPassword</Link>
 			    </li>
 			    <li className="nav-item">
 			      <Link className="nav-link" to='/dashboard'>Dashboard</Link>

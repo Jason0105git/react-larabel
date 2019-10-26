@@ -19,20 +19,18 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 // Маршруты аутентификации...
 //Route::get('login', 'Auth\AuthController@getLogin');
-//Route::post('login', 'Auth\AuthController@postLogin');
-//Route::get('logout', 'Auth\AuthController@getLogout');
+Route::post('login', 'Auth\AuthController@postLogin');
+Route::get('logout', 'Auth\AuthController@getLogout');
 
 // Маршруты регистрации...
 //Route::get('register', 'Auth\AuthController@getRegister');
 //Route::post('register', 'Auth\AuthController@postRegister');
 
 
-Route::post('register', 'UserController@register');
-
+Route::post('register', 'UserController@registerUser');
 Route::post('restore', 'UserController@restore');
-
-Route::post('forgot','UserController@sendResetLinkEmail');
-
+Route::post('forgot','UserController@sendRestoreLink');
 
 
-Route::post('login', 'UserController@login');
+
+Route::post('login', 'UserController@authLogin');

@@ -40,12 +40,12 @@ class ResetPassword extends Component {
 
 	handleSubmitForm(e){
 
-		e.preventDefault()
-		console.log(this.state)		
+//		e.preventDefault()
+//		console.log(this.state)		
 
 
-		const validPassword = validateNewPassword(this.state.newPassword, this.state.confirmPassword)
-		this.setState({message:validPassword.message})
+//		const validPassword = validateNewPassword(this.state.newPassword, this.state.confirmPassword)
+//		this.setState({message:validPassword.message})
 
 /*			axios.post('/api/login', this.state.user)
 	          .then(response => {

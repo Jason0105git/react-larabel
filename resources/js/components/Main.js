@@ -69,11 +69,10 @@ class Main extends Component {
 			</header>
 			<nav>
 			{
-			(restorePassword)?
+				(restorePassword)?
 				<span></span>:
-				<Nav par={this.state.par.opr} clearRedirect={this.clearRedirect} />
+				<Nav par={this.state.par.opr} foo={this.clearRedirect} />
 			}
-
 			</nav>
 			<main>
 				{(restorePassword)?	

@@ -12,7 +12,7 @@ class UserController extends Controller
     //
 
 		// post request
-		public function register(Request $request)
+		public function registerUser(Request $request)
 		{
 
 		  if(User::where('email', $request->email)->count() > 0 ){
@@ -32,7 +32,7 @@ class UserController extends Controller
 	
 
 		// post request
-	public function login(Request $request)
+	public function authLogin(Request $request)
 		{
 
 			$condition = ['email' => $request->email, 'password' => md5($request->password)];
@@ -45,7 +45,7 @@ class UserController extends Controller
 		}
 
   // restore password
-	public function sendResetLinkEmail(Request $request){
+	public function sendRestoreLink(Request $request){
 
 
 	if(User::where('email', $request->emailTo)->count() === 0 ){
