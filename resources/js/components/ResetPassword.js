@@ -17,6 +17,7 @@ class ResetPassword extends Component {
 		this.handleNewPasswordChange = this.handleNewPasswordChange.bind(this)
 		this.handleСonfirmPasswordChange = this.handleСonfirmPasswordChange.bind(this)
 		this.handleSubmitForm = this.handleSubmitForm.bind(this)
+		this.clearMessage =  this.clearMessage.bind(this)
 
 	}
 
@@ -37,31 +38,34 @@ class ResetPassword extends Component {
 	}
 
 
+	clearMessage(){
+		this.setState({message:''})
+	}
 
 	handleSubmitForm(e){
 
-//		e.preventDefault()
-//		console.log(this.state)		
+		e.preventDefault()
 
+		// FIXIT ругается не видит букв в пароле заипал!!!
+		const validPassword = validateNewPassword(this.state.newPassword, this.state.confirmPassword)
+		this.setState({message:validPassword.message})
+		
 
-//		const validPassword = validateNewPassword(this.state.newPassword, this.state.confirmPassword)
-//		this.setState({message:validPassword.message})
-
-/*			axios.post('/api/login', this.state.user)
-	          .then(response => {
-	            if(response.data.result === 'logged'){
-	            	this.setState({data:response.data.user,logged:true,message:'успешная авторизация'})
-	            } else {
-	            	this.setState({data:null,logged:false,message:'ошибка авторизации'})
-	            }
-						})
-	          .catch(error => {
-	    					this.setState({message:'внутренняя ошибка, попробуйте позже'})      		
-	          })*/
+		//console.log(this.state)		
+		const request = {uid: this.state.uid, pass: this.state.newPassword }
+		//console.log(request)
+		
+		axios.post('/api/reset', request)
+	    .then(response => {
+	      console.log(response.data)
+	      })
+	    .catch(error => {
+	    	this.setState({message:'внутренняя ошибка, попробуйте позже'})      		
+	      })
 	}
 
 	render(){
-		console.log('ResetPass: uid',this.state.uid)
+		//console.log('ResetPass: uid',this.state)
 		return(
 			<div>
 				<hr />
@@ -70,11 +74,19 @@ class ResetPassword extends Component {
 		 		<h4>ввести новый пароль</h4>
 		  <div className="form-group">
 			  	<label htmlFor="pasword">введите пароль</label>
-    			<input id="password" type="password" className="form-control"  onChange={this.handleNewPasswordChange} />
+    			<input id="password" 
+    				type="password" 
+    				className="form-control"  
+    				onClick={this.clearMessage}
+    				onChange={this.handleNewPasswordChange} />
 			  </div>
 			  <div className="form-group">
        		<label htmlFor="pasword_retupe">подтвердите пароль</label>
-			    <input id="pasword_retupe" type="password" className="form-control"  onChange={this.handleСonfirmPasswordChange} />
+			    <input id="pasword_retupe" 
+			    	type="password" 
+			    	className="form-control"  
+			    	onClick={this.clearMessage} 
+			    	onChange={this.handleСonfirmPasswordChange} />
 			  </div>
 	  		<button type="submit" className="btn btn-primary">Сменить пароль</button>
 	  		<div className='register-form-messages'>

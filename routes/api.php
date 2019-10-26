@@ -28,9 +28,9 @@ Route::get('logout', 'Auth\AuthController@getLogout');
 
 
 Route::post('register', 'UserController@registerUser');
-Route::post('restore', 'UserController@restore');
+
 Route::post('forgot','UserController@sendRestoreLink');
 
-
+Route::post('reset', 'UserController@resetPassword');
 
 Route::post('login', 'UserController@authLogin');

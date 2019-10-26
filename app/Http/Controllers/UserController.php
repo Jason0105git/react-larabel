@@ -72,9 +72,17 @@ class UserController extends Controller
     } else {
     	return response()->json(['result'=>'error']); 
     }	
-
-		
 	}	
+
+	public function resetPassword(Request $request){
+//		$uid = $request->uid;
+//		$user = User::find($uid)
+	/*	if(!$user){
+			response()->json(['result'=>'user not found']);	
+		}*/
+	//	return response()->json(['result'=>$user->id]);
+		return response()->json(['result'=> 'ok']);
+	}
 
 }
 

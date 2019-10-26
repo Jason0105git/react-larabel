@@ -57697,6 +57697,7 @@ function (_Component) {
     _this.handleNewPasswordChange = _this.handleNewPasswordChange.bind(_assertThisInitialized(_this));
     _this.handleСonfirmPasswordChange = _this.handleСonfirmPasswordChange.bind(_assertThisInitialized(_this));
     _this.handleSubmitForm = _this.handleSubmitForm.bind(_assertThisInitialized(_this));
+    _this.clearMessage = _this.clearMessage.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -57722,28 +57723,41 @@ function (_Component) {
       });
     }
   }, {
+    key: "clearMessage",
+    value: function clearMessage() {
+      this.setState({
+        message: ''
+      });
+    }
+  }, {
     key: "handleSubmitForm",
-    value: function handleSubmitForm(e) {//		e.preventDefault()
-      //		console.log(this.state)		
-      //		const validPassword = validateNewPassword(this.state.newPassword, this.state.confirmPassword)
-      //		this.setState({message:validPassword.message})
+    value: function handleSubmitForm(e) {
+      var _this2 = this;
 
-      /*			axios.post('/api/login', this.state.user)
-      	          .then(response => {
-      	            if(response.data.result === 'logged'){
-      	            	this.setState({data:response.data.user,logged:true,message:'успешная авторизация'})
-      	            } else {
-      	            	this.setState({data:null,logged:false,message:'ошибка авторизации'})
-      	            }
-      						})
-      	          .catch(error => {
-      	    					this.setState({message:'внутренняя ошибка, попробуйте позже'})      		
-      	          })*/
+      e.preventDefault(); // FIXIT ругается не видит букв в пароле заипал!!!
+
+      var validPassword = Object(_utils__WEBPACK_IMPORTED_MODULE_2__["validateNewPassword"])(this.state.newPassword, this.state.confirmPassword);
+      this.setState({
+        message: validPassword.message
+      }); //console.log(this.state)		
+
+      var request = {
+        uid: this.state.uid,
+        pass: this.state.newPassword
+      }; //console.log(request)
+
+      axios.post('/api/reset', request).then(function (response) {
+        console.log(response.data);
+      })["catch"](function (error) {
+        _this2.setState({
+          message: 'внутренняя ошибка, попробуйте позже'
+        });
+      });
     }
   }, {
     key: "render",
     value: function render() {
-      console.log('ResetPass: uid', this.state.uid);
+      //console.log('ResetPass: uid',this.state)
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         className: "nav-link",
         to: "/",
@@ -57759,6 +57773,7 @@ function (_Component) {
         id: "password",
         type: "password",
         className: "form-control",
+        onClick: this.clearMessage,
         onChange: this.handleNewPasswordChange
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group"
@@ -57768,6 +57783,7 @@ function (_Component) {
         id: "pasword_retupe",
         type: "password",
         className: "form-control",
+        onClick: this.clearMessage,
         onChange: this.handleСonfirmPasswordChange
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit",
