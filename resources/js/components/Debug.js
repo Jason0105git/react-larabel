@@ -13,7 +13,7 @@ class Debug extends Component {
 
 	run(){
 
-		axios.get('/api/debug',{})
+		axios.get('/api/debug',{uid:'2',opr:'reset'})
 			.then(response=>{console.log(response.data)})
 			.catch(error=>{console.log(error)})
 

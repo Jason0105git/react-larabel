@@ -47,12 +47,22 @@ class UserController extends Controller
 	public function sendRestoreLink(Request $request){
 
 		$url = Url::to('/');  // будем дальше формировать ссылку по нашим правилам
-
+/*
 
 	if(User::where('email', $request->emailTo)->count() === 0 ){
 			return response()->json(['result'=>'email not found']);
 		}
+*/
+		$user = User::where('email', $request->emailTo)->first();
+		if(!$user){
+			return response()->json(['result'=>'email not found']);
+		}
 
+// http://127.0.0.1:8000/?opr=reset&type=confirm&uid=2&n=c81e728d9d4c2f636f067f89cc14862c&sig=665f644e43731f
+
+		$url = Url::to('/').'?opr=reset&type=confirm&uid='.$user->id.'&n='.md5($user->id);	
+
+		$message = '<a href="'.$url.'">ссылка для восстановления</a>';
 /*		$sender = (object)['email'=>'dmvoloshin@gmail.com',
 			'name' => 'dmitry',
 			'subject' => 'test rluser',
@@ -68,7 +78,7 @@ class UserController extends Controller
     $headers    = "MIME-Version: 1.0;";   
   	$headers   .= "Content-type: application/json; charset=UTF-8";
   	$headers   .= "From:<dmvoloshin@shop.askods.com>";
-    if(mail('dmvoloshin@gmail.com', 'test subject', 'message', $headers)){
+    if(mail('dmvoloshin@gmail.com', 'test subject', $message, $headers)){
     	return response()->json(['result'=>'restoreOk']);
     } else {
     	return response()->json(['result'=>'error']); 
@@ -90,7 +100,7 @@ class UserController extends Controller
 
 
 	// в работе!!!
-	public function getUser(Request $request){
+/*	public function getUser(Request $request){
 			$condition = ['id' => $request->id];
 		  $user = User::where($condition)->get()->first();
 		  if($user !== null){
@@ -99,9 +109,11 @@ class UserController extends Controller
 		  	return response()->json(['result' => 'not found']);
 		  }
 	}
+*/
 
 	public function getLink(Request $request){
 		$url = Url::to('/');
+		$uid = $request->uid;
 		return response()->json(['result'=>$url]);
 	}
 

@@ -56952,7 +56952,10 @@ function (_Component) {
   _createClass(Debug, [{
     key: "run",
     value: function run() {
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/debug', {}).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/debug', {
+        uid: '2',
+        opr: 'reset'
+      }).then(function (response) {
         console.log(response.data);
       })["catch"](function (error) {
         console.log(error);
