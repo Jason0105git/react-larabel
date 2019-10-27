@@ -57077,6 +57077,9 @@ function (_Component) {
       var _this2 = this;
 
       e.preventDefault();
+      this.setState({
+        message: '...'
+      });
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/forgot', this.state.mail).then(function (response) {
         if (response.data.result === 'restoreOk') {
           _this2.setState({

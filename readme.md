@@ -94,9 +94,9 @@ TODO
 
 materials
 
+(http://laravel.su/docs/5.0/mail)
+
 (https://www.hostinger.com.ua/rukovodstva/kak-ispolzovat-smtp-server)
 
 (https://www.tutorialspoint.com/laravel/laravel_sending_email.htm)
 
-
-(https://www.tutorialspoint.com/laravel/laravel_sending_email.htm )

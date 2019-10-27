@@ -34,6 +34,7 @@ class ForgotPassword extends Component {
 
 	handleSubmitForm(e){
 		e.preventDefault()
+		this.setState({message:'...'})
 		axios.post('/api/forgot',this.state.mail)
 			.then(response => {
 					if(response.data.result === 'restoreOk'){

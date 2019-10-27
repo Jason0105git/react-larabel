@@ -61,9 +61,23 @@ class UserController extends Controller
         $message->subject('Learning Laravel test email');
     });*/
 
-Mail::send('emails.test', array(), function($message)
+/*************************
+	играемся через гугл смтп
+.env
+
+MAIL_DRIVER = smtp
+MAIL_HOST = smtp.gmail.com
+MAIL_PORT = 587
+MAIL_USERNAME = myname
+MAIL_PASSWORD = mypass
+MAIL_ENCRYPTION = tls
+
+*************************/
+
+Mail::send('emails.test', array('restore_link' => $url), function($message)
 {
-    $message->to('ditrix2006@gmail.com', 'Джон Смит')->subject('Привет!');
+    $message->to('ditrix2006@gmail.com', 'dmitry')->subject('восстановление доступа');
+
 });
 
 
