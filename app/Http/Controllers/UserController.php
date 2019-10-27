@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-//use Illuminate\Support\Facades\Mail;  TODO для кульной отправки почты
+use Illuminate\Support\Facades\Mail; 
 use Illuminate\Support\Facades\URL;
 
 use App\User;
@@ -47,34 +47,38 @@ class UserController extends Controller
 	public function sendRestoreLink(Request $request){
 
 		$url = Url::to('/');  // будем дальше формировать ссылку по нашим правилам
-/*
-
-	if(User::where('email', $request->emailTo)->count() === 0 ){
-			return response()->json(['result'=>'email not found']);
-		}
-*/
 		$user = User::where('email', $request->emailTo)->first();
 		if(!$user){
 			return response()->json(['result'=>'email not found']);
 		}
-
-// http://127.0.0.1:8000/?opr=reset&type=confirm&uid=2&n=c81e728d9d4c2f636f067f89cc14862c&sig=665f644e43731f
-
 		$url = Url::to('/').'?opr=reset&type=confirm&uid='.$user->id.'&n='.md5($user->id);	
 
-		$message = '<a href="'.$url.'">ссылка для восстановления</a>';
-/*		$sender = (object)['email'=>'dmvoloshin@gmail.com',
-			'name' => 'dmitry',
-			'subject' => 'test rluser',
-			'message' => 'hello world'];
+  
+            
+/*   Mail::raw('test message', function ($message) {
+        $message->from('yourEmail@domain.com', 'Learning Laravel');
+        $message->to('goper.zosa@gmail.com');
+        $message->subject('Learning Laravel test email');
+    });*/
+
+Mail::send('emails.test', array(), function($message)
+{
+    $message->to('ditrix2006@gmail.com', 'Джон Смит')->subject('Привет!');
+});
+
+
+     if (Mail::failures()) {
+        return response()->json(['result'=>'error']); 
+    } else {
+    		return response()->json(['result'=>'restoreOk']); 
+    }
 
 
 
-    Mail::send('emails.default', ['sender' => $sender], function($message) use ($sender) {
-                $message->from('ditrix2006@gmail.com', 'ditrix');
-                $message->to($sender->email, $sender->name)->subject('Test message');
-            });*/
+//		$message = '<a href="'.$url.'">ссылка для восстановления</a>';
 
+
+/*
     $headers    = "MIME-Version: 1.0;";   
   	$headers   .= "Content-type: application/json; charset=UTF-8";
   	$headers   .= "From:<dmvoloshin@shop.askods.com>";
@@ -82,7 +86,7 @@ class UserController extends Controller
     	return response()->json(['result'=>'restoreOk']);
     } else {
     	return response()->json(['result'=>'error']); 
-    }	
+    }	*/
 	}	
 
 	public function resetPassword(Request $request){

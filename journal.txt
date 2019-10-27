@@ -152,6 +152,21 @@ TODO
 почта 
 	- формирование линка
 	- отправка средствами ларавел
+materials
+http://laravel.su/docs/5.0/mail
+
+используется сервис  https://www.mailgun.com/   (суко платный)
+попробуем использовать бесплатный гугл  https://www.hostinger.com.ua/rukovodstva/kak-ispolzovat-smtp-server
+
+https://www.tutorialspoint.com/laravel/laravel_sending_email.htm
+
+
+https://www.tutorialspoint.com/laravel/laravel_sending_email.htm 
+!!!!!!!!!!!!!!!! GOOGLE !!!!!!!!!!!!!!!
+
+
+
+
 продумать кнопки
  регистрация, забыл, установить пароль + кнопка отменить (редирект на главную)
  после успешного логин + кнопки (перейти в кабинет, вернуться на главную)

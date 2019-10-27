@@ -9,9 +9,6 @@ class ForgotPassword extends Component {
 
 			mail:{
 				emailTo : '',
-				emailFrom : 'site@site.com',
-				subject : 'restore password',
-				urlRestore : 'http://rluser/?ref=12345',
 			},
 			emailOk: false,
 			message: ''

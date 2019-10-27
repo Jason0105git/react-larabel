@@ -88,3 +88,15 @@ TODO
 1 ForgotPassword
 
 2 ResetPassword
+
+
+отправка почты. используем google smtp
+
+materials
+
+(https://www.hostinger.com.ua/rukovodstva/kak-ispolzovat-smtp-server)
+
+(https://www.tutorialspoint.com/laravel/laravel_sending_email.htm)
+
+
+(https://www.tutorialspoint.com/laravel/laravel_sending_email.htm )

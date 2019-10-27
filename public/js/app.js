@@ -57045,10 +57045,7 @@ function (_Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ForgotPassword).call(this, props));
     _this.state = {
       mail: {
-        emailTo: '',
-        emailFrom: 'site@site.com',
-        subject: 'restore password',
-        urlRestore: 'http://rluser/?ref=12345'
+        emailTo: ''
       },
       emailOk: false,
       message: ''
