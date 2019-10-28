@@ -31,7 +31,11 @@ main {
 	color: lightgray;
 }
 
-.register-form-messages {
+.auth-form-messages {
 
 	height: 30px;
+}
+
+.btn {
+	margin: 5px;
 }

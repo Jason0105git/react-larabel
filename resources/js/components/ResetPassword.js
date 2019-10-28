@@ -55,10 +55,10 @@ class ResetPassword extends Component {
 			
 			axios.post('/api/reset', request.data)
 		    .then(response => {
-		      this.setState({message:response.data.result})
+		      this.setState({message:'пароль изменен'})
 		      })
 		    .catch(error => {
-		    	this.setState({message:'внутренняя ошибка, попробуйте позже'})      		
+		    	this.setState({message:'системная ошибка, попробуйте позже'})      		
 		      })
 	   	} else {
 	  		this.setState({message:validPassword.message})	
@@ -67,12 +67,9 @@ class ResetPassword extends Component {
 
 	render(){
 		return(
-			<div>
-				<hr />
-			<Link className="nav-link" to='/' onClick={this.props.foo} >Home</Link>
 		 	<form className="col-sm-4  dev-block" onSubmit={this.handleSubmitForm}>
 		 		<h4>ввести новый пароль</h4>
-		  <div className="form-group">
+		  	<div className="form-group">
 			  	<label htmlFor="pasword">введите пароль</label>
     			<input id="password" 
     				type="password" 
@@ -88,13 +85,22 @@ class ResetPassword extends Component {
 			    	onClick={this.clearMessage} 
 			    	onChange={this.handleСonfirmPasswordChange} />
 			  </div>
-	  		<button type="submit" className="btn btn-primary">Сменить пароль</button>
-	  		<div className='register-form-messages'>
-	  			<span>{this.state.message}</span>
-	  		</div>
+		  	<div className='auth-form-messages'>
+	  				<span>{this.state.message}</span>
+	  			</div>
+				<nav className="navbar navbar-expand-sm">
+		  		<ul className="navbar-nav">
+				    <li className="nav-item active">
+				    	<button type="submit" className="btn btn-light btn-outline-secondary">Изменить пароль</button>
+				    </li>
+				    <li className="nav-item">
+				      <Link to='/' className="link-cancel" onClick={this.props.foo}>
+			  				<button type="submit" className="btn btn-light btn-outline-secondary">Вернуться</button>
+			  			</Link>
+				    </li>
+				  </ul>  
+				</nav>
 			</form>
-				<hr />
-			</div> 
 		)
 	}
 }

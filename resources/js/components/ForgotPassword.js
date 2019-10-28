@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom'
 import axios from 'axios'
 import {getParameters} from '../utils'
 
@@ -56,11 +57,22 @@ class ForgotPassword extends Component {
 				<div className="form-group">
 			  	<label htmlFor="email">email</label>
     		  <input id="email" type="email" className="form-control"  onChange={this.handleEmailChange} />
-    		  <hr />
-    		  	<span>{this.state.message}</span>
-    		  <hr />
-    		  <button type="submit" className="btn btn-primary">Отправить</button>
-			  </div>
+    		  <div className='auth-form-messages'>
+	  				<span>{this.state.message}</span>
+	  			</div>
+					<nav className="navbar navbar-expand-sm">
+		  			<ul className="navbar-nav">
+					    <li className="nav-item active">
+					    	<button type="submit" className="btn btn-light btn-outline-secondary">Восстановить</button>
+					    </li>
+					    <li className="nav-item">
+					      <Link to='/' className="link-cancel">
+			  					<button type="submit" className="btn btn-light btn-outline-secondary">Вернуться</button>
+			  				</Link>
+					    </li>
+					  </ul>  
+				  </nav>
+				</div>
 			</form>
 		)
 	}

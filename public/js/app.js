@@ -1933,7 +1933,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "h1, h2, h3, h4, h5, h6 {color: gray;}\n\nheader {\n\tbackground-color: #e5e6e9;\n\tborder-bottom: 3px lightgray solid;\n}\n\nmain {\n\tpadding: 30px;\n}\n\n.dev-block {\n\tborder: 1px lightgray solid;\n\tpadding: 15px;\n\tmargin: 15px;\n}\n\n.debug {\n\tborder: 1px red solid;\n}\n\n.content-wrapper {\n\tpadding: 0px;\n\tmargin: 0px;\n\twidth: 100%;\n}\n\n.form-header {\n\tpadding: 5px; \n\tbackground-color: inherit;\n\tcolor: lightgray;\n}\n\n.register-form-messages {\n\n\theight: 30px;\n}", ""]);
+exports.push([module.i, "h1, h2, h3, h4, h5, h6 {color: gray;}\n\nheader {\n\tbackground-color: #e5e6e9;\n\tborder-bottom: 3px lightgray solid;\n}\n\nmain {\n\tpadding: 30px;\n}\n\n.dev-block {\n\tborder: 1px lightgray solid;\n\tpadding: 15px;\n\tmargin: 15px;\n}\n\n.debug {\n\tborder: 1px red solid;\n}\n\n.content-wrapper {\n\tpadding: 0px;\n\tmargin: 0px;\n\twidth: 100%;\n}\n\n.form-header {\n\tpadding: 5px; \n\tbackground-color: inherit;\n\tcolor: lightgray;\n}\n\n.auth-form-messages {\n\n\theight: 30px;\n}\n\n.btn {\n\tmargin: 5px;\n}", ""]);
 
 // exports
 
@@ -57007,9 +57007,10 @@ function (_Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils */ "./resources/js/utils/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils */ "./resources/js/utils/index.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -57027,6 +57028,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -57059,7 +57061,7 @@ function (_Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       console.log('analize parameters');
-      console.log(Object(_utils__WEBPACK_IMPORTED_MODULE_2__["getParameters"])());
+      console.log(Object(_utils__WEBPACK_IMPORTED_MODULE_3__["getParameters"])());
     }
   }, {
     key: "handleEmailChange",
@@ -57080,7 +57082,7 @@ function (_Component) {
       this.setState({
         message: '...'
       });
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/forgot', this.state.mail).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_2___default.a.post('/api/forgot', this.state.mail).then(function (response) {
         if (response.data.result === 'restoreOk') {
           _this2.setState({
             emailOk: true,
@@ -57118,10 +57120,26 @@ function (_Component) {
         type: "email",
         className: "form-control",
         onChange: this.handleEmailChange
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.message), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "auth-form-messages"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.message)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
+        className: "navbar navbar-expand-sm"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "navbar-nav"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "nav-item active"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit",
-        className: "btn btn-primary"
-      }, "\u041E\u0442\u043F\u0440\u0430\u0432\u0438\u0442\u044C")));
+        className: "btn btn-light btn-outline-secondary"
+      }, "\u0412\u043E\u0441\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "nav-item"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/",
+        className: "link-cancel"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "submit",
+        className: "btn btn-light btn-outline-secondary"
+      }, "\u0412\u0435\u0440\u043D\u0443\u0442\u044C\u0441\u044F")))))));
     }
   }]);
 
@@ -57165,6 +57183,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./constants */ "./resources/js/components/constants/index.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -57182,6 +57201,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -57238,6 +57258,9 @@ function (_Component) {
       var _this2 = this;
 
       e.preventDefault();
+      this.setState({
+        message: ''
+      });
       axios.post('/api/login', this.state.user).then(function (response) {
         if (response.data.result === 'logged') {
           _this2.setState({
@@ -57249,12 +57272,12 @@ function (_Component) {
           _this2.setState({
             data: null,
             logged: false,
-            message: 'ошибка авторизации'
+            message: 'неверный email или пароль'
           });
         }
       })["catch"](function (error) {
         _this2.setState({
-          message: 'внутренняя ошибка, попробуйте позже'
+          message: _constants__WEBPACK_IMPORTED_MODULE_2__["MESSAGE_SYSTEM_ERROR"]
         });
       });
     }
@@ -57282,14 +57305,33 @@ function (_Component) {
         className: "form-control",
         id: "password",
         onChange: this.handlePasswordChange
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "auth-form-messages"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.message)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
+        className: "navbar navbar-expand-sm"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "navbar-nav"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "nav-item active"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit",
-        className: "btn btn-primary"
-      }, "Submit"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "register-form-messages"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.message)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        className: "btn btn-light btn-outline-secondary"
+      }, "\u0412\u043E\u0439\u0442\u0438")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "nav-item"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/forgot"
-      }, "\u0437\u0430\u0431\u044B\u043B \u043F\u0430\u0440\u043E\u043B\u044C...")));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "submit",
+        className: "btn btn-light btn-outline-secondary"
+      }, "\u0417\u0430\u0431\u044B\u043B \u043F\u0430\u0440\u043E\u043B\u044C..."))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "nav-item"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/",
+        className: "link-cancel"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "submit",
+        className: "btn btn-light btn-outline-secondary"
+      }, "\u0412\u0435\u0440\u043D\u0443\u0442\u044C\u0441\u044F"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null));
     }
   }]);
 
@@ -57728,7 +57770,7 @@ function (_Component) {
         type: "submit",
         className: "btn btn-primary"
       }, "\u0417\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0438\u0440\u043E\u0432\u0430\u0442\u044C"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "register-form-messages"
+        className: "auth-form-messages"
       }, this.state.required ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "loading...") : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.result)));
     }
   }]);
@@ -57847,11 +57889,11 @@ function (_Component) {
         };
         axios.post('/api/reset', request.data).then(function (response) {
           _this2.setState({
-            message: response.data.result
+            message: 'пароль изменен'
           });
         })["catch"](function (error) {
           _this2.setState({
-            message: 'внутренняя ошибка, попробуйте позже'
+            message: 'системная ошибка, попробуйте позже'
           });
         });
       } else {
@@ -57863,11 +57905,7 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        className: "nav-link",
-        to: "/",
-        onClick: this.props.foo
-      }, "Home"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "col-sm-4  dev-block",
         onSubmit: this.handleSubmitForm
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "\u0432\u0432\u0435\u0441\u0442\u0438 \u043D\u043E\u0432\u044B\u0439 \u043F\u0430\u0440\u043E\u043B\u044C"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -57890,12 +57928,27 @@ function (_Component) {
         className: "form-control",
         onClick: this.clearMessage,
         onChange: this.handleСonfirmPasswordChange
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "auth-form-messages"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.message)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
+        className: "navbar navbar-expand-sm"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "navbar-nav"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "nav-item active"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit",
-        className: "btn btn-primary"
-      }, "\u0421\u043C\u0435\u043D\u0438\u0442\u044C \u043F\u0430\u0440\u043E\u043B\u044C"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "register-form-messages"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.message))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null));
+        className: "btn btn-light btn-outline-secondary"
+      }, "\u0418\u0437\u043C\u0435\u043D\u0438\u0442\u044C \u043F\u0430\u0440\u043E\u043B\u044C")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "nav-item"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/",
+        className: "link-cancel",
+        onClick: this.props.foo
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "submit",
+        className: "btn btn-light btn-outline-secondary"
+      }, "\u0412\u0435\u0440\u043D\u0443\u0442\u044C\u0441\u044F"))))));
     }
   }]);
 
@@ -57992,7 +58045,7 @@ module.exports = "/images/logo.png?4fc19fca56e6221ab4cb435fb4f64631";
 /*!****************************************************!*\
   !*** ./resources/js/components/constants/index.js ***!
   \****************************************************/
-/*! exports provided: URI_PARAMER_OPERATION, URI_PAR_RESTOREPW, URI_TYPE_OPERATION */
+/*! exports provided: URI_PARAMER_OPERATION, URI_PAR_RESTOREPW, URI_TYPE_OPERATION, MESSAGE_SYSTEM_ERROR, LABEL_CANCEL, LABEL_INPUT, LABEL_REGISTER, LABEL_FORGOT_PASSWORD */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -58000,9 +58053,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "URI_PARAMER_OPERATION", function() { return URI_PARAMER_OPERATION; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "URI_PAR_RESTOREPW", function() { return URI_PAR_RESTOREPW; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "URI_TYPE_OPERATION", function() { return URI_TYPE_OPERATION; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MESSAGE_SYSTEM_ERROR", function() { return MESSAGE_SYSTEM_ERROR; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LABEL_CANCEL", function() { return LABEL_CANCEL; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LABEL_INPUT", function() { return LABEL_INPUT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LABEL_REGISTER", function() { return LABEL_REGISTER; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LABEL_FORGOT_PASSWORD", function() { return LABEL_FORGOT_PASSWORD; });
 var URI_PARAMER_OPERATION = 'opr';
 var URI_PAR_RESTOREPW = 'reset';
 var URI_TYPE_OPERATION = 'confirm_email';
+var MESSAGE_SYSTEM_ERROR = 'системная ошибка. повторите позже';
+var LABEL_CANCEL = 'вернуться';
+var LABEL_INPUT = 'войти';
+var LABEL_REGISTER = 'зарегистрировать';
+var LABEL_FORGOT_PASSWORD = 'восстановить пароль'; //export const MESSAGE_
 
 /***/ }),
 

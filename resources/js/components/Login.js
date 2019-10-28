@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
+import {MESSAGE_SYSTEM_ERROR} from './constants'
 
 class Login extends Component {
 
@@ -34,17 +35,17 @@ class Login extends Component {
 
 	handleSubmitForm(e){
 		e.preventDefault()
-			
+		this.setState({message:''})	
 			axios.post('/api/login', this.state.user)
 	          .then(response => {
 	            if(response.data.result === 'logged'){
 	            	this.setState({data:response.data.user,logged:true,message:'успешная авторизация'})
 	            } else {
-	            	this.setState({data:null,logged:false,message:'ошибка авторизации'})
+	            	this.setState({data:null,logged:false,message:'неверный email или пароль'})
 	            }
 						})
 	          .catch(error => {
-	    					this.setState({message:'внутренняя ошибка, попробуйте позже'})      		
+	    					this.setState({message:MESSAGE_SYSTEM_ERROR})      		
 	          })
 	}
 
@@ -60,12 +61,29 @@ class Login extends Component {
 	    		<label htmlFor="password">пароль:</label>
 	    		<input type="password" className="form-control" id="password" onChange={this.handlePasswordChange}/>
 	  		</div>
-	  		<button type="submit" className="btn btn-primary">Submit</button>
-	  		<div className='register-form-messages'>
+	  		<div className='auth-form-messages'>
 	  			<span>{this.state.message}</span>
 	  		</div>
+	  		<nav className="navbar navbar-expand-sm">
+	  		<ul className="navbar-nav">
+			    <li className="nav-item active">
+			    	<button type="submit" className="btn btn-light btn-outline-secondary">Войти</button>
+			    </li>
+			    <li className="nav-item">
+			    	<Link to="/forgot">
+			    		<button type="submit" className="btn btn-light btn-outline-secondary">Забыл пароль...</button>
+			    	</Link>
+			    </li>
+			    <li className="nav-item">
+			      <Link to='/' className="link-cancel">
+	  					<button type="submit" className="btn btn-light btn-outline-secondary">Вернуться</button>
+	  				</Link>
+			    </li>
+			  </ul>  
+			  </nav>
+
 	  		<div>
-	  			<Link to="/forgot">забыл пароль...</Link>
+	  			
 	  		</div>
 			</form> 
 		)

@@ -131,7 +131,7 @@ class Register extends Component {
 
 			  <button type="submit" className="btn btn-primary">Зарегистрировать</button>
 
-			  <div className='register-form-messages'>
+			  <div className='auth-form-messages'>
 			  {(this.state.required)?
 			  	<span>loading...</span>
 			  	:
