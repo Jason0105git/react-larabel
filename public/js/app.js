@@ -57266,13 +57266,13 @@ function (_Component) {
           _this2.setState({
             data: response.data.user,
             logged: true,
-            message: 'успешная авторизация'
+            message: _constants__WEBPACK_IMPORTED_MODULE_2__["MSG_LOGIN_SUCCESS"]
           });
         } else {
           _this2.setState({
             data: null,
             logged: false,
-            message: 'неверный email или пароль'
+            message: _constants__WEBPACK_IMPORTED_MODULE_2__["MSG_LOGIN_ERROR"]
           });
         }
       })["catch"](function (error) {
@@ -57316,14 +57316,14 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit",
         className: "btn btn-light btn-outline-secondary"
-      }, "\u0412\u043E\u0439\u0442\u0438")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      }, _constants__WEBPACK_IMPORTED_MODULE_2__["LABEL_BTN_LOGIN"])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "nav-item"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/forgot"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit",
         className: "btn btn-light btn-outline-secondary"
-      }, "\u0417\u0430\u0431\u044B\u043B \u043F\u0430\u0440\u043E\u043B\u044C..."))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      }, _constants__WEBPACK_IMPORTED_MODULE_2__["LABEL_BTN_FORGOT_PASSWORD"]))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "nav-item"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/",
@@ -57331,7 +57331,7 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit",
         className: "btn btn-light btn-outline-secondary"
-      }, "\u0412\u0435\u0440\u043D\u0443\u0442\u044C\u0441\u044F"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null));
+      }, _constants__WEBPACK_IMPORTED_MODULE_2__["LABEL_BTN_CANCEL"]))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null));
     }
   }]);
 
@@ -57795,8 +57795,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils */ "./resources/js/utils/index.js");
-/* harmony import */ var js_md5__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! js-md5 */ "./node_modules/js-md5/src/md5.js");
-/* harmony import */ var js_md5__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(js_md5__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./constants */ "./resources/js/components/constants/index.js");
+/* harmony import */ var js_md5__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! js-md5 */ "./node_modules/js-md5/src/md5.js");
+/* harmony import */ var js_md5__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(js_md5__WEBPACK_IMPORTED_MODULE_4__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -57889,11 +57890,11 @@ function (_Component) {
         };
         axios.post('/api/reset', request.data).then(function (response) {
           _this2.setState({
-            message: 'пароль изменен'
+            message: _constants__WEBPACK_IMPORTED_MODULE_3__["MSG_PASSWORD_RECOVERED"]
           });
         })["catch"](function (error) {
           _this2.setState({
-            message: 'системная ошибка, попробуйте позже'
+            message: _constants__WEBPACK_IMPORTED_MODULE_3__["MESSAGE_SYSTEM_ERROR"]
           });
         });
       } else {
@@ -57939,7 +57940,7 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit",
         className: "btn btn-light btn-outline-secondary"
-      }, "\u0418\u0437\u043C\u0435\u043D\u0438\u0442\u044C \u043F\u0430\u0440\u043E\u043B\u044C")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      }, _constants__WEBPACK_IMPORTED_MODULE_3__["LABEL_BTN_SET_PASSWORD"])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "nav-item"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/",
@@ -57948,7 +57949,7 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit",
         className: "btn btn-light btn-outline-secondary"
-      }, "\u0412\u0435\u0440\u043D\u0443\u0442\u044C\u0441\u044F"))))));
+      }, _constants__WEBPACK_IMPORTED_MODULE_3__["LABEL_BTN_CANCEL"]))))));
     }
   }]);
 
@@ -58045,7 +58046,7 @@ module.exports = "/images/logo.png?4fc19fca56e6221ab4cb435fb4f64631";
 /*!****************************************************!*\
   !*** ./resources/js/components/constants/index.js ***!
   \****************************************************/
-/*! exports provided: URI_PARAMER_OPERATION, URI_PAR_RESTOREPW, URI_TYPE_OPERATION, MESSAGE_SYSTEM_ERROR, LABEL_CANCEL, LABEL_INPUT, LABEL_REGISTER, LABEL_FORGOT_PASSWORD */
+/*! exports provided: URI_PARAMER_OPERATION, URI_PAR_RESTOREPW, URI_TYPE_OPERATION, MESSAGE_SYSTEM_ERROR, LABEL_BTN_CANCEL, LABEL_BTN_LOGIN, LABEL_BTN_REGISTER, LABEL_BTN_FORGOT_PASSWORD, LABEL_BTN_SET_PASSWORD, MSG_PASSWORD_RECOVERED, MSG_LOGIN_SUCCESS, MSG_LOGIN_ERROR */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -58054,18 +58055,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "URI_PAR_RESTOREPW", function() { return URI_PAR_RESTOREPW; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "URI_TYPE_OPERATION", function() { return URI_TYPE_OPERATION; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MESSAGE_SYSTEM_ERROR", function() { return MESSAGE_SYSTEM_ERROR; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LABEL_CANCEL", function() { return LABEL_CANCEL; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LABEL_INPUT", function() { return LABEL_INPUT; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LABEL_REGISTER", function() { return LABEL_REGISTER; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LABEL_FORGOT_PASSWORD", function() { return LABEL_FORGOT_PASSWORD; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LABEL_BTN_CANCEL", function() { return LABEL_BTN_CANCEL; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LABEL_BTN_LOGIN", function() { return LABEL_BTN_LOGIN; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LABEL_BTN_REGISTER", function() { return LABEL_BTN_REGISTER; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LABEL_BTN_FORGOT_PASSWORD", function() { return LABEL_BTN_FORGOT_PASSWORD; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LABEL_BTN_SET_PASSWORD", function() { return LABEL_BTN_SET_PASSWORD; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MSG_PASSWORD_RECOVERED", function() { return MSG_PASSWORD_RECOVERED; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MSG_LOGIN_SUCCESS", function() { return MSG_LOGIN_SUCCESS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MSG_LOGIN_ERROR", function() { return MSG_LOGIN_ERROR; });
 var URI_PARAMER_OPERATION = 'opr';
 var URI_PAR_RESTOREPW = 'reset';
 var URI_TYPE_OPERATION = 'confirm_email';
 var MESSAGE_SYSTEM_ERROR = 'системная ошибка. повторите позже';
-var LABEL_CANCEL = 'вернуться';
-var LABEL_INPUT = 'войти';
-var LABEL_REGISTER = 'зарегистрировать';
-var LABEL_FORGOT_PASSWORD = 'восстановить пароль'; //export const MESSAGE_
+var LABEL_BTN_CANCEL = 'вернуться';
+var LABEL_BTN_LOGIN = 'войти';
+var LABEL_BTN_REGISTER = 'зарегистрировать';
+var LABEL_BTN_FORGOT_PASSWORD = 'сбросить пароль';
+var LABEL_BTN_SET_PASSWORD = 'установить пароль';
+var MSG_PASSWORD_RECOVERED = 'пароль изменен';
+var MSG_LOGIN_SUCCESS = 'успешная авторизация';
+var MSG_LOGIN_ERROR = 'неверные логин-пароль'; //export const MESSAGE_
 
 /***/ }),
 

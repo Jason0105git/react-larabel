@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
-import {MESSAGE_SYSTEM_ERROR} from './constants'
+import {MESSAGE_SYSTEM_ERROR, LABEL_BTN_LOGIN, LABEL_BTN_FORGOT_PASSWORD, 
+	 LABEL_BTN_CANCEL, MSG_LOGIN_SUCCESS, MSG_LOGIN_ERROR } from './constants'
 
 class Login extends Component {
 
@@ -39,9 +40,9 @@ class Login extends Component {
 			axios.post('/api/login', this.state.user)
 	          .then(response => {
 	            if(response.data.result === 'logged'){
-	            	this.setState({data:response.data.user,logged:true,message:'успешная авторизация'})
+            	this.setState({data:response.data.user,logged:true,message: MSG_LOGIN_SUCCESS})
 	            } else {
-	            	this.setState({data:null,logged:false,message:'неверный email или пароль'})
+	            	this.setState({data:null,logged:false,message: MSG_LOGIN_ERROR})
 	            }
 						})
 	          .catch(error => {
@@ -67,16 +68,16 @@ class Login extends Component {
 	  		<nav className="navbar navbar-expand-sm">
 	  		<ul className="navbar-nav">
 			    <li className="nav-item active">
-			    	<button type="submit" className="btn btn-light btn-outline-secondary">Войти</button>
+			    	<button type="submit" className="btn btn-light btn-outline-secondary">{LABEL_BTN_LOGIN}</button>
 			    </li>
 			    <li className="nav-item">
 			    	<Link to="/forgot">
-			    		<button type="submit" className="btn btn-light btn-outline-secondary">Забыл пароль...</button>
+			    		<button type="submit" className="btn btn-light btn-outline-secondary">{LABEL_BTN_FORGOT_PASSWORD}</button>
 			    	</Link>
 			    </li>
 			    <li className="nav-item">
 			      <Link to='/' className="link-cancel">
-	  					<button type="submit" className="btn btn-light btn-outline-secondary">Вернуться</button>
+	  					<button type="submit" className="btn btn-light btn-outline-secondary">{LABEL_BTN_CANCEL}</button>
 	  				</Link>
 			    </li>
 			  </ul>  

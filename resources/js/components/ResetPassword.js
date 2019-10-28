@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom'
-import {validateNewPassword} from '../utils'
-import {getParameters} from '../utils'
+import {validateNewPassword, getParameters} from '../utils'
+import {MESSAGE_SYSTEM_ERROR, LABEL_BTN_SET_PASSWORD, LABEL_BTN_CANCEL, MSG_PASSWORD_RECOVERED} from './constants' 
 import md5 from 'js-md5'
 
 class ResetPassword extends Component {
@@ -55,10 +55,10 @@ class ResetPassword extends Component {
 			
 			axios.post('/api/reset', request.data)
 		    .then(response => {
-		      this.setState({message:'пароль изменен'})
+		      this.setState({message:MSG_PASSWORD_RECOVERED})
 		      })
 		    .catch(error => {
-		    	this.setState({message:'системная ошибка, попробуйте позже'})      		
+		    	this.setState({message:MESSAGE_SYSTEM_ERROR})      		
 		      })
 	   	} else {
 	  		this.setState({message:validPassword.message})	
@@ -91,11 +91,11 @@ class ResetPassword extends Component {
 				<nav className="navbar navbar-expand-sm">
 		  		<ul className="navbar-nav">
 				    <li className="nav-item active">
-				    	<button type="submit" className="btn btn-light btn-outline-secondary">Изменить пароль</button>
+				    	<button type="submit" className="btn btn-light btn-outline-secondary">{LABEL_BTN_SET_PASSWORD}</button>
 				    </li>
 				    <li className="nav-item">
 				      <Link to='/' className="link-cancel" onClick={this.props.foo}>
-			  				<button type="submit" className="btn btn-light btn-outline-secondary">Вернуться</button>
+			  				<button type="submit" className="btn btn-light btn-outline-secondary">{LABEL_BTN_CANCEL}</button>
 			  			</Link>
 				    </li>
 				  </ul>  
