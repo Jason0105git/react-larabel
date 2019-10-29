@@ -1,8 +1,9 @@
 // Register.js
 import React, { Component } from 'react'
+import {Link} from 'react-router-dom'
 import axios from 'axios'
 import {validateNewPassword} from '../utils'
-import {MESSAGE_SYSTEM_ERROR, LABEL_BTN_REGISTER, MSG_EMAIL_EXISTS, MSG_REGISTER_SUCCESSED} from './constants' 
+import {MESSAGE_SYSTEM_ERROR, LABEL_BTN_REGISTER, LABEL_BTN_CANCEL, MSG_EMAIL_EXISTS, MSG_REGISTER_SUCCESSED} from './constants' 
 
 
 
@@ -19,7 +20,7 @@ class Register extends Component {
 			},
 			errors: '',
 			result: '',
-			retupePassword: '',
+			confirmPassword: '',
 			requested: false,
 			message: '',
 		}
@@ -30,7 +31,7 @@ class Register extends Component {
 		this.handleNameChange = this.handlePasswordChange.bind(this)
 		this.handleLastNameChange = this.handleLastNameChange.bind(this)
 		this.handleFirstNameChange = this.handleFirstNameChange.bind(this)
-		this.handleRetupePasswordChange = this.handleRetupePasswordChange.bind(this)
+		this.handleConfirmPasswordChange = this.handleConfirmPasswordChange.bind(this)
 		this.handlePhoneChange = this.handlePhoneChange.bind(this)
 		this.clearMessage = this.clearMessage.bind(this)
 	}
@@ -48,8 +49,8 @@ class Register extends Component {
 		this.setState({user:user})
 	}
 
-	handleRetupePasswordChange(e){
-		this.setState({retupePassword: e.currentTarget.value})
+	handleConfirmPasswordChange(e){
+		this.setState({confirmPassword: e.currentTarget.value})
 	}
 
 
@@ -79,7 +80,7 @@ class Register extends Component {
 	handleSubmitForm(e){
 		this.setState({message:'...'})
 		e.preventDefault()
-		const validPassword = validateNewPassword(this.state.user.password, this.state.retupePassword)
+		const validPassword = validateNewPassword(this.state.user.password, this.state.confirmPassword)
 		
 		if(validPassword.validate){
 			this.setState({requested: true})
@@ -136,13 +137,15 @@ class Register extends Component {
     			<input id="password" type="password" className="form-control" onClick={this.clearMessage}  onChange={this.handlePasswordChange} />
 			  </div>
 			  <div className="form-group">
-       		<label htmlFor="pasword_retupe">пароль повторно</label>
-			    <input id="pasword_retupe" type="password" className="form-control"  onClick={this.clearMessage} onChange={this.handleRetupePasswordChange} />
+       		<label htmlFor="pasword_confirm">пароль повторно</label>
+			    <input id="pasword_confirm" type="password" className="form-control"  onClick={this.clearMessage} onChange={this.handleConfirmPasswordChange} />
 			  </div>
 			  <span>* все поля обязательны для заполнения</span>
 
 			  <button type="submit" className="btn btn-primary">Зарегистрировать</button>
-
+			  <Link to='/' className="link-cancel">
+	  					<button type="submit" className="btn btn-light btn-outline-secondary">{LABEL_BTN_CANCEL}</button>
+	  		</Link>
 			  <div className='auth-form-messages'>
 			  {(this.state.required)?
 			  	<span>{this.state.message}</span>

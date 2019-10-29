@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
-import {MESSAGE_SYSTEM_ERROR, LABEL_BTN_LOGIN, LABEL_BTN_FORGOT_PASSWORD, 
+import {MESSAGE_SYSTEM_ERROR, LABEL_BTN_LOGIN, LABEL_BTN_FORGOT_PASSWORD, LABEL_BTN_REGISTER, 
 	 LABEL_BTN_CANCEL, MSG_LOGIN_SUCCESS, MSG_LOGIN_ERROR } from './constants'
 
 class Login extends Component {
@@ -52,13 +52,13 @@ class Login extends Component {
 
 	render(){
 		return(
-		 	<form className="col-sm-4  dev-block" onSubmit={this.handleSubmitForm}>
+		 	<form className="col-sm-5  dev-block" onSubmit={this.handleSubmitForm}>
 		 		<h4>авторизация</h4>
-				<div className="form-group">
+				<div className="form-group col-sm-8">
 			  	<label htmlFor="email">email:</label>
 			    <input type="email" className="form-control" id="email" onChange={this.handleEmailChange}/>
 			  </div>
-	  		<div className="form-group">
+	  		<div className="form-group col-sm-8">
 	    		<label htmlFor="password">пароль:</label>
 	    		<input type="password" className="form-control" id="password" onChange={this.handlePasswordChange}/>
 	  		</div>
@@ -69,6 +69,11 @@ class Login extends Component {
 	  		<ul className="navbar-nav">
 			    <li className="nav-item active">
 			    	<button type="submit" className="btn btn-light btn-outline-secondary">{LABEL_BTN_LOGIN}</button>
+			    </li>
+			    <li className="nav-item active">
+			    	<Link to='/register' className="link-cancel">
+			    		<button type="submit" className="btn btn-light btn-outline-secondary">{LABEL_BTN_REGISTER}</button>
+			    	</Link>
 			    </li>
 			    <li className="nav-item">
 			    	<Link to="/forgot">

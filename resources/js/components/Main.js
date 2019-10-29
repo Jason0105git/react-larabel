@@ -9,7 +9,7 @@ import {Home} from './Home'
 import Dashboard from './Dashboard'
 import Login from './Login'
 import Register from './Register'
-import {Nav} from './Nav'
+import Nav from './Nav'
 import {getParameters} from '../utils'
 import ResetPassword from './ResetPassword'
 import ForgotPassword from './ForgotPassword'
@@ -44,11 +44,14 @@ class Main extends Component {
 	constructor(props){
 		super(props)
 		this.state = {
-			loged: false,
+			loged: true,
 			redirect: false,
 			par: getParameters(),
 		}
 		this.clearRedirect = this.clearRedirect.bind(this)
+		this.doLogout = this.doLogout.bind(this)
+		this.doLogin = this.doLogin.bind(this)
+			
 	}
 
   clearRedirect(){
@@ -58,9 +61,21 @@ class Main extends Component {
   }
 
 
+	doLogout(){
+		console.log('do logout')
+		this.setState({loged: false})
+	}
+	doLogin(){
+		this.setState({loged: true})
+	}
+
+
  
 	render(){
 		const restorePassword = isRestorePassword(this.state.par)
+
+
+
 		return(
 			<div className="container-fluid content-wrapper">
 			<BrowserRouter>
@@ -71,7 +86,7 @@ class Main extends Component {
 			{
 				(restorePassword)?
 				<span></span>:
-				<Nav par={this.state.par.opr} foo={this.clearRedirect} />
+				<Nav loged={this.state.loged} logout={this.doLogout} />
 			}
 			</nav>
 			<main>
