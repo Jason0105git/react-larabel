@@ -12,6 +12,8 @@ export const MSG_PASSWORD_RECOVERED = 'пароль изменен'
 export const MSG_LOGIN_SUCCESS = 'успешная авторизация'
 export const MSG_LOGIN_ERROR = 'неверные логин-пароль'
 
+export const MSG_EMAIL_EXISTS = 'пользователь с таким email уже существует'
+export const MSG_REGISTER_SUCCESSED = 'успешная регистрация'
 
 
 //export const MESSAGE_

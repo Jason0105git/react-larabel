@@ -8,6 +8,9 @@ export const Home = () => {
 		<div>
 		home
 		<hr />
+
+
+		<hr />
 		<Debug />
 		<hr />
 		</div>)

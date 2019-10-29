@@ -50473,7 +50473,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter, BrowserRouter, HashRouter, Link, NavLink */
+/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -57050,7 +57050,8 @@ function (_Component) {
         emailTo: ''
       },
       emailOk: false,
-      message: ''
+      message: '',
+      request: false
     };
     _this.handleEmailChange = _this.handleEmailChange.bind(_assertThisInitialized(_this));
     _this.handleSubmitForm = _this.handleSubmitForm.bind(_assertThisInitialized(_this));
@@ -57080,22 +57081,26 @@ function (_Component) {
 
       e.preventDefault();
       this.setState({
-        message: '...'
+        message: '...',
+        request: true
       });
       axios__WEBPACK_IMPORTED_MODULE_2___default.a.post('/api/forgot', this.state.mail).then(function (response) {
         if (response.data.result === 'restoreOk') {
           _this2.setState({
+            request: false,
             emailOk: true,
             message: 'инструкции отправлены'
           });
         } else {
           _this2.setState({
+            request: false,
             emailOk: false,
             message: 'email не зарегистрирован'
           });
         }
       })["catch"](function (error) {
         _this2.setState({
+          request: true,
           mailOk: false,
           message: 'системная ошибка'
         });
@@ -57122,7 +57127,9 @@ function (_Component) {
         onChange: this.handleEmailChange
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "auth-form-messages"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.message)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
+      }, this.state.request ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "spinner-border text-muted"
+      }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.message))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
         className: "navbar navbar-expand-sm"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "navbar-nav"
@@ -57166,7 +57173,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Home = function Home() {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "home", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Debug__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null));
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "home", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Debug__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null));
 };
 
 /***/ }),
@@ -57531,16 +57538,6 @@ var Nav = function Nav() {
     className: "nav-item"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     className: "nav-link",
-    to: "/forgot"
-  }, "Forgot")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    className: "nav-item"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    className: "nav-link",
-    to: "/?opr=reset&type=confirm&uid=2&n=c81e728d9d4c2f636f067f89cc14862c&sig=665f644e43731f"
-  }, "ResetPassword")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    className: "nav-item"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    className: "nav-link",
     to: "/dashboard"
   }, "Dashboard"))));
 };
@@ -57561,6 +57558,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils */ "./resources/js/utils/index.js");
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./constants */ "./resources/js/components/constants/index.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -57580,6 +57578,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 // Register.js
+
 
 
 
@@ -57606,7 +57605,8 @@ function (_Component) {
       errors: '',
       result: '',
       retupePassword: '',
-      requested: false
+      requested: false,
+      message: ''
     };
     _this.handleSubmitForm = _this.handleSubmitForm.bind(_assertThisInitialized(_this));
     _this.handleEmailChange = _this.handleEmailChange.bind(_assertThisInitialized(_this));
@@ -57616,6 +57616,7 @@ function (_Component) {
     _this.handleFirstNameChange = _this.handleFirstNameChange.bind(_assertThisInitialized(_this));
     _this.handleRetupePasswordChange = _this.handleRetupePasswordChange.bind(_assertThisInitialized(_this));
     _this.handlePhoneChange = _this.handlePhoneChange.bind(_assertThisInitialized(_this));
+    _this.clearMessage = _this.clearMessage.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -57672,10 +57673,20 @@ function (_Component) {
       });
     }
   }, {
+    key: "clearMessage",
+    value: function clearMessage() {
+      this.setState({
+        message: ''
+      });
+    }
+  }, {
     key: "handleSubmitForm",
     value: function handleSubmitForm(e) {
       var _this2 = this;
 
+      this.setState({
+        message: '...'
+      });
       e.preventDefault();
       var validPassword = Object(_utils__WEBPACK_IMPORTED_MODULE_2__["validateNewPassword"])(this.state.user.password, this.state.retupePassword);
 
@@ -57686,13 +57697,23 @@ function (_Component) {
         axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/register', this.state.user).then(function (response) {
           console.log(response.data);
 
+          if (response.data === 'email exists') {
+            _this2.setState({
+              message: _constants__WEBPACK_IMPORTED_MODULE_3__["MSG_EMAIL_EXISTS"]
+            });
+          } else {
+            _this2.setState({
+              message: _constants__WEBPACK_IMPORTED_MODULE_3__["MSG_REGISTER_SUCCESSED"]
+            });
+          }
+
           _this2.setState({
             result: response.data,
             requested: false
           });
         })["catch"](function (error) {
           _this2.setState({
-            result: 'внутренняя ошибка, попробуйте позже'
+            message: _constants__WEBPACK_IMPORTED_MODULE_3__["MESSAGE_SYSTEM_ERROR"]
           });
         });
       } else {
@@ -57716,6 +57737,7 @@ function (_Component) {
         type: "text",
         className: "form-control",
         required: true,
+        onClick: this.clearMessage,
         onChange: this.handleFirstNameChange
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group"
@@ -57726,6 +57748,7 @@ function (_Component) {
         type: "text",
         className: "form-control",
         required: true,
+        onClick: this.clearMessage,
         onChange: this.handleLastNameChange
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group"
@@ -57736,6 +57759,7 @@ function (_Component) {
         type: "tel",
         className: "form-control",
         required: true,
+        onClick: this.clearMessage,
         pattern: "['+']{1}[7]{1}[9]{1}[0-9]{10}",
         placeholder: '+790000000000',
         onChange: this.handlePhoneChange
@@ -57747,6 +57771,7 @@ function (_Component) {
         id: "email",
         type: "email",
         className: "form-control",
+        onClick: this.clearMessage,
         onChange: this.handleEmailChange
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group"
@@ -57756,6 +57781,7 @@ function (_Component) {
         id: "password",
         type: "password",
         className: "form-control",
+        onClick: this.clearMessage,
         onChange: this.handlePasswordChange
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group"
@@ -57765,13 +57791,14 @@ function (_Component) {
         id: "pasword_retupe",
         type: "password",
         className: "form-control",
+        onClick: this.clearMessage,
         onChange: this.handleRetupePasswordChange
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "* \u0432\u0441\u0435 \u043F\u043E\u043B\u044F \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u044B \u0434\u043B\u044F \u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit",
         className: "btn btn-primary"
       }, "\u0417\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0438\u0440\u043E\u0432\u0430\u0442\u044C"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "auth-form-messages"
-      }, this.state.required ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "loading...") : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.result)));
+      }, this.state.required ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.message) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.message)));
     }
   }]);
 
@@ -57847,11 +57874,6 @@ function (_Component) {
   }
 
   _createClass(ResetPassword, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {// TODO: вынести отдельной функцией проверки uid  md5(uid) md5(md5(uid))
-      //	this.setState({uriOk:this.checkUri(this.props.uripar)})
-    }
-  }, {
     key: "handle\u0421onfirmPasswordChange",
     value: function handleOnfirmPasswordChange(e) {
       this.setState({
@@ -58046,7 +58068,7 @@ module.exports = "/images/logo.png?4fc19fca56e6221ab4cb435fb4f64631";
 /*!****************************************************!*\
   !*** ./resources/js/components/constants/index.js ***!
   \****************************************************/
-/*! exports provided: URI_PARAMER_OPERATION, URI_PAR_RESTOREPW, URI_TYPE_OPERATION, MESSAGE_SYSTEM_ERROR, LABEL_BTN_CANCEL, LABEL_BTN_LOGIN, LABEL_BTN_REGISTER, LABEL_BTN_FORGOT_PASSWORD, LABEL_BTN_SET_PASSWORD, MSG_PASSWORD_RECOVERED, MSG_LOGIN_SUCCESS, MSG_LOGIN_ERROR */
+/*! exports provided: URI_PARAMER_OPERATION, URI_PAR_RESTOREPW, URI_TYPE_OPERATION, MESSAGE_SYSTEM_ERROR, LABEL_BTN_CANCEL, LABEL_BTN_LOGIN, LABEL_BTN_REGISTER, LABEL_BTN_FORGOT_PASSWORD, LABEL_BTN_SET_PASSWORD, MSG_PASSWORD_RECOVERED, MSG_LOGIN_SUCCESS, MSG_LOGIN_ERROR, MSG_EMAIL_EXISTS, MSG_REGISTER_SUCCESSED */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -58063,6 +58085,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MSG_PASSWORD_RECOVERED", function() { return MSG_PASSWORD_RECOVERED; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MSG_LOGIN_SUCCESS", function() { return MSG_LOGIN_SUCCESS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MSG_LOGIN_ERROR", function() { return MSG_LOGIN_ERROR; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MSG_EMAIL_EXISTS", function() { return MSG_EMAIL_EXISTS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MSG_REGISTER_SUCCESSED", function() { return MSG_REGISTER_SUCCESSED; });
 var URI_PARAMER_OPERATION = 'opr';
 var URI_PAR_RESTOREPW = 'reset';
 var URI_TYPE_OPERATION = 'confirm_email';
@@ -58074,7 +58098,9 @@ var LABEL_BTN_FORGOT_PASSWORD = 'сбросить пароль';
 var LABEL_BTN_SET_PASSWORD = 'установить пароль';
 var MSG_PASSWORD_RECOVERED = 'пароль изменен';
 var MSG_LOGIN_SUCCESS = 'успешная авторизация';
-var MSG_LOGIN_ERROR = 'неверные логин-пароль'; //export const MESSAGE_
+var MSG_LOGIN_ERROR = 'неверные логин-пароль';
+var MSG_EMAIL_EXISTS = 'пользователь с таким email уже существует';
+var MSG_REGISTER_SUCCESSED = 'успешная регистрация'; //export const MESSAGE_
 
 /***/ }),
 

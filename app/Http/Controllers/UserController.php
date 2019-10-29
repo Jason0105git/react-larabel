@@ -16,7 +16,7 @@ class UserController extends Controller
 		{
 
 		  if(User::where('email', $request->email)->count() > 0 ){
-		  	return response()->json('error: email duplicate ');
+		  	return response()->json('email exists');
 		  }
 
 		  $user = User::create([
@@ -24,10 +24,11 @@ class UserController extends Controller
 		  	'lastname' => $request->lastname,		  
 		  	'firstname' => $request->firstname,
 		    'email' => $request->email,
+		    'email_confirmed' => 1,
 		    'password' => md5($request->password),
 		  ]);
 
-		  return response()->json('user created');
+		  return response()->json('registered');
 		}
 	
 		// post request
@@ -53,13 +54,6 @@ class UserController extends Controller
 		}
 		$url = Url::to('/').'?opr=reset&type=confirm&uid='.$user->id.'&n='.md5($user->id);	
 
-  
-            
-/*   Mail::raw('test message', function ($message) {
-        $message->from('yourEmail@domain.com', 'Learning Laravel');
-        $message->to('goper.zosa@gmail.com');
-        $message->subject('Learning Laravel test email');
-    });*/
 
 /*************************
 	играемся через гугл смтп
@@ -73,10 +67,14 @@ MAIL_PASSWORD = mypass
 MAIL_ENCRYPTION = tls
 
 *************************/
+// FIXME сообщения отправляются только прямой строкой.
+// todo  передача email плдучателя в  function($message) ?????s
 
-Mail::send('emails.test', array('restore_link' => $url), function($message)
+$mail = $user->email;
+
+Mail::send('emails.restore', array('restore_link' => $url), function($message) use ($mail)
 {
-    $message->to('ditrix2006@gmail.com', 'dmitry')->subject('восстановление доступа');
+    $message->to($mail, 'пользователь')->subject('восстановление доступа');
 
 });
 
@@ -86,10 +84,6 @@ Mail::send('emails.test', array('restore_link' => $url), function($message)
     } else {
     		return response()->json(['result'=>'restoreOk']); 
     }
-
-
-
-//		$message = '<a href="'.$url.'">ссылка для восстановления</a>';
 
 
 /*

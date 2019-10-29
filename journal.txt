@@ -171,3 +171,22 @@ https://www.tutorialspoint.com/laravel/laravel_sending_email.htm
 
 TODO: регистрацию делать только через подтверждение почтой (чтобы не было липовых почтовых). пока юзер не зарегистрирован - валяется в бд со статусом unregister => запросы на проверку email ведем с уточнением user_status = register 
 
+реальные email для тестирования
+
+
+ditrix2006@gmail.com
+
+
+voloshin@askods.dn.ua (???? не факт)
+
+
+
+ditrix2006@gmail.com
+
+novostroy69@ukr.net (standart)
+
+rladmin@ukr.net   (standart)
+
+dm.voloshin@ukr.net  (standart)
+
+dmvoloshin19@ukr.net (standart)

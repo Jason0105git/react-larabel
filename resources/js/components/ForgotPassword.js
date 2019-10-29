@@ -12,7 +12,8 @@ class ForgotPassword extends Component {
 				emailTo : '',
 			},
 			emailOk: false,
-			message: ''
+			message: '',
+			request: false,
 		}
 		this.handleEmailChange = this.handleEmailChange.bind(this)
 		this.handleSubmitForm  = this.handleSubmitForm.bind(this)
@@ -35,17 +36,17 @@ class ForgotPassword extends Component {
 
 	handleSubmitForm(e){
 		e.preventDefault()
-		this.setState({message:'...'})
+		this.setState({message:'...',request:true})
 		axios.post('/api/forgot',this.state.mail)
 			.then(response => {
 					if(response.data.result === 'restoreOk'){
-						this.setState({emailOk: true, message: 'инструкции отправлены'})
+						this.setState({request: false, emailOk: true, message: 'инструкции отправлены'})
 					}else {
-						this.setState({emailOk: false, message: 'email не зарегистрирован'})
+						this.setState({request: false, emailOk: false, message: 'email не зарегистрирован'})
 					}
 				})
 			.catch(error => {
-				this.setState({mailOk: false, message: 'системная ошибка'})
+				this.setState({request: true,mailOk: false, message: 'системная ошибка'})
 				console.log(error => console.log(error))
 			})
 	}
@@ -58,7 +59,11 @@ class ForgotPassword extends Component {
 			  	<label htmlFor="email">email</label>
     		  <input id="email" type="email" className="form-control"  onChange={this.handleEmailChange} />
     		  <div className='auth-form-messages'>
-	  				<span>{this.state.message}</span>
+    		  	{(this.state.request)?
+    		  		<div class="spinner-border text-muted"></div>
+    		  		:<div><span>{this.state.message}</span></div>
+    		  	}
+	  				
 	  			</div>
 					<nav className="navbar navbar-expand-sm">
 		  			<ul className="navbar-nav">
