@@ -100,3 +100,23 @@ materials
 
 (https://www.tutorialspoint.com/laravel/laravel_sending_email.htm)
 
+
+
+для приложения в подкаталоге (в данном случае admin ) с использованием create-react-app
+
+
+размещаем сборку react-приложения в /public/admin/
+при в package.json сборке указать 
+  "homepage": "http://.../admin", 
+
+
+файл index.html =>  /public/resources/views/admin.blade.php
+
+в /public/routers/web.php
+
+....
+
+Route::get('/admin', function()
+{
+    return View::make('admin');
+});
