@@ -13,12 +13,11 @@ class Login extends Component {
 				password: '',
 			},
 			data: null,
-			logged: false,
+			isLogged: false,
 			message: '',
+			response: false,
 
 		}
-		this.handleEmailChange = this.handleEmailChange.bind(this)
-		this.handlePasswordChange = this.handlePasswordChange.bind(this)
 		this.handleSubmitForm = this.handleSubmitForm.bind(this)
 	}
 
@@ -36,53 +35,67 @@ class Login extends Component {
 
 	handleSubmitForm(e){
 		e.preventDefault()
+		this.setState({response:true})
 		this.setState({message:''})	
 			axios.post('/api/login', this.state.user)
 	          .then(response => {
 	            if(response.data.result === 'logged'){
-            	this.setState({data:response.data.user,logged:true,message: MSG_LOGIN_SUCCESS})
+	            
+            	this.setState({data:response.data.user,response: false, isLogged:true,message: 'успешная авторизация' })
+            	
 	            } else {
-	            	this.setState({data:null,logged:false,message: MSG_LOGIN_ERROR})
+	            	this.setState({data:null,isLogged:false, response: false,message: 'неверные логин-пароль'})
 	            }
 						})
 	          .catch(error => {
-	    					this.setState({message:MESSAGE_SYSTEM_ERROR})      		
+	    					this.setState({message:'системная ошибка', response: false})      		
 	          })
 	}
 
 	render(){
+		console.log('Login props: ',this.props.doLogin)
+		if(this.state.isLogged) return (
+			<div>
+			<h1>успешная авторизация</h1>
+			
+			      <Link to='/' className="link-cancel">
+	  					<button type="submit" className="btn btn-light btn-outline-secondary">перейти на главную</button>
+	  				</Link>
+			</div>
+		 )
 		return(
-		 	<form className="col-sm-5  dev-block" onSubmit={this.handleSubmitForm}>
+			
+		<form className="dev-block" onSubmit={this.handleSubmitForm}>
 		 		<h4>авторизация</h4>
-				<div className="form-group col-sm-8">
+				<div className="form-group">
 			  	<label htmlFor="email">email:</label>
-			    <input type="email" className="form-control" id="email" onChange={this.handleEmailChange}/>
+			    <input type="email" 
+			    	className="form-control" 
+			    	id="email" 
+			    	onChange={this.handleEmailChange.bind(this)}
+			    />
 			  </div>
-	  		<div className="form-group col-sm-8">
+	  		<div className="form-group">
 	    		<label htmlFor="password">пароль:</label>
-	    		<input type="password" className="form-control" id="password" onChange={this.handlePasswordChange}/>
+	    		<input type="password" 
+	    			className="form-control" 
+	    			id="password" 
+	    			onChange={this.handlePasswordChange.bind(this)}
+	    		/>
 	  		</div>
+
 	  		<div className='auth-form-messages'>
-	  			<span>{this.state.message}</span>
+	  			{(this.state.response)?<span>...</span>:<span>{this.state.message}</span>}
+
 	  		</div>
 	  		<nav className="navbar navbar-expand-sm">
 	  		<ul className="navbar-nav">
 			    <li className="nav-item active">
-			    	<button type="submit" className="btn btn-light btn-outline-secondary">{LABEL_BTN_LOGIN}</button>
-			    </li>
-			    <li className="nav-item active">
-			    	<Link to='/register' className="link-cancel">
-			    		<button type="submit" className="btn btn-light btn-outline-secondary">{LABEL_BTN_REGISTER}</button>
-			    	</Link>
-			    </li>
-			    <li className="nav-item">
-			    	<Link to="/forgot">
-			    		<button type="submit" className="btn btn-light btn-outline-secondary">{LABEL_BTN_FORGOT_PASSWORD}</button>
-			    	</Link>
+			    	<button type="submit" className="btn btn-primary">войти</button>
 			    </li>
 			    <li className="nav-item">
 			      <Link to='/' className="link-cancel">
-	  					<button type="submit" className="btn btn-light btn-outline-secondary">{LABEL_BTN_CANCEL}</button>
+	  					<button type="submit" className="btn btn-primary">отмена</button>
 	  				</Link>
 			    </li>
 			  </ul>  
@@ -92,6 +105,7 @@ class Login extends Component {
 	  			
 	  		</div>
 			</form> 
+
 		)
 	}
 }

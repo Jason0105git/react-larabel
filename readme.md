@@ -120,3 +120,11 @@ Route::get('/admin', function()
 {
     return View::make('admin');
 });
+
+
+uses
+
+redux  react-redux  react-router-dom
+
+(https://github.com/reduxjs/redux-thunk)
+

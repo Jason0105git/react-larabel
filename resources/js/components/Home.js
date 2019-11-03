@@ -6,12 +6,10 @@ import Debug from './Debug'
 export const Home = () => {
 	return(
 		<div>
-		home
+	
 		<hr />
 
-
-		<hr />
-		<Debug />
+			<h1>главная страница</h1>
 		<hr />
 		</div>)
 }

@@ -106,7 +106,7 @@ class Register extends Component {
 	render(){
 
 		return(
-			<form className="col-sm-4  dev-block" onSubmit={this.handleSubmitForm}>
+			<form className="dev-block" onSubmit={this.handleSubmitForm}>
 				<h4>регистрация</h4>
 	
 				<div className="form-group">
@@ -144,7 +144,7 @@ class Register extends Component {
 
 			  <button type="submit" className="btn btn-primary">Зарегистрировать</button>
 			  <Link to='/' className="link-cancel">
-	  					<button type="submit" className="btn btn-light btn-outline-secondary">{LABEL_BTN_CANCEL}</button>
+	  					<button type="submit" className="btn btn-primary">{LABEL_BTN_CANCEL}</button>
 	  		</Link>
 			  <div className='auth-form-messages'>
 			  {(this.state.required)?

@@ -53,7 +53,7 @@ class ForgotPassword extends Component {
 
 	render(){
 		return(
-			<form className="col-sm-4  dev-block" onSubmit={this.handleSubmitForm}>
+			<form className="dev-block" onSubmit={this.handleSubmitForm}>
 				<h5>отправить инструкцию повосстановлению пароля</h5>
 				<div className="form-group">
 			  	<label htmlFor="email">email</label>
@@ -68,11 +68,11 @@ class ForgotPassword extends Component {
 					<nav className="navbar navbar-expand-sm">
 		  			<ul className="navbar-nav">
 					    <li className="nav-item active">
-					    	<button type="submit" className="btn btn-light btn-outline-secondary">Восстановить</button>
+					    	<button type="submit" className="btn btn-primary">Восстановить</button>
 					    </li>
 					    <li className="nav-item">
 					      <Link to='/' className="link-cancel">
-			  					<button type="submit" className="btn btn-light btn-outline-secondary">Вернуться</button>
+			  					<button type="submit" className="btn btn-primary">Вернуться</button>
 			  				</Link>
 					    </li>
 					  </ul>  

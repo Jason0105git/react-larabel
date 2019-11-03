@@ -13,7 +13,8 @@ class ResetPassword extends Component {
 			message: '',
 			newPassword: '',
 			confirmPassword: '',
-	}
+		}
+		
 		this.handleNewPasswordChange = this.handleNewPasswordChange.bind(this)
 		this.handleСonfirmPasswordChange = this.handleСonfirmPasswordChange.bind(this)
 		this.handleSubmitForm = this.handleSubmitForm.bind(this)
@@ -86,7 +87,7 @@ class ResetPassword extends Component {
 				    	<button type="submit" className="btn btn-light btn-outline-secondary">{LABEL_BTN_SET_PASSWORD}</button>
 				    </li>
 				    <li className="nav-item">
-				      <Link to='/' className="link-cancel" onClick={this.props.foo}>
+				      <Link to='/' className="link-cancel" onClick={this.props.clearRedirect}>
 			  				<button type="submit" className="btn btn-light btn-outline-secondary">{LABEL_BTN_CANCEL}</button>
 			  			</Link>
 				    </li>
