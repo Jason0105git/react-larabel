@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom'
 import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom'
 import '../../css/style.css'
 
+import {AskodsHeader} from './askods/AskodsHeader'
+
 import {Home} from './Home'
 import Dashboard from './Dashboard'
 import Login from './Login'
@@ -84,6 +86,7 @@ class Main extends Component {
 				<BrowserRouter>
 			<div className="container-fluid content-wrapper">
 			<header>
+				<AskodsHeader />
 			</header>
 			<nav>
 			{
