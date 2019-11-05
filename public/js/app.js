@@ -57196,7 +57196,7 @@ function (_Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "auth-form-messages"
       }, this.state.request ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "spinner-border text-muted"
+        className: "spinner-border text-muted"
       }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.message))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
         className: "navbar navbar-expand-sm"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {

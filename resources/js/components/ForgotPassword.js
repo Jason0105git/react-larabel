@@ -60,7 +60,7 @@ class ForgotPassword extends Component {
     		  <input id="email" type="email" className="form-control"  onChange={this.handleEmailChange} />
     		  <div className='auth-form-messages'>
     		  	{(this.state.request)?
-    		  		<div class="spinner-border text-muted"></div>
+    		  		<div className="spinner-border text-muted"></div>
     		  		:<div><span>{this.state.message}</span></div>
     		  	}
 	  				
