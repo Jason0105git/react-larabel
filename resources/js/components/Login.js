@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 import {MESSAGE_SYSTEM_ERROR, LABEL_BTN_LOGIN, LABEL_BTN_FORGOT_PASSWORD, LABEL_BTN_REGISTER, 
-	 LABEL_BTN_CANCEL, MSG_LOGIN_SUCCESS, MSG_LOGIN_ERROR } from './constants'
+	 LABEL_BTN_CANCEL, MSG_LOGIN_SUCCESS, MSG_LOGIN_ERROR } from '../constants'
 
 class Login extends Component {
 

@@ -15,7 +15,7 @@ import {getParameters} from '../utils'
 import ResetPassword from './ResetPassword'
 import ForgotPassword from './ForgotPassword'
 
-import {URI_PARAMER_OPERATION, URI_PARAMER_RESTOREPW, URI_TYPE_OPERATION} from './constants'
+import {URI_PARAMER_OPERATION, URI_PARAMER_RESTOREPW, URI_TYPE_OPERATION} from '../constants'
 import md5 from 'js-md5'
 
 const isRestorePassword = (uri) =>{

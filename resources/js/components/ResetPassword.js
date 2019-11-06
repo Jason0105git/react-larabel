@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom'
 import {validateNewPassword, getParameters} from '../utils'
-import {MESSAGE_SYSTEM_ERROR, LABEL_BTN_SET_PASSWORD, LABEL_BTN_CANCEL, MSG_PASSWORD_RECOVERED} from './constants' 
+import {MESSAGE_SYSTEM_ERROR, LABEL_BTN_SET_PASSWORD, 
+	LABEL_BTN_CANCEL, MSG_PASSWORD_RECOVERED} from '../constants' 
 import md5 from 'js-md5'
 
 class ResetPassword extends Component {

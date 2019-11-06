@@ -1,16 +1,35 @@
 
-/*import {
-	REGISTER_ACCOUNT_REQUEST, REGISTER_ACCOUNT_SUCCESS, REGISTER_ACCOUNT_ERROR,
-	LOGIN_USER_REQUEST, LOGIN_USER_SUCCESS, LOGIN_USER_ERROR,
-	FORGOT_PASSWORD_REQUEST, FORGOT_PASSWORD_SUCCESS, FORGOT_PASSWORD_ERROR,
-	RESET_PASSWORD_REQUEST, RESET_PASSWORD_SUCCESS, RESET_PASSWORD_ERROR
+import {
+		
+
+	REGISTER_ACCOUNT_REQUEST, 
+	REGISTER_ACCOUNT_SUCCESS, 
+	REGISTER_ACCOUNT_ERROR,
+	
+	LOGIN_USER_REQUEST, 
+	LOGIN_USER_SUCCESS, 
+	LOGIN_USER_ERROR,
+	
+	FORGOT_PASSWORD_REQUEST, 
+	FORGOT_PASSWORD_SUCCESS, 
+	FORGOT_PASSWORD_ERROR,
+	
+	RESET_PASSWORD_REQUEST, 
+	RESET_PASSWORD_SUCCESS, 
+	RESET_PASSWORD_ERROR,
+	LOGOUT_USER,
+
+	GET_USER_REQUEST,
+	GET_USER_SUCCESS,
+	GET_USER_ERROR
+
 } from '../constants'
 
-*/
 
 
 //export const MESSAGE_
 
+/*
 export const REGISTER_ACCOUNT_REQUEST = 'REGISTER_ACCOUNT_REQUEST'
 export const REGISTER_ACCOUNT_ERROR = 'REGISTER_ACCOUNT_ERROR'
 export const REGISTER_ACCOUNT_SUCCESS = 'REGISTER_ACCOUNT_SUCCESS'
@@ -30,6 +49,11 @@ export const RESET_PASSWORD_SUCCESS = 'RESET_PASSWORD_SUCCESS'
 export const LOGOUT_USER  = 'LOGOUT_USER'
 
 
+export const GET_USER_REQUEST = 'GET_USER_REQUEST'
+export const GET_USER_SUCCESS = 'GET_USER_SUCCESS'
+export const GET_USER_ERROR = 'GET_USER_ERROR' 
+*/
+
 
 const initialState = {
 	userID: null,
@@ -39,6 +63,7 @@ const initialState = {
 	userName: '',
 	isLoged: false,
 	error: '',	
+	result: '',
 }
 
 export const reducerUser = (state = initialState, action) => {
@@ -53,7 +78,7 @@ export const reducerUser = (state = initialState, action) => {
 			const userPic =  action.payload.getImageUrl()
 			return {...state,  userName: userName, userPic: userPic, isLoged: true, error: ''}
 
-		case USER_LOGOUT:
+		case LOGOUT_USER:
 			return {...state, userName: 'noname', userPic: 'nouserpic.png', isLoged: false}
 		default:
 			return state			

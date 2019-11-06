@@ -3,7 +3,8 @@ import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 import axios from 'axios'
 import {validateNewPassword} from '../utils'
-import {MESSAGE_SYSTEM_ERROR, LABEL_BTN_REGISTER, LABEL_BTN_CANCEL, MSG_EMAIL_EXISTS, MSG_REGISTER_SUCCESSED} from './constants' 
+import {MESSAGE_SYSTEM_ERROR, 
+	LABEL_BTN_REGISTER, LABEL_BTN_CANCEL, MSG_EMAIL_EXISTS, MSG_REGISTER_SUCCESSED} from '../constants' 
 
 
 
