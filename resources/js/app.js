@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom'
 
 import {AskodsHeader} from './components/askods/AskodsHeader'
-//import store from './store/configureStore'
+
+import store from './store/configureStore'
 
 import Main from './components/Main'
 
 
 require('./bootstrap');
 
+console.log(store.getState())
 
 ReactDOM.render(
 		
