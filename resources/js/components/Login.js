@@ -53,7 +53,7 @@ class Login extends Component {
 	}
 
 	render(){
-		console.log('Login props: ',this.props.doLogin)
+	
 		if(this.state.isLogged) return (
 			<div>
 			<h1>успешная авторизация</h1>

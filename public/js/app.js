@@ -50473,7 +50473,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter, BrowserRouter, HashRouter, Link, NavLink */
+/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -57127,12 +57127,6 @@ function (_Component) {
   }
 
   _createClass(ForgotPassword, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      console.log('analize parameters');
-      console.log(Object(_utils__WEBPACK_IMPORTED_MODULE_3__["getParameters"])());
-    }
-  }, {
     key: "handleEmailChange",
     value: function handleEmailChange(e) {
       var mail = this.state.mail;
@@ -57364,7 +57358,6 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      console.log('Login props: ', this.props.doLogin);
       if (this.state.isLogged) return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "\u0443\u0441\u043F\u0435\u0448\u043D\u0430\u044F \u0430\u0432\u0442\u043E\u0440\u0438\u0437\u0430\u0446\u0438\u044F"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/",
         className: "link-cancel"
@@ -58108,7 +58101,7 @@ function (_Component) {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        className: "col-sm-4  dev-block",
+        className: "dev-block",
         onSubmit: this.handleSubmitForm
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "\u0432\u0432\u0435\u0441\u0442\u0438 \u043D\u043E\u0432\u044B\u0439 \u043F\u0430\u0440\u043E\u043B\u044C"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group"
@@ -58140,7 +58133,7 @@ function (_Component) {
         className: "nav-item active"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit",
-        className: "btn btn-light btn-outline-secondary"
+        className: "btn btn-primary"
       }, _constants__WEBPACK_IMPORTED_MODULE_3__["LABEL_BTN_SET_PASSWORD"])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "nav-item"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
@@ -58149,7 +58142,7 @@ function (_Component) {
         onClick: this.props.clearRedirect
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit",
-        className: "btn btn-light btn-outline-secondary"
+        className: "btn btn-primary"
       }, _constants__WEBPACK_IMPORTED_MODULE_3__["LABEL_BTN_CANCEL"]))))));
     }
   }]);

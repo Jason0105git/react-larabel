@@ -128,3 +128,4 @@ redux  react-redux  react-router-dom
 
 (https://github.com/reduxjs/redux-thunk)
 
+TODO: удаление акк
