@@ -39,3 +39,13 @@ main {
 .btn {
 	margin: 5px;
 }
+
+.user-nav-info {
+	padding: .5rem 1rem;
+	font-weight: bold;
+	font-style: italic;
+	color: white;
+	min-width: 200px;
+	padding-left: 3rem;
+	text-align: right;
+}

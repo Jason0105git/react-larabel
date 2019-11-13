@@ -120,7 +120,7 @@ class Login extends Component {
 			  </nav>
 
 	  		<div>
-	  			
+	  				<Link className="nav-link" to='/forgot'>восстановить пароль</Link>
 	  		</div>
 			</form> 
 

@@ -53,7 +53,7 @@ class Main extends Component {
 
 	doLogout(){
 		//console.log('Main: do logout')
-		this.setState({isLogged: false})
+		this.setState({isLogged: false,user:{}})
 	}
 	doLogin(value){
 		this.setState({isLogged:value.isLogged,user:value.user})
@@ -64,18 +64,18 @@ class Main extends Component {
  
 	render(){
 		const restorePassword = isRestorePassword(this.state.par)
-		console.log(process.env)
+		
 		return(
 				<BrowserRouter>
 			<div className="container-fluid content-wrapper">
 			<header>
-				<AskodsHeader />
+				{/*<AskodsHeader />*/}
 			</header>
 			<nav>
 			{
 				(restorePassword)?
 				<span></span>:
-				<Nav isLogged={this.state.isLogged} doLogout={this.doLogout} />
+				<Nav isLogged={this.state.isLogged} doLogout={this.doLogout} user={this.state.user} />
 			}
 			</nav>
 			<div className="row">

@@ -66,13 +66,11 @@ export const Nav = (props) => {
 				  <li className="nav-item active">  
 				    <Link className="nav-link" to='/register'>Регистрация</Link>
 				  </li>  
-				  <li className="nav-item active">  
-				    <Link className="nav-link" to='/forgot'>Восстановить</Link>
-				  </li>  
-				  <li className="nav-item active">  
-				    <Link className="nav-link" to='/reset'>Сбросить</Link>
-				  </li>  
-
+				  {(props.isLogged)&&
+				  <li className="nav-item">
+				  	<div className="user-nav-info"><span>{props.user.firstName}</span>&nbsp;<span>{props.user.lastName}</span></div>
+				  </li>
+					}
 		    	<li className="nav-item">
 			      	<Link className="nav-link" to='/dashboard'>Личный кабинет</Link>
 			    </li>
