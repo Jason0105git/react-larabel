@@ -11,6 +11,7 @@ class Login extends Component {
 			user: {
 				email: '',
 				password: '',
+				logged: false,
 			},
 			data: null,
 			isLogged: false,
@@ -19,6 +20,19 @@ class Login extends Component {
 
 		}
 		this.handleSubmitForm = this.handleSubmitForm.bind(this)
+		this.loginResult = this.loginResult.bind(this)
+	}
+
+	loginResult(){
+		//conosole.log(this.state.isLogged)
+		const user = {
+			userId: this.state.data.id,
+			firstName: this.state.data.firstname,
+			lastName: this.state.data.lastname,
+			email: this.state.data.email,
+			phone: this.state.data.phone,
+		}
+		this.props.doLogin({isLogged:this.state.isLogged, user:user})
 	}
 
 	handlePasswordChange(e){		
@@ -42,7 +56,9 @@ class Login extends Component {
 	            if(response.data.result === 'logged'){
 	            
             	this.setState({data:response.data.user,response: false, isLogged:true,message: 'успешная авторизация' })
-            	
+            	this.loginResult()	
+
+					//this.loginResult()            	
 	            } else {
 	            	this.setState({data:null,isLogged:false, response: false,message: 'неверные логин-пароль'})
 	            }
@@ -50,10 +66,12 @@ class Login extends Component {
 	          .catch(error => {
 	    					this.setState({message:'системная ошибка', response: false})      		
 	          })
+	         
+
 	}
 
 	render(){
-	
+	 
 		if(this.state.isLogged) return (
 			<div>
 			<h1>успешная авторизация</h1>

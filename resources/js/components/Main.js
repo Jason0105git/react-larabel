@@ -28,23 +28,6 @@ const isRestorePassword = (uri) =>{
 		return (oprOk && typeOk && codeOk)
   }
 
-const MainTemplate = () => {
-	return(
-		<Switch>
-			<Route exact path='/' component={Home} />
-			<Route path='/dashboard' component={Dashboard} />
-			<Route path='/login' 
-				component={Login}  
-				render={(props)=>(
-					<Login {...props} logged={this.state.isLogged} doLogin={this.doLogin} />
-				)}
-			/>
-			<Route path='/register' component={Register} />		
-			<Route path='/forgot' component={ForgotPassword} />
-			<Route path='/reset' component={ResetPassword} />
-		</Switch>
-	)
-}
 
 
 class Main extends Component {
@@ -54,11 +37,11 @@ class Main extends Component {
 			isLogged: false,
 			redirect: false,
 			par: getParameters(),
+			user: {},
 		}
 		this.clearRedirect = this.clearRedirect.bind(this)
 		this.doLogout = this.doLogout.bind(this)
 		this.doLogin = this.doLogin.bind(this)
-			
 	}
 
   clearRedirect(){
@@ -69,19 +52,19 @@ class Main extends Component {
 
 
 	doLogout(){
-		console.log('Main: do logout')
+		//console.log('Main: do logout')
 		this.setState({isLogged: false})
 	}
-	doLogin(){
-		console.log('Main do login')
-		this.setState({isLogged: true})
+	doLogin(value){
+		this.setState({isLogged:value.isLogged,user:value.user})
+		console.log(this.state)
 	}
 
 
  
 	render(){
 		const restorePassword = isRestorePassword(this.state.par)
-		console.log('Main: ', this.state.isLogged)
+		console.log(process.env)
 		return(
 				<BrowserRouter>
 			<div className="container-fluid content-wrapper">
@@ -92,7 +75,7 @@ class Main extends Component {
 			{
 				(restorePassword)?
 				<span></span>:
-				<Nav isLogged={this.state.isLogged} onLogout={this.doLogout} onLogin={this.doLogin} />
+				<Nav isLogged={this.state.isLogged} doLogout={this.doLogout} />
 			}
 			</nav>
 			<div className="row">
@@ -100,8 +83,19 @@ class Main extends Component {
 			<main className="col-md-6">
 				{(restorePassword)?	
 					<ResetPassword clearRedirect={this.clearRedirect} uripar={this.state.par} />
-					:MainTemplate()
+					:
+					<Switch>
+						<Route exact path='/' component={Home} />
+						<Route path='/dashboard' component={Dashboard} />
+						<Route path='/login' render={ (props)=> <Login  doLogin={this.doLogin} /> } />
+						<Route path='/register' component={Register} />		
+						<Route path='/forgot' component={ForgotPassword} />
+						<Route path='/reset' component={ResetPassword} />
+					</Switch>
+
 				}	
+				
+
 			</main>			
 			<div className="col-md-3"></div>
 			</div>

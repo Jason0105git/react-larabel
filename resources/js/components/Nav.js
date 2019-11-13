@@ -46,7 +46,7 @@ class Nav extends Component {
 
 export default Nav*/
 
-export const Nav = () => {
+export const Nav = (props) => {
 	
 	return(
 			<nav className="navbar navbar-expand-sm bg-primary navbar-dark">
@@ -54,12 +54,15 @@ export const Nav = () => {
 			    <li className="nav-item active">
 			    	<Link className="nav-link" to='/'>Главная</Link>
 			    </li>
+			    {(props.isLogged)?
+			    <li className="nav-item active">  
+				    <Link className="nav-link" onClick={props.doLogout} to='/'>Выйти</Link>
+				 </li>  
+				:	
 			    <li className="nav-item active">
 				    <Link className="nav-link" to='/login'>Войти</Link>
-				  </li>  
-				  <li className="nav-item active">  
-				    <Link className="nav-link" to='/'>Выйти</Link>
-				  </li>  
+				</li>  
+				}
 				  <li className="nav-item active">  
 				    <Link className="nav-link" to='/register'>Регистрация</Link>
 				  </li>  
@@ -69,6 +72,7 @@ export const Nav = () => {
 				  <li className="nav-item active">  
 				    <Link className="nav-link" to='/reset'>Сбросить</Link>
 				  </li>  
+
 		    	<li className="nav-item">
 			      	<Link className="nav-link" to='/dashboard'>Личный кабинет</Link>
 			    </li>
