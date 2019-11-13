@@ -61,7 +61,7 @@ class ResetPassword extends Component {
 
 	render(){
 		return(
-		 	<form className="col-sm-4  dev-block" onSubmit={this.handleSubmitForm}>
+		 	<form className="dev-block" onSubmit={this.handleSubmitForm}>
 		 		<h4>ввести новый пароль</h4>
 		  	<div className="form-group">
 			  	<label htmlFor="pasword">введите пароль</label>
@@ -85,11 +85,11 @@ class ResetPassword extends Component {
 				<nav className="navbar navbar-expand-sm">
 		  		<ul className="navbar-nav">
 				    <li className="nav-item active">
-				    	<button type="submit" className="btn btn-light btn-outline-secondary">{LABEL_BTN_SET_PASSWORD}</button>
+				    	<button type="submit" className="btn btn-primary">{LABEL_BTN_SET_PASSWORD}</button>
 				    </li>
 				    <li className="nav-item">
 				      <Link to='/' className="link-cancel" onClick={this.props.clearRedirect}>
-			  				<button type="submit" className="btn btn-light btn-outline-secondary">{LABEL_BTN_CANCEL}</button>
+			  				<button type="submit" className="btn btn-primary">{LABEL_BTN_CANCEL}</button>
 			  			</Link>
 				    </li>
 				  </ul>  

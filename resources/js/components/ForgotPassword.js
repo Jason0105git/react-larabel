@@ -20,14 +20,6 @@ class ForgotPassword extends Component {
 	
 	}
 
-  
-
-	componentDidMount(){
-		console.log('analize parameters')
-		console.log(getParameters())
-	}
-	
-
 	handleEmailChange(e){
 		const mail = this.state.mail
 		mail.emailTo = e.currentTarget.value
@@ -71,7 +63,7 @@ class ForgotPassword extends Component {
 					    	<button type="submit" className="btn btn-primary">Восстановить</button>
 					    </li>
 					    <li className="nav-item">
-					      <Link to='/' className="link-cancel">
+					      	<Link to='/' className="link-cancel">
 			  					<button type="submit" className="btn btn-primary">Вернуться</button>
 			  				</Link>
 					    </li>
