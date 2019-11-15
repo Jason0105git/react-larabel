@@ -72,15 +72,7 @@ class Login extends Component {
 
 	render(){
 	 
-		if(this.state.isLogged) return (
-			<div>
-			<h1>успешная авторизация</h1>
-			
-			      <Link to='/' className="link-cancel">
-	  					<button type="submit" className="btn btn-light btn-outline-secondary">перейти на главную</button>
-	  				</Link>
-			</div>
-		 )
+	
 		return(
 			
 		<form className="dev-block" onSubmit={this.handleSubmitForm}>
@@ -107,8 +99,17 @@ class Login extends Component {
 
 	  		</div>
 	  		<nav className="navbar navbar-expand-sm">
+
+	  		{(this.state.isLogged)?
 	  		<ul className="navbar-nav">
-			    <li className="nav-item active">
+	  			<li className="nav-item">
+			    	<Link to='/'><button type="submit" className="btn btn-primary">продолжить</button></Link>
+			    </li>
+	  		</ul>
+	  		:
+
+	  		<ul className="navbar-nav">
+			    <li className="nav-item">
 			    	<button type="submit" className="btn btn-primary">войти</button>
 			    </li>
 			    <li className="nav-item">
@@ -116,7 +117,9 @@ class Login extends Component {
 	  					<button type="submit" className="btn btn-primary">отмена</button>
 	  				</Link>
 			    </li>
-			  </ul>  
+			
+			  </ul>
+			 }  
 			  </nav>
 
 	  		<div>

@@ -104,7 +104,7 @@ Mail::send('emails.restore', array('restore_link' => $url), function($message) u
 		if($user){
 			$user->password = md5($request->password);
 			$user->update();
-			return response()->json(['result'=> 'ok']);
+			return response()->json(['result'=> 'password updated']);
 		} else {
 			return response()->json(['result'=> 'user ot found']);	
 		}

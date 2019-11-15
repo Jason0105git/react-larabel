@@ -69,7 +69,7 @@ class Main extends Component {
 				<BrowserRouter>
 			<div className="container-fluid content-wrapper">
 			<header>
-				{/*<AskodsHeader />*/}
+				<AskodsHeader />
 			</header>
 			<nav>
 			{

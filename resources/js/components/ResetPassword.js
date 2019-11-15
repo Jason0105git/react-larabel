@@ -14,6 +14,7 @@ class ResetPassword extends Component {
 			message: '',
 			newPassword: '',
 			confirmPassword: '',
+			result:'',
 		}
 		
 		this.handleNewPasswordChange = this.handleNewPasswordChange.bind(this)
@@ -49,7 +50,7 @@ class ResetPassword extends Component {
 			
 			axios.post('/api/reset', request.data)
 		    .then(response => {
-		      this.setState({message:MSG_PASSWORD_RECOVERED})
+		      this.setState({message:MSG_PASSWORD_RECOVERED,result:response.result}) 
 		      })
 		    .catch(error => {
 		    	this.setState({message:MESSAGE_SYSTEM_ERROR})      		
@@ -83,7 +84,15 @@ class ResetPassword extends Component {
 	  				<span>{this.state.message}</span>
 	  			</div>
 				<nav className="navbar navbar-expand-sm">
+				{(this.state.result === 'password updated')?
+				<ul className="navbar-nav">
+	  			<li className="nav-item">
+			    	<Link to='/'><button type="submit" className="btn btn-primary">продолжить</button></Link>
+			    </li>
+	  			</ul>
+	  			:
 		  		<ul className="navbar-nav">
+
 				    <li className="nav-item active">
 				    	<button type="submit" className="btn btn-primary">{LABEL_BTN_SET_PASSWORD}</button>
 				    </li>
@@ -92,7 +101,8 @@ class ResetPassword extends Component {
 			  				<button type="submit" className="btn btn-primary">{LABEL_BTN_CANCEL}</button>
 			  			</Link>
 				    </li>
-				  </ul>  
+				  </ul>
+				  }  
 				</nav>
 			</form>
 		)

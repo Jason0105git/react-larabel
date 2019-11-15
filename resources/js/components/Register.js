@@ -79,7 +79,7 @@ class Register extends Component {
 	}
 
 	handleSubmitForm(e){
-		this.setState({message:'...'})
+		this.setState({message:'...',requested:false})
 		e.preventDefault()
 		const validPassword = validateNewPassword(this.state.user.password, this.state.confirmPassword)
 		
@@ -91,7 +91,7 @@ class Register extends Component {
 	            if(response.data === 'email exists'){
 	            	 this.setState({message: MSG_EMAIL_EXISTS})
 	            }else {	 
-	            	this.setState({message: MSG_REGISTER_SUCCESSED })
+	            	this.setState({result:response.data, message: MSG_REGISTER_SUCCESSED })
 	            }
 	            this.setState({result:response.data, requested: false})
 
@@ -142,11 +142,25 @@ class Register extends Component {
 			    <input id="pasword_confirm" type="password" className="form-control"  onClick={this.clearMessage} onChange={this.handleConfirmPasswordChange} />
 			  </div>
 			  <span>* все поля обязательны для заполнения</span>
+			  <nav className="navbar navbar-expand-sm">
+			  {(this.state.result ==='registered')?
+			  	<ul className="navbar-nav">
+	  				<li className="nav-item">
+			    		<Link to='/'><button type="submit" className="btn btn-primary">продолжить</button></Link>
+			    	</li>
+	  			</ul>	
+			  	:
+			  	<ul className="navbar-nav">	
+			  		<li className="nav-item"><button type="submit" className="btn btn-primary">Зарегистрировать</button></li>
+			  		<li className="nav-item">
+			  			<Link to='/' className="link-cancel">
+	  			 			<button type="submit" className="btn btn-primary">{LABEL_BTN_CANCEL}</button>
+	  		 			</Link>
+	  		 		</li>	
+	  		 	</ul>
 
-			  <button type="submit" className="btn btn-primary">Зарегистрировать</button>
-			  <Link to='/' className="link-cancel">
-	  					<button type="submit" className="btn btn-primary">{LABEL_BTN_CANCEL}</button>
-	  		</Link>
+	  		 }
+	  		 </nav>
 			  <div className='auth-form-messages'>
 			  {(this.state.required)?
 			  	<span>{this.state.message}</span>
