@@ -50473,7 +50473,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter, BrowserRouter, HashRouter, Link, NavLink */
+/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -58418,7 +58418,7 @@ function (_Component) {
       var restorePassword = isRestorePassword(this.state.par);
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container-fluid content-wrapper"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_askods_AskodsHeader__WEBPACK_IMPORTED_MODULE_4__["AskodsHeader"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", null, restorePassword ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Nav__WEBPACK_IMPORTED_MODULE_9__["Nav"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", null,  false && false), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", null, restorePassword ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Nav__WEBPACK_IMPORTED_MODULE_9__["Nav"], {
         isLogged: this.state.isLogged,
         doLogout: this.doLogout,
         user: this.state.user

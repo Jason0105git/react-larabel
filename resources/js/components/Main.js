@@ -69,7 +69,7 @@ class Main extends Component {
 				<BrowserRouter>
 			<div className="container-fluid content-wrapper">
 			<header>
-				<AskodsHeader />
+				{(process.env.MIX_DEV=='job')&&<AskodsHeader />}
 			</header>
 			<nav>
 			{
