@@ -50,7 +50,7 @@ class ResetPassword extends Component {
 			
 			axios.post('/api/reset', request.data)
 		    .then(response => {
-		      this.setState({message:MSG_PASSWORD_RECOVERED,result:response.result}) 
+		      this.setState({message:response.result,result:response.data.result}) 
 		      })
 		    .catch(error => {
 		    	this.setState({message:MESSAGE_SYSTEM_ERROR})      		
@@ -87,7 +87,7 @@ class ResetPassword extends Component {
 				{(this.state.result === 'password updated')?
 				<ul className="navbar-nav">
 	  			<li className="nav-item">
-			    	<Link to='/'><button type="submit" className="btn btn-primary">продолжить</button></Link>
+			    	<Link to='/'><button type="submit" className="btn btn-primary" onClick={this.props.clearRedirect}>продолжить</button></Link>
 			    </li>
 	  			</ul>
 	  			:

@@ -67,9 +67,6 @@ MAIL_PASSWORD = mypass
 MAIL_ENCRYPTION = tls
 
 *************************/
-// FIXME сообщения отправляются только прямой строкой.
-// todo  передача email плдучателя в  function($message) ?????s
-
 $mail = $user->email;
 
 Mail::send('emails.restore', array('restore_link' => $url), function($message) use ($mail)
