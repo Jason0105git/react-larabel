@@ -57786,6 +57786,9 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Dashboard).call(this, props));
     _this.handleButtonSendMail = _this.handleButtonSendMail.bind(_assertThisInitialized(_this));
+    /*this.dataListTemplate = this.dataListTemplate.bind(this)
+    this.personalDataTemplate = this.personalDataTemplate.bind(this)*/
+
     return _this;
   }
 
@@ -57798,7 +57801,9 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Dashboard"));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Dashboard"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        className: "dev-block"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "\u043C\u043E\u0438 \u0441\u0442\u0438\u043A\u0435\u0440\u044B"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null)));
     }
   }]);
 
@@ -58437,7 +58442,9 @@ function (_Component) {
         component: _Home__WEBPACK_IMPORTED_MODULE_5__["Home"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         path: "/dashboard",
-        component: _Dashboard__WEBPACK_IMPORTED_MODULE_6__["default"]
+        component: function component() {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Dashboard__WEBPACK_IMPORTED_MODULE_6__["default"], null);
+        }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         path: "/login",
         render: function render(props) {
@@ -58482,51 +58489,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 
-
-/*
-class Nav extends Component {
-	constructor(props){
-		super(props)
-		this.handleLogoutClicked = this.handleLogoutClicked.bind(this)
-		this.state = {
-			loged: this.props.loged
-		}
-	}
-
-
-	handleLogoutClicked(){
-		this.props.onLogout()
-	}
-
-	render(){
-		console.log('Nav', this.props.loged)
-	return(
-		<nav className="navbar navbar-expand-sm bg-dark navbar-dark">
-			 <ul className="navbar-nav">
-			    <li className="nav-item active">
-			    	<Link className="nav-link" to='/'>Главная</Link>
-			    </li>
-			    <li className="nav-item">
-			    	{
-			    		(this.props.loged)?
-			    		<Link className="nav-link" to='/' onClick={this.handleLogoutClicked}>Выйти</Link>:
-			    		<Link className="nav-link" to='/login'>Войти</Link>
-			    	}
-			      
-			    </li>
-	
-			    <li className="nav-item">
-			    	{(this.props.loged)?
-			      	<Link className="nav-link" to='/dashboard'>Личный кабинет</Link>:
-			      	<span></span>}
-			    </li>
-			 </ul>
-		</nav>
-	)		
-	}
-}
-
-export default Nav*/
 
 var Nav = function Nav(props) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {

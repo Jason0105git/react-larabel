@@ -86,8 +86,8 @@ class Main extends Component {
 					:
 					<Switch>
 						<Route exact path='/' component={Home} />
-						<Route path='/dashboard' component={Dashboard} />
-						<Route path='/login' render={ (props)=> <Login  doLogin={this.doLogin} /> } />
+						<Route path='/dashboard' component={()=><Dashboard/>} />
+						<Route path='/login' render={ (props)=> <Login doLogin={this.doLogin} /> } />
 						<Route path='/register' component={Register} />		
 						<Route path='/forgot' component={ForgotPassword} />
 						<Route path='/reset' component={ResetPassword} />
