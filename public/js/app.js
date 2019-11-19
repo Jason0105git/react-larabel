@@ -1933,7 +1933,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "h1, h2, h3, h4, h5, h6 {color: gray;}\n\nheader {\n\tbackground-color: #e5e6e9;\n\tborder-bottom: 3px lightgray solid;\n}\n\nmain {\n\tpadding: 30px;\n}\n\n.dev-block {\n\tborder: 1px lightgray solid;\n\tpadding: 15px;\n\tmargin: 15px;\n}\n\n.debug {\n\tborder: 1px red solid;\n}\n\n.content-wrapper {\n\tpadding: 0px;\n\tmargin: 0px;\n\twidth: 100%;\n}\n\n.form-header {\n\tpadding: 5px; \n\tbackground-color: inherit;\n\tcolor: lightgray;\n}\n\n.auth-form-messages {\n\n\theight: 30px;\n}\n\n.btn {\n\tmargin: 5px;\n}\n\n.user-nav-info {\n\tpadding: .5rem 1rem;\n\tfont-weight: bold;\n\tfont-style: italic;\n\tcolor: white;\n\tmin-width: 200px;\n\tpadding-left: 3rem;\n\ttext-align: right;\n}", ""]);
+exports.push([module.i, "h1, h2, h3, h4, h5, h6 {color: gray;}\r\n\r\nheader {\r\n\tbackground-color: #e5e6e9;\r\n\tborder-bottom: 3px lightgray solid;\r\n}\r\n\r\nmain {\r\n\tpadding: 30px;\r\n}\r\n\r\n.dev-block {\r\n\tborder: 1px lightgray solid;\r\n\tpadding: 15px;\r\n\tmargin: 15px;\r\n}\r\n\r\n.debug {\r\n\tborder: 1px red solid;\r\n}\r\n\r\n.content-wrapper {\r\n\tpadding: 0px;\r\n\tmargin: 0px;\r\n\twidth: 100%;\r\n}\r\n\r\n.form-header {\r\n\tpadding: 5px; \r\n\tbackground-color: inherit;\r\n\tcolor: lightgray;\r\n}\r\n\r\n.auth-form-messages {\r\n\r\n\theight: 30px;\r\n}\r\n\r\n.btn {\r\n\tmargin: 5px;\r\n}\r\n\r\n.user-nav-info {\r\n\tpadding: .5rem 1rem;\r\n\tfont-weight: bold;\r\n\tfont-style: italic;\r\n\tcolor: white;\r\n\tmin-width: 200px;\r\n\tpadding-left: 3rem;\r\n\ttext-align: right;\r\n}", ""]);
 
 // exports
 
@@ -1952,7 +1952,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "/*styles for askods-header component*/\n.askods-wrapper {\tdisplay: flex;\tflex-direction: row;\tflex-wrap: wrap; }\n.askods-header {\n\tpadding: 10px;\n\tmargin: 0px;\n\tbackground-color: #e5e6e9;\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: left;\n\tborder-bottom: 3px lightgray solid;\n\tline-height: 1.0;\n\tflex-wrap: wrap;\n}\n\n.askods-item { margin: 0px 50px; padding: 5px; }\n.askods-item { align-content: center; }\n.askods-header h1 {  margin: 0px;\tfont-weight: 800; color: #1fb6ff;}\n.askods-header p {\tmargin: 0px; }\n.askods-nav {background-color: #1fb6ff;  padding: 10px  50px; width: 100%}\n.askods-nav a {text-decoration: none;  color: white;}\n.askods-nav ul { \n\tmargin: 0px; padding: 5px;\n\tdisplay: flex; \n\tjustify-content: space-between;\n\tflex-wrap: wrap; \n\tlist-style: none;\n\tcolor: white;\n}\n.askods-lang { \n\tbackground: #eee; \n\tborder: 1px #1fb6ff solid;\t\n\tborder-radius: 3px; \n\tmargin: 0px; \n\tpadding: 0px 15px; \n }\n\n .askods-lang a { color: gray; text-decoration: underline;}", ""]);
+exports.push([module.i, "/*styles for askods-header component*/\r\n.askods-wrapper {\tdisplay: flex;\tflex-direction: row;\tflex-wrap: wrap; }\r\n.askods-header {\r\n\tpadding: 10px;\r\n\tmargin: 0px;\r\n\tbackground-color: #e5e6e9;\r\n\tdisplay: flex;\r\n\tflex-direction: row;\r\n\tjustify-content: left;\r\n\tborder-bottom: 3px lightgray solid;\r\n\tline-height: 1.0;\r\n\tflex-wrap: wrap;\r\n}\r\n\r\n.askods-item { margin: 0px 50px; padding: 5px; }\r\n.askods-item { align-content: center; }\r\n.askods-header h1 {  margin: 0px;\tfont-weight: 800; color: #1fb6ff;}\r\n.askods-header p {\tmargin: 0px; }\r\n.askods-nav {background-color: #1fb6ff;  padding: 10px  50px; width: 100%}\r\n.askods-nav a {text-decoration: none;  color: white;}\r\n.askods-nav ul { \r\n\tmargin: 0px; padding: 5px;\r\n\tdisplay: flex; \r\n\tjustify-content: space-between;\r\n\tflex-wrap: wrap; \r\n\tlist-style: none;\r\n\tcolor: white;\r\n}\r\n.askods-lang { \r\n\tbackground: #eee; \r\n\tborder: 1px #1fb6ff solid;\t\r\n\tborder-radius: 3px; \r\n\tmargin: 0px; \r\n\tpadding: 0px 15px; \r\n }\r\n\r\n .askods-lang a { color: gray; text-decoration: underline;}", ""]);
 
 // exports
 
@@ -58301,7 +58301,7 @@ function (_Component) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* WEBPACK VAR INJECTION */(function(process) {/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
@@ -58423,7 +58423,7 @@ function (_Component) {
       var restorePassword = isRestorePassword(this.state.par);
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container-fluid content-wrapper"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", null,  false && false), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", null, restorePassword ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Nav__WEBPACK_IMPORTED_MODULE_9__["Nav"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", null, process.env.MIX_DEV == 'job' && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_askods_AskodsHeader__WEBPACK_IMPORTED_MODULE_4__["AskodsHeader"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", null, restorePassword ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Nav__WEBPACK_IMPORTED_MODULE_9__["Nav"], {
         isLogged: this.state.isLogged,
         doLogout: this.doLogout,
         user: this.state.user
@@ -58472,6 +58472,7 @@ function (_Component) {
 
 
 /* harmony default export */ __webpack_exports__["default"] = (Main);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../node_modules/process/browser.js */ "./node_modules/process/browser.js")))
 
 /***/ }),
 
@@ -59378,8 +59379,8 @@ var getParameters = function getParameters() {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /var/www/rluser/public_html/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /var/www/rluser/public_html/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! e:\OSPanel\domains\rluser\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! e:\OSPanel\domains\rluser\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
